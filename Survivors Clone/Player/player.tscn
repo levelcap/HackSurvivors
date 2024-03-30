@@ -262,6 +262,25 @@ offset_right = 208.0
 offset_bottom = 56.0
 columns = 10
 
+[node name="BossPanel" type="Panel" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_top = 49.0
+offset_right = 656.0
+offset_bottom = 345.0
+scale = Vector2(0.972356, 1.00709)
+
+[node name="Label" type="Label" parent="GUILayer/GUI/BossPanel"]
+layout_mode = 0
+offset_right = 659.0
+offset_bottom = 295.0
+text = "THE BIG BOSS APPROACHES!
+
+FIGHT!!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="Attack/IceSpearTimer" to="." method="_on_ice_spear_timer_timeout"]
 [connection signal="timeout" from="Attack/IceSpearTimer/IceSpearAttackTimer" to="." method="_on_ice_spear_attack_timer_timeout"]
