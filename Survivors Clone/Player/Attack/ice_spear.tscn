@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://wpliv06gy0pq"]
 
 [ext_resource type="Script" path="res://Player/Attack/ice_spear.gd" id="1_4el3j"]
-[ext_resource type="Texture2D" uid="uid://jjt1rh5e2jcp" path="res://Textures/Items/Weapons/ice_spear.png" id="1_nhh0e"]
-[ext_resource type="AudioStream" uid="uid://bwogrv8jx4hmv" path="res://Audio/SoundEffect/ice.wav" id="3_esswn"]
+[ext_resource type="Texture2D" uid="uid://dc7v006yqbaae" path="res://Textures/Items/Weapons/Starting_Weapon_Mirror.png" id="2_5xmgf"]
+[ext_resource type="AudioStream" uid="uid://bmdbmw2221k2b" path="res://Audio/SoundEffect/new/weapon-knife.mp3" id="3_xmq8d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p4tiy"]
-size = Vector2(6.36396, 33.234)
+size = Vector2(14.1421, 35.3553)
 
 [node name="IceSpear" type="Area2D" groups=["attack"]]
 top_level = true
@@ -15,11 +15,13 @@ collision_mask = 0
 script = ExtResource("1_4el3j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_nhh0e")
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_5xmgf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.500001, -0.999999)
+position = Vector2(-2.5, -2.5)
 rotation = -0.785398
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_p4tiy")
 
 [node name="Timer" type="Timer" parent="."]
@@ -28,7 +30,7 @@ one_shot = true
 autostart = true
 
 [node name="snd_play" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_esswn")
+stream = ExtResource("3_xmq8d")
 volume_db = -10.0
 pitch_scale = 5.0
 autoplay = true
