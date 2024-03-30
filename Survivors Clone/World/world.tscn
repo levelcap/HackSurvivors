@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bfiy14mycchjg" path="res://Utility/helper_spawner.tscn" id="12_238vd"]
 [ext_resource type="PackedScene" uid="uid://nt0ls1a3s5aq" path="res://Helper/helper_merchant.tscn" id="13_mhixp"]
 [ext_resource type="Script" path="res://Utility/helper_info.gd" id="14_wirp0"]
+[ext_resource type="PackedScene" uid="uid://bw5tplacy8c76" path="res://Wall/wall.tscn" id="12_kfr5j"]
 
 [sub_resource type="Resource" id="Resource_03m25"]
 script = ExtResource("5_jj7s8")
@@ -117,5 +118,7 @@ script = ExtResource("11_ovtx6")
 
 [node name="HelperSpawner" parent="." instance=ExtResource("12_238vd")]
 helpers = Array[ExtResource("14_wirp0")]([SubResource("Resource_sfcrw")])
+[node name="Wall" parent="." instance=ExtResource("12_kfr5j")]
+position = Vector2(501, 286)
 
 [connection signal="playerdeath" from="Player" to="snd_Music" method="_on_player_playerdeath"]
