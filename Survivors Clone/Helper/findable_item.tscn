@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://cat36tdnkyii5"]
+
+[ext_resource type="Script" path="res://Helper/findable_item.gd" id="1_kek0r"]
+[ext_resource type="Texture2D" uid="uid://ce0hue7fwpa3a" path="res://Textures/Enemy/giant_amoeba_new.png" id="2_a0lum"]
+[ext_resource type="FontFile" uid="uid://b4edcsu4rwewr" path="res://Font/BarlowCondensed-MediumItalic.ttf" id="3_ajkup"]
+[ext_resource type="AudioStream" uid="uid://bnm8cttqwefdx" path="res://Audio/SoundEffect/collectgem.mp3" id="4_jsirh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_41mhn"]
+
+[node name="FindableItem" type="Area2D"]
+script = ExtResource("1_kek0r")
+message = "hello there"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_a0lum")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_41mhn")
+
+[node name="FindableItemLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 15.0
+offset_top = -36.0
+offset_right = 231.0
+offset_bottom = 36.0
+theme_override_colors/font_color = Color(0.396078, 0, 0.807843, 1)
+theme_override_constants/line_spacing = -2
+theme_override_fonts/font = ExtResource("3_ajkup")
+theme_override_font_sizes/font_size = 20
+text = "Pick me up. Pick me up. Pick me up. Pick me up. Pick me up. Pick me up. "
+autowrap_mode = 3
+
+[node name="snd_collected" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_jsirh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="finished" from="snd_collected" to="." method="_on_snd_collected_finished"]
