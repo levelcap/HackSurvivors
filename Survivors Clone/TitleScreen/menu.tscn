@@ -63,16 +63,17 @@ autoplay = true
 
 [node name="blurb" type="Label" parent="."]
 layout_mode = 0
-offset_left = 149.0
-offset_top = 132.0
-offset_right = 493.0
-offset_bottom = 244.0
+offset_left = 150.0
+offset_top = 138.0
+offset_right = 491.0
+offset_bottom = 239.0
 theme_override_colors/font_color = Color(0.356863, 0.341176, 0.670588, 1)
+theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("5_ptmp1")
 theme_override_font_sizes/font_size = 13
-text = "It's your first day on the job...TK TK TK
+text = "You are a line cook just trying to survive a hard day at the restaurant. If your boss notices you kicking ass, maybe you’ll get a promotion! Or maybe you’ll discover there’s more going on than you think at this restaurant. 
 
-Use WASD to move around. Avoid the enemies to keep your health bar full! TK TK TK"
+Select your level, select your character, and fight for your life in the kitchen! Just move around with WASD and you’ll figure it out. "
 autowrap_mode = 3
 
 [connection signal="click_end" from="btn_play" to="." method="_on_btn_play_click_end"]
