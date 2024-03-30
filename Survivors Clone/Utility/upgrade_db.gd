@@ -6,18 +6,66 @@ const WEAPON_PATH = "res://Textures/Items/Weapons/"
 const UPGRADES = {
 	"mop1": {
 		"icon": WEAPON_PATH + "mop_main.png",
-		"displayname": "Mop",
-		"details": "A mop appears to leave doom puddles on the floor",
+		"displayname": "Slip ‘n Slide",
+		"details": " Oops, I guess I forgot to put up a “Caution, Wet Floor” Sign. Hope no one slips…",
 		"level": "Level: 1",
 		"prerequisite": [],
 		"type": "weapon"
 	},
+	"mop2": {
+		"icon": WEAPON_PATH + "mop_main.png",
+		"displayname": "Slip ‘n Slide",
+		"details": "The puddles just keep growing.  ",
+		"level": "Level: 2",
+		"prerequisite": ["mop1"],
+		"type": "weapon"
+	},
+	"mop3": {
+		"icon": WEAPON_PATH + "mop_main.png",
+		"displayname": "Slip ‘n Slide",
+		"details": "The puddles just keep growing.  ",
+		"level": "Level: 3",
+		"prerequisite": ["mop2"],
+		"type": "weapon"
+	},
+	"mop4": {
+		"icon": WEAPON_PATH + "mop_main.png",
+		"displayname": "Slip ‘n Slide",
+		"details": "The puddles just keep growing.  ",
+		"level": "Level: 4",
+		"prerequisite": ["mop3"],
+		"type": "weapon"
+	},
 	"blowtorch1": {
 		"icon": WEAPON_PATH + "weapon_blow_torch_icon.png",
-		"displayname": "Blowtorch",
-		"details": "Flambe those jerks",
+		"displayname": "Old Faithful",
+		"details": "A butane refill grows the fire.",
 		"level": "Level: 1",
 		"prerequisite": [],
+		"type": "weapon"
+	},
+	"blowtorch2": {
+		"icon": WEAPON_PATH + "weapon_blow_torch_icon.png",
+		"displayname": "Old Faithful",
+		"details": "She makes a mean creme brulee, but you shouldn’t get too close. ",
+		"level": "Level: 2",
+		"prerequisite": ["blowtorch1"],
+		"type": "weapon"
+	},
+	"blowtorch3": {
+		"icon": WEAPON_PATH + "weapon_blow_torch_icon.png",
+		"displayname": "Old Faithful",
+		"details": "She makes a mean creme brulee, but you shouldn’t get too close. ",
+		"level": "Level: 3",
+		"prerequisite": ["blowtorch2"],
+		"type": "weapon"
+	},
+	"blowtorch4": {
+		"icon": WEAPON_PATH + "weapon_blow_torch_icon.png",
+		"displayname": "Old Faithful",
+		"details": "A butane refill grows the fire.",
+		"level": "Level: 4",
+		"prerequisite": ["blowtorch3"],
 		"type": "weapon"
 	},
 	"icespear1": {
