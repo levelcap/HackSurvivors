@@ -4,3 +4,5 @@
 */.godot
 
 .DS_Store
+*.afphoto
+*.afphoto~lock~

@@ -2,10 +2,6 @@ extends Area2D
 
 @export var experience = 1
 
-var spr_green = preload("res://Textures/Items/Gems/Gem_green.png")
-var spr_blue= preload("res://Textures/Items/Gems/Gem_blue.png")
-var spr_red = preload("res://Textures/Items/Gems/Gem_red.png")
-
 var target = null
 var speed = -1
 
@@ -15,11 +11,11 @@ var speed = -1
 
 func _ready():
 	if experience < 5:
-		return
+		sprite.modulate = Color(0, 1, 0)
 	elif experience < 25:
-		sprite.texture = spr_blue
+		sprite.modulate = Color(0, 0, 1)
 	else:
-		sprite.texture = spr_red
+		sprite.modulate = Color(1, 0, 0)
 
 func _physics_process(delta):
 	if target != null:

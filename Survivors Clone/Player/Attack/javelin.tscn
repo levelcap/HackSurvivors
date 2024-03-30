@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d22bl2j2hb3d1" path="res://Textures/Items/Weapons/javelin_3_new.png" id="1_rbe4t"]
 [ext_resource type="Script" path="res://Player/Attack/javelin.gd" id="1_ro7n8"]
-[ext_resource type="AudioStream" uid="uid://ckro6v281rcab" path="res://Audio/SoundEffect/woosh.wav" id="3_6kycs"]
+[ext_resource type="AudioStream" uid="uid://bhhlndq7kcpss" path="res://Audio/SoundEffect/woosh.wav" id="3_6kycs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ojwf"]
 size = Vector2(4.24264, 32.5269)

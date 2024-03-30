@@ -2,16 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://bu2son8g2konp" path="res://Textures/Items/Weapons/sword.png" id="1_583l0"]
 [ext_resource type="Script" path="res://Utility/item_option.gd" id="1_unejd"]
-[ext_resource type="FontFile" uid="uid://cb4e8g30xxp5u" path="res://Font/tenderness.otf" id="2_wif5r"]
+[ext_resource type="FontFile" uid="uid://f502umyy2mu3" path="res://Font/BarlowCondensed-Medium.ttf" id="3_5llqk"]
 
-[node name="ItemOption" type="ColorRect"]
+[node name="ItemOption" type="Button"]
 custom_minimum_size = Vector2(180, 50)
 anchors_preset = -1
 anchor_right = 0.281
 anchor_bottom = 0.139
 offset_right = 0.159988
 offset_bottom = -0.0400047
-color = Color(0.54902, 0.54902, 0.54902, 1)
 script = ExtResource("1_unejd")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -35,7 +34,7 @@ offset_left = 39.0
 offset_top = 2.0
 offset_right = 79.0
 offset_bottom = 25.0
-theme_override_fonts/font = ExtResource("2_wif5r")
+theme_override_fonts/font = ExtResource("3_5llqk")
 text = "Name"
 horizontal_alignment = 1
 
@@ -45,7 +44,7 @@ offset_left = 4.0
 offset_top = 27.0
 offset_right = 166.0
 offset_bottom = 48.0
-theme_override_fonts/font = ExtResource("2_wif5r")
+theme_override_fonts/font = ExtResource("3_5llqk")
 theme_override_font_sizes/font_size = 8
 text = "Description of Item"
 autowrap_mode = 3
@@ -56,7 +55,7 @@ offset_left = 130.0
 offset_top = 3.0
 offset_right = 170.0
 offset_bottom = 26.0
-theme_override_fonts/font = ExtResource("2_wif5r")
+theme_override_fonts/font = ExtResource("3_5llqk")
 theme_override_font_sizes/font_size = 12
 text = "level: 1"
 
