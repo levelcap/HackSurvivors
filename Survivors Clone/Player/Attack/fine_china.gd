@@ -15,6 +15,7 @@ var angle_more = Vector2.ZERO
 signal remove_from_array(object)
 
 @onready var player = get_tree().get_first_node_in_group("player")
+@onready var collisionSound = $snd_collide
 
 func _ready():
 	match level:
@@ -87,8 +88,12 @@ func _ready():
 		tween.tween_property(self,"angle", angle_more,2)
 	tween.play()
 
+
 func _physics_process(delta):
 	position += angle*speed*delta
+
+func enemy_hit(charge = 1):
+	collisionSound.play()
 
 func _on_timer_timeout():
 	emit_signal("remove_from_array",self)

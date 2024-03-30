@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://bis78tmxnqw4c"]
+
+[ext_resource type="Script" path="res://Player/Attack/fine_china.gd" id="1_33d0p"]
+[ext_resource type="Texture2D" uid="uid://b6xksohckbr6l" path="res://Textures/Items/Weapons/Finechina2.png" id="2_vjfy1"]
+[ext_resource type="AudioStream" uid="uid://dm14x014gr5t0" path="res://Audio/SoundEffect/new/whoosh-6316(1).mp3" id="3_u0oce"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dfset"]
+radius = 19.5256
+
+[node name="FineChina" type="Area2D" groups=["attack"]]
+top_level = true
+scale = Vector2(0.1, 0.1)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_33d0p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_vjfy1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1)
+shape = SubResource("CircleShape2D_dfset")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
+
+[node name="snd_attack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_u0oce")
+volume_db = -8.0
+autoplay = true
+
+[node name="snd_collide" type="AudioStreamPlayer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

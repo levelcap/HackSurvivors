@@ -64,7 +64,7 @@ func _physics_process(delta):
 		mopPuddleSprite.visible = true
 
 func enemy_hit(charge = 1):
-	collisionSound.play()
+
 	hp -= charge
 	if hp <= 0:
 		emit_signal("remove_from_array",self)
@@ -72,5 +72,6 @@ func enemy_hit(charge = 1):
 
 
 func _on_timer_timeout():
+	collisionSound.play()
 	emit_signal("remove_from_array",self)
 	queue_free()

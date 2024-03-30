@@ -69,33 +69,33 @@ const UPGRADES = {
 		"type": "weapon"
 	},
 	"icespear1": {
-		"icon": WEAPON_PATH + "ice_spear.png",
-		"displayname": "Ice Spear",
-		"details": "A spear of ice is thrown at a random enemy",
+		"icon": WEAPON_PATH + "starting_weapon_icon.png",
+		"displayname": "Knife",
+		"details": "This is your pride and joy. It cuts and it chops, sometimes food and sometimes your own fingers.",
 		"level": "Level: 1",
 		"prerequisite": [],
 		"type": "weapon"
 	},
 	"icespear2": {
-		"icon": WEAPON_PATH + "ice_spear.png",
-		"displayname": "Ice Spear",
-		"details": "An addition Ice Spear is thrown",
+		"icon": WEAPON_PATH + "starting_weapon_icon.png",
+		"displayname": "Knife",
+		"details": "More knives!",
 		"level": "Level: 2",
 		"prerequisite": ["icespear1"],
 		"type": "weapon"
 	},
 	"icespear3": {
-		"icon": WEAPON_PATH + "ice_spear.png",
-		"displayname": "Ice Spear",
-		"details": "Ice Spears now pass through another enemy and do + 3 damage",
+		"icon": WEAPON_PATH + "starting_weapon_icon.png",
+		"displayname": "Knife",
+		"details": "Sharper knives!",
 		"level": "Level: 3",
 		"prerequisite": ["icespear2"],
 		"type": "weapon"
 	},
 	"icespear4": {
-		"icon": WEAPON_PATH + "ice_spear.png",
-		"displayname": "Ice Spear",
-		"details": "An additional 2 Ice Spears are thrown",
+		"icon": WEAPON_PATH + "starting_weapon_icon.png",
+		"displayname": "Knife",
+		"details": "Even more knives!",
 		"level": "Level: 4",
 		"prerequisite": ["icespear3"],
 		"type": "weapon"
@@ -132,36 +132,36 @@ const UPGRADES = {
 		"prerequisite": ["javelin3"],
 		"type": "weapon"
 	},
-	"tornado1": {
-		"icon": WEAPON_PATH + "tornado.png",
-		"displayname": "Tornado",
-		"details": "A tornado is created and random heads somewhere in the players direction",
+	"fineChina1": {
+		"icon": WEAPON_PATH + "Finechina2_icon.png",
+		"displayname": "fineChina",
+		"details": "A fineChina is created and random heads somewhere in the players direction",
 		"level": "Level: 1",
 		"prerequisite": [],
 		"type": "weapon"
 	},
-	"tornado2": {
-		"icon": WEAPON_PATH + "tornado.png",
-		"displayname": "Tornado",
-		"details": "An additional Tornado is created",
+	"fineChina2": {
+		"icon": WEAPON_PATH + "Finechina2_icon.png",
+		"displayname": "fineChina",
+		"details": "An additional fineChina is created",
 		"level": "Level: 2",
-		"prerequisite": ["tornado1"],
+		"prerequisite": ["fineChina1"],
 		"type": "weapon"
 	},
-	"tornado3": {
-		"icon": WEAPON_PATH + "tornado.png",
-		"displayname": "Tornado",
-		"details": "The Tornado cooldown is reduced by 0.5 seconds",
+	"fineChina3": {
+		"icon": WEAPON_PATH + "Finechina2_icon.png",
+		"displayname": "fineChina",
+		"details": "The fineChina cooldown is reduced by 0.5 seconds",
 		"level": "Level: 3",
-		"prerequisite": ["tornado2"],
+		"prerequisite": ["fineChina2"],
 		"type": "weapon"
 	},
-	"tornado4": {
-		"icon": WEAPON_PATH + "tornado.png",
-		"displayname": "Tornado",
-		"details": "An additional tornado is created and the knockback is increased by 25%",
+	"fineChina4": {
+		"icon": WEAPON_PATH + "Finechina2_icon.png",
+		"displayname": "fineChina",
+		"details": "An additional fineChina is created and the knockback is increased by 25%",
 		"level": "Level: 4",
-		"prerequisite": ["tornado3"],
+		"prerequisite": ["fineChina3"],
 		"type": "weapon"
 	},
 	"armor1": {

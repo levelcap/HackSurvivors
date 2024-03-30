@@ -13,7 +13,7 @@ var collected_experience = 0
 
 #Attacks
 var iceSpear = preload("res://Player/Attack/ice_spear.tscn")
-var tornado = preload("res://Player/Attack/tornado.tscn")
+var fineChina = preload("res://Player/Attack/fine_china.tscn")
 var javelin = preload("res://Player/Attack/javelin.tscn")
 var mop = preload("res://Player/Attack/mop.tscn")
 var blowtorch = preload("res://Player/Attack/blowtorch.tscn")
@@ -21,8 +21,8 @@ var blowtorch = preload("res://Player/Attack/blowtorch.tscn")
 #AttackNodes
 @onready var iceSpearTimer = get_node("%IceSpearTimer")
 @onready var iceSpearAttackTimer = get_node("%IceSpearAttackTimer")
-@onready var tornadoTimer = get_node("%TornadoTimer")
-@onready var tornadoAttackTimer = get_node("%TornadoAttackTimer")
+@onready var fineChinaTimer = get_node("%FineChinaTimer")
+@onready var fineChinaAttackTimer = get_node("%FineChinaAttackTimer")
 @onready var mopTimer = get_node("%MopTimer")
 @onready var mopAttackTimer = get_node("%MopAttackTimer")
 @onready var blowtorchTimer = get_node("%BlowtorchTimer")
@@ -56,11 +56,11 @@ var blowtorch_baseammo = 0
 var blowtorch_attackspeed = 1.5
 var blowtorch_level = 0
 
-#Tornado
-var tornado_ammo = 0
-var tornado_baseammo = 0
-var tornado_attackspeed = 3
-var tornado_level = 0
+#fineChina
+var fineChina_ammo = 0
+var fineChina_baseammo = 0
+var fineChina_attackspeed = 3
+var fineChina_level = 0
 
 #Javelin
 var javelin_ammo = 0
@@ -97,7 +97,7 @@ var enemy_close = []
 signal playerdeath
 
 func _ready():
-	upgrade_character("icespear1")
+	upgrade_character("fineChina1")
 	attack()
 	set_expbar(experience, calculate_experiencecap())
 	_on_hurt_box_hurt(0,0,0)
@@ -131,10 +131,10 @@ func attack():
 		iceSpearTimer.wait_time = icespear_attackspeed * (1-spell_cooldown)
 		if iceSpearTimer.is_stopped():
 			iceSpearTimer.start()
-	if tornado_level > 0:
-		tornadoTimer.wait_time = tornado_attackspeed * (1-spell_cooldown)
-		if tornadoTimer.is_stopped():
-			tornadoTimer.start()
+	if fineChina_level > 0:
+		fineChinaTimer.wait_time = fineChina_attackspeed * (1-spell_cooldown)
+		if fineChinaTimer.is_stopped():
+			fineChinaTimer.start()
 	if javelin_level > 0:
 		spawn_javelin()
 	if mop_level > 0:
@@ -171,22 +171,22 @@ func _on_ice_spear_attack_timer_timeout():
 		else:
 			iceSpearAttackTimer.stop()
 
-func _on_tornado_timer_timeout():
-	tornado_ammo += tornado_baseammo + additional_attacks
-	tornadoAttackTimer.start()
+func _on_fineChina_timer_timeout():
+	fineChina_ammo += fineChina_baseammo + additional_attacks
+	fineChinaAttackTimer.start()
 
-func _on_tornado_attack_timer_timeout():
-	if tornado_ammo > 0:
-		var tornado_attack = tornado.instantiate()
-		tornado_attack.position = position
-		tornado_attack.last_movement = last_movement
-		tornado_attack.level = tornado_level
-		add_child(tornado_attack)
-		tornado_ammo -= 1
-		if tornado_ammo > 0:
-			tornadoAttackTimer.start()
+func _on_fineChina_attack_timer_timeout():
+	if fineChina_ammo > 0:
+		var fineChina_attack = fineChina.instantiate()
+		fineChina_attack.position = position
+		fineChina_attack.last_movement = last_movement
+		fineChina_attack.level = fineChina_level
+		add_child(fineChina_attack)
+		fineChina_ammo -= 1
+		if fineChina_ammo > 0:
+			fineChinaAttackTimer.start()
 		else:
-			tornadoAttackTimer.stop()
+			fineChinaAttackTimer.stop()
 
 func spawn_javelin():
 	var get_javelin_total = javelinBase.get_child_count()
@@ -340,18 +340,18 @@ func upgrade_character(upgrade):
 		"icespear4":
 			icespear_level = 4
 			icespear_baseammo += 2
-		"tornado1":
-			tornado_level = 1
-			tornado_baseammo += 1
-		"tornado2":
-			tornado_level = 2
-			tornado_baseammo += 1
-		"tornado3":
-			tornado_level = 3
-			tornado_attackspeed -= 0.5
-		"tornado4":
-			tornado_level = 4
-			tornado_baseammo += 1
+		"fineChina1":
+			fineChina_level = 1
+			fineChina_baseammo += 1
+		"fineChina2":
+			fineChina_level = 2
+			fineChina_baseammo += 1
+		"fineChina3":
+			fineChina_level = 3
+			fineChina_attackspeed -= 0.5
+		"fineChina4":
+			fineChina_level = 4
+			fineChina_baseammo += 1
 		"javelin1":
 			javelin_level = 1
 			javelin_ammo = 1
