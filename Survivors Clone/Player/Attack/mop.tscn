@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://btgeff4rg2xui"]
+[gd_scene load_steps=7 format=3 uid="uid://bmnffmaj1oepq"]
 
 [ext_resource type="Script" path="res://Player/Attack/mop.gd" id="1_usq22"]
 [ext_resource type="Texture2D" uid="uid://b2jb6rp4cjolx" path="res://Textures/Items/Weapons/mop_main.png" id="2_i84af"]
-[ext_resource type="AudioStream" uid="uid://bwogrv8jx4hmv" path="res://Audio/SoundEffect/ice.wav" id="3_e438v"]
+[ext_resource type="AudioStream" uid="uid://da55gt3ei1p4l" path="res://Audio/SoundEffect/new/weapon-mop.mp3" id="3_ojypi"]
 [ext_resource type="Texture2D" uid="uid://ctea67dd42sqa" path="res://Textures/Items/Weapons/mop_puddle.png" id="4_aaq2d"]
+[ext_resource type="AudioStream" uid="uid://bllnc630dss05" path="res://Audio/SoundEffect/new/enemy puddle.mp3" id="5_5uncu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ban8g"]
 
@@ -21,7 +22,6 @@ texture = ExtResource("2_i84af")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 10)
-scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_ban8g")
 
 [node name="Timer" type="Timer" parent="."]
@@ -30,7 +30,7 @@ one_shot = true
 autostart = true
 
 [node name="snd_play" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_e438v")
+stream = ExtResource("3_ojypi")
 volume_db = -10.0
 pitch_scale = 5.0
 autoplay = true
@@ -46,7 +46,10 @@ texture = ExtResource("4_aaq2d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MopPuddle"]
 position = Vector2(0, 10)
-scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_ban8g")
+
+[node name="snd_collide" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_5uncu")
+volume_db = -10.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

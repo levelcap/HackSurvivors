@@ -15,6 +15,7 @@ var state = 0
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var mopSprite = get_node("%MopSprite")
 @onready var mopPuddleSprite = get_node("%MopPuddleSprite")
+@onready var collisionSound = $snd_collide
 
 signal remove_from_array(object)
 
@@ -63,6 +64,7 @@ func _physics_process(delta):
 		mopPuddleSprite.visible = true
 
 func enemy_hit(charge = 1):
+	collisionSound.play()
 	hp -= charge
 	if hp <= 0:
 		emit_signal("remove_from_array",self)
