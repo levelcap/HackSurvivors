@@ -91,6 +91,7 @@ var enemy_close = []
 @onready var lblResult = get_node("%lbl_Result")
 @onready var sndVictory = get_node("%snd_victory")
 @onready var sndLose = get_node("%snd_lose")
+@onready var bossPanel = get_node("%BossPanel")
 
 #Signal
 signal playerdeath
@@ -449,7 +450,16 @@ func death():
 	else:
 		lblResult.text = "You Lose"
 		sndLose.play()
-
+		
+func bossFight():
+	bossPanel.visible = true
+	get_tree().paused = true
+	var tween = bossPanel.create_tween()
+	tween.tween_property(bossPanel, "position", Vector2(600, 550),3.0).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	tween.play()
+	await get_tree().create_timer(3.0).timeout
+	get_tree().paused = false
+	bossPanel.visible = false
 
 func _on_btn_menu_click_end():
 	get_tree().paused = false

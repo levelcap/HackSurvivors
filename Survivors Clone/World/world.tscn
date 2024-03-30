@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://b5o40jqpeqglb" path="res://Textures/kitchen_tile.png" id="1_3eqd4"]
 [ext_resource type="PackedScene" uid="uid://dncgepmkc4jf4" path="res://Player/player.tscn" id="2_40uwv"]
 [ext_resource type="PackedScene" uid="uid://ba2claihwes2y" path="res://Utility/enemy_spawner.tscn" id="3_p01g4"]
-[ext_resource type="PackedScene" uid="uid://gvm5jcbbgwdv" path="res://Enemy/enemy_onion.tscn" id="4_ee8bm"]
+[ext_resource type="PackedScene" uid="uid://cgyopk4kjswo4" path="res://Enemy/enemy_onion.tscn" id="4_ee8bm"]
 [ext_resource type="Script" path="res://Utility/spawn_info.gd" id="5_jj7s8"]
-[ext_resource type="PackedScene" path="res://Enemy/enemy_pepper.tscn" id="6_rumbx"]
+[ext_resource type="PackedScene" uid="uid://bbvhxvk65o8el" path="res://Enemy/enemy_pepper.tscn" id="6_rumbx"]
 [ext_resource type="PackedScene" uid="uid://bok7kd2psi5gl" path="res://Enemy/enemy_cyclops.tscn" id="7_unri0"]
 [ext_resource type="PackedScene" uid="uid://hcjnrdsb563h" path="res://Enemy/enemy_juggernaut.tscn" id="8_ltymd"]
 [ext_resource type="PackedScene" uid="uid://btf7clk4jja87" path="res://Enemy/enemy_super.tscn" id="9_xs42h"]
@@ -24,6 +24,7 @@ time_end = 30
 enemy = ExtResource("4_ee8bm")
 enemy_num = 1
 enemy_spawn_delay = 2
+boss = false
 
 [sub_resource type="Resource" id="Resource_ij20a"]
 script = ExtResource("5_jj7s8")
@@ -32,6 +33,7 @@ time_end = 210
 enemy = ExtResource("4_ee8bm")
 enemy_num = 2
 enemy_spawn_delay = 2
+boss = false
 
 [sub_resource type="Resource" id="Resource_68oxv"]
 script = ExtResource("5_jj7s8")
@@ -40,6 +42,7 @@ time_end = 180
 enemy = ExtResource("6_rumbx")
 enemy_num = 1
 enemy_spawn_delay = 2
+boss = false
 
 [sub_resource type="Resource" id="Resource_l8y0x"]
 script = ExtResource("5_jj7s8")
@@ -48,6 +51,7 @@ time_end = 210
 enemy = ExtResource("7_unri0")
 enemy_num = 1
 enemy_spawn_delay = 2
+boss = false
 
 [sub_resource type="Resource" id="Resource_daq1w"]
 script = ExtResource("5_jj7s8")
@@ -56,6 +60,7 @@ time_end = 240
 enemy = ExtResource("6_rumbx")
 enemy_num = 2
 enemy_spawn_delay = 1
+boss = false
 
 [sub_resource type="Resource" id="Resource_0gpiy"]
 script = ExtResource("5_jj7s8")
@@ -64,6 +69,7 @@ time_end = 270
 enemy = ExtResource("7_unri0")
 enemy_num = 2
 enemy_spawn_delay = 1
+boss = false
 
 [sub_resource type="Resource" id="Resource_4teun"]
 script = ExtResource("5_jj7s8")
@@ -72,6 +78,7 @@ time_end = 240
 enemy = ExtResource("8_ltymd")
 enemy_num = 2
 enemy_spawn_delay = 1
+boss = false
 
 [sub_resource type="Resource" id="Resource_rx6id"]
 script = ExtResource("5_jj7s8")
@@ -80,6 +87,7 @@ time_end = 300
 enemy = ExtResource("6_rumbx")
 enemy_num = 4
 enemy_spawn_delay = 1
+boss = false
 
 [sub_resource type="Resource" id="Resource_t2np8"]
 script = ExtResource("5_jj7s8")
@@ -88,6 +96,7 @@ time_end = 300
 enemy = ExtResource("9_xs42h")
 enemy_num = 1
 enemy_spawn_delay = 1
+boss = true
 
 [sub_resource type="Resource" id="Resource_sfcrw"]
 script = ExtResource("14_wirp0")
@@ -125,3 +134,4 @@ position = Vector2(-1972, -1978)
 script = ExtResource("16_67qi3")
 
 [connection signal="playerdeath" from="Player" to="AudioStreamPlayer" method="_on_player_playerdeath"]
+[connection signal="bossbattle" from="EnemySpawner" to="Player" method="_on_enemy_spawner_bossbattle"]
