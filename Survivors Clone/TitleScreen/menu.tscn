@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dcyka5e06knff"]
 
 [ext_resource type="Script" path="res://TitleScreen/menu.gd" id="1_oi0p3"]
-[ext_resource type="Texture2D" uid="uid://dnexdgcqfgf7l" path="res://Textures/GUI/menu_v2.png" id="2_xmhi7"]
+[ext_resource type="Texture2D" uid="uid://dtq0ljkgmi88i" path="res://Textures/GUI/menu_v3.png" id="2_m47dm"]
 [ext_resource type="PackedScene" uid="uid://b7c7gsdx2rkjm" path="res://Utility/basic_button.tscn" id="3_kwsdd"]
 [ext_resource type="FontFile" uid="uid://dwo5a5m36hr35" path="res://Font/BungeeShade-Regular.ttf" id="3_vtfx4"]
 [ext_resource type="FontFile" uid="uid://f502umyy2mu3" path="res://Font/BarlowCondensed-Medium.ttf" id="5_ptmp1"]
@@ -20,7 +20,7 @@ script = ExtResource("1_oi0p3")
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 361.0
-texture = ExtResource("2_xmhi7")
+texture = ExtResource("2_m47dm")
 expand_mode = 2
 
 [node name="Label" type="Label" parent="."]
@@ -60,6 +60,20 @@ text = "EXIT
 stream = ExtResource("6_ayfig")
 volume_db = -10.0
 autoplay = true
+
+[node name="blurb" type="Label" parent="."]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 132.0
+offset_right = 493.0
+offset_bottom = 244.0
+theme_override_colors/font_color = Color(0.356863, 0.341176, 0.670588, 1)
+theme_override_fonts/font = ExtResource("5_ptmp1")
+theme_override_font_sizes/font_size = 13
+text = "It's your first day on the job...TK TK TK
+
+Use WASD to move around. Avoid the enemies to keep your health bar full! TK TK TK"
+autowrap_mode = 3
 
 [connection signal="click_end" from="btn_play" to="." method="_on_btn_play_click_end"]
 [connection signal="click_end" from="btn_exit" to="." method="_on_btn_exit_click_end"]
