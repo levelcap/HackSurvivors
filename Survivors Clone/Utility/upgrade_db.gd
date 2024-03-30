@@ -12,6 +12,14 @@ const UPGRADES = {
 		"prerequisite": [],
 		"type": "weapon"
 	},
+	"blowtorch1": {
+		"icon": WEAPON_PATH + "weapon_blow_torch_icon.png",
+		"displayname": "Blowtorch",
+		"details": "Flambe those jerks",
+		"level": "Level: 1",
+		"prerequisite": [],
+		"type": "weapon"
+	},
 	"icespear1": {
 		"icon": WEAPON_PATH + "ice_spear.png",
 		"displayname": "Ice Spear",

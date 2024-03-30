@@ -16,6 +16,7 @@ var iceSpear = preload("res://Player/Attack/ice_spear.tscn")
 var tornado = preload("res://Player/Attack/tornado.tscn")
 var javelin = preload("res://Player/Attack/javelin.tscn")
 var mop = preload("res://Player/Attack/mop.tscn")
+var blowtorch = preload("res://Player/Attack/blowtorch.tscn")
 
 #AttackNodes
 @onready var iceSpearTimer = get_node("%IceSpearTimer")
@@ -24,6 +25,8 @@ var mop = preload("res://Player/Attack/mop.tscn")
 @onready var tornadoAttackTimer = get_node("%TornadoAttackTimer")
 @onready var mopTimer = get_node("%MopTimer")
 @onready var mopAttackTimer = get_node("%MopAttackTimer")
+@onready var blowtorchTimer = get_node("%BlowtorchTimer")
+@onready var blowtorchAttackTimer = get_node("%BlowtorchAttackTimer")
 @onready var javelinBase = get_node("%JavelinBase")
 
 #UPGRADES
@@ -46,6 +49,12 @@ var mop_ammo = 0
 var mop_baseammo = 0
 var mop_attackspeed = 1.5
 var mop_level = 0
+
+#Mop
+var blowtorch_ammo = 0
+var blowtorch_baseammo = 0
+var blowtorch_attackspeed = 1.5
+var blowtorch_level = 0
 
 #Tornado
 var tornado_ammo = 0
@@ -131,6 +140,10 @@ func attack():
 		mopTimer.wait_time = mop_attackspeed * (1-spell_cooldown)
 		if mopTimer.is_stopped():
 			mopTimer.start()		
+	if blowtorch_level > 0:
+		blowtorchTimer.wait_time = blowtorch_attackspeed * (1-spell_cooldown)
+		if blowtorchTimer.is_stopped():
+			blowtorchTimer.start()		
 
 func _on_hurt_box_hurt(damage, _angle, _knockback):
 	hp -= clamp(damage-armor, 1.0, 999.0)
@@ -204,6 +217,21 @@ func _on_mop_attack_timer_timeout():
 			mopAttackTimer.start()
 		else:
 			mopAttackTimer.stop()			
+			
+func _on_blowtorch_timer_timeout():
+	blowtorch_ammo += blowtorch_baseammo + additional_attacks
+	blowtorchAttackTimer.start()
+
+func _on_blowtorch_attack_timer_timeout():
+	if blowtorch_ammo > 0:
+		var blowtorch_attack = blowtorch.instantiate()
+		blowtorch_attack.level = blowtorch_level
+		add_child(blowtorch_attack)
+		blowtorch_ammo -= 1
+		if blowtorch_ammo > 0:
+			blowtorchAttackTimer.start()
+		else:
+			blowtorchAttackTimer.stop()			
 
 func get_random_target():
 	if enemy_close.size() > 0:
@@ -278,6 +306,28 @@ func levelup():
 
 func upgrade_character(upgrade):
 	match upgrade:
+		"blowtorch1":
+			blowtorch_level = 1
+			blowtorch_baseammo += 1			
+		"blowtorch2":
+			blowtorch_level = 2
+			blowtorch_baseammo += 1
+		"blowtorch3":
+			blowtorch_level = 3
+		"blowtorch4":
+			blowtorch_level = 4
+			blowtorch_baseammo += 1		
+		"mop1":
+			mop_level = 1
+			mop_baseammo += 1			
+		"mop2":
+			mop_level = 2
+			mop_baseammo += 1
+		"mop3":
+			mop_level = 3
+		"mop4":
+			mop_level = 4
+			mop_baseammo += 2
 		"icespear1":
 			icespear_level = 1
 			icespear_baseammo += 1
@@ -310,17 +360,6 @@ func upgrade_character(upgrade):
 			javelin_level = 3
 		"javelin4":
 			javelin_level = 4
-		"mop1":
-			mop_level = 1
-			mop_baseammo += 1			
-		"mop2":
-			mop_level = 2
-			mop_baseammo += 1
-		"mop3":
-			mop_level = 3
-		"mop4":
-			mop_level = 4
-			mop_baseammo += 2
 		"armor1","armor2","armor3","armor4":
 			armor += 1
 		"speed1","speed2","speed3","speed4":
