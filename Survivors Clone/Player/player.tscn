@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://ul8hunj8tl2t" path="res://Audio/SoundEffect/levelup.ogg" id="7_wl7d2"]
 [ext_resource type="Texture2D" uid="uid://cj6a5rhwov14" path="res://Textures/GUI/healthbar.png" id="8_flesq"]
 [ext_resource type="Texture2D" uid="uid://da53mspvqfxq4" path="res://Textures/GUI/health.png" id="9_uker1"]
-[ext_resource type="AudioStream" uid="uid://bnv76nm5171dn" path="res://Audio/SoundEffect/Victory.wav" id="10_rwm3p"]
+[ext_resource type="AudioStream" uid="uid://c70xabd3ajwfi" path="res://Audio/SoundEffect/Victory.wav" id="10_rwm3p"]
 [ext_resource type="AudioStream" uid="uid://ca6physj6mqei" path="res://Audio/SoundEffect/Lose.ogg" id="11_28kfi"]
 [ext_resource type="PackedScene" uid="uid://b7c7gsdx2rkjm" path="res://Utility/basic_button.tscn" id="12_i8esf"]
 
