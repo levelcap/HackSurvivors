@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dncgepmkc4jf4"]
+[gd_scene load_steps=19 format=3 uid="uid://dncgepmkc4jf4"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_37q80"]
 [ext_resource type="Texture2D" uid="uid://dehtsxm3k1twy" path="res://Textures/Player/player.png" id="2_tjd32"]
@@ -6,9 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://dx7xx6vfahxlq" path="res://Textures/GUI/exp_background.png" id="4_pbpj5"]
 [ext_resource type="Texture2D" uid="uid://dlx33roiu0vlj" path="res://Textures/GUI/exp_progress.png" id="5_5ive2"]
 [ext_resource type="FontFile" uid="uid://cb4e8g30xxp5u" path="res://Font/tenderness.otf" id="6_okx7u"]
+[ext_resource type="FontFile" uid="uid://f502umyy2mu3" path="res://Font/BarlowCondensed-Medium.ttf" id="6_oy7lg"]
+[ext_resource type="Texture2D" uid="uid://dhdewo2g6mb1d" path="res://Textures/GUI/Progress_Bar_Dark_small.png" id="7_qhkd8"]
 [ext_resource type="AudioStream" uid="uid://ul8hunj8tl2t" path="res://Audio/SoundEffect/levelup.ogg" id="7_wl7d2"]
-[ext_resource type="Texture2D" uid="uid://cj6a5rhwov14" path="res://Textures/GUI/healthbar.png" id="8_flesq"]
-[ext_resource type="Texture2D" uid="uid://da53mspvqfxq4" path="res://Textures/GUI/health.png" id="9_uker1"]
+[ext_resource type="Texture2D" uid="uid://bu66uf876p3jj" path="res://Textures/GUI/Progress_Bar_Light_Fill_small.png" id="8_k6kv4"]
 [ext_resource type="AudioStream" uid="uid://c70xabd3ajwfi" path="res://Audio/SoundEffect/Victory.wav" id="10_rwm3p"]
 [ext_resource type="AudioStream" uid="uid://ca6physj6mqei" path="res://Audio/SoundEffect/Lose.ogg" id="11_28kfi"]
 [ext_resource type="PackedScene" uid="uid://b7c7gsdx2rkjm" path="res://Utility/basic_button.tscn" id="12_i8esf"]
@@ -107,6 +108,8 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
 offset_bottom = 360.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
 
 [node name="ExperienceBar" type="TextureProgressBar" parent="GUILayer/GUI"]
 unique_name_in_owner = true
@@ -122,7 +125,7 @@ layout_mode = 0
 offset_left = 540.0
 offset_right = 640.0
 offset_bottom = 20.0
-theme_override_fonts/font = ExtResource("6_okx7u")
+theme_override_fonts/font = ExtResource("6_oy7lg")
 theme_override_font_sizes/font_size = 16
 text = "Level: 1"
 horizontal_alignment = 1
@@ -130,15 +133,16 @@ vertical_alignment = 2
 
 [node name="HealthBar" type="TextureProgressBar" parent="GUILayer/GUI"]
 unique_name_in_owner = true
-self_modulate = Color(1, 1, 1, 0.392157)
+self_modulate = Color(1, 1, 1, 0.807843)
 layout_mode = 0
 offset_left = 304.0
 offset_top = 200.0
-offset_right = 336.0
-offset_bottom = 208.0
+offset_right = 604.0
+offset_bottom = 290.0
+scale = Vector2(0.1, 0.1)
 value = 50.0
-texture_over = ExtResource("8_flesq")
-texture_progress = ExtResource("9_uker1")
+texture_over = ExtResource("7_qhkd8")
+texture_progress = ExtResource("8_k6kv4")
 
 [node name="LevelUp" type="Panel" parent="GUILayer/GUI"]
 unique_name_in_owner = true
@@ -165,7 +169,7 @@ layout_mode = 0
 offset_left = 10.0
 offset_top = 50.0
 offset_right = 190.0
-offset_bottom = 100.0
+offset_bottom = 550.0
 
 [node name="snd_levelup" type="AudioStreamPlayer" parent="GUILayer/GUI/LevelUp"]
 unique_name_in_owner = true
@@ -217,7 +221,7 @@ offset_left = 280.0
 offset_top = 20.0
 offset_right = 360.0
 offset_bottom = 44.0
-theme_override_fonts/font = ExtResource("6_okx7u")
+theme_override_fonts/font = ExtResource("6_oy7lg")
 theme_override_font_sizes/font_size = 20
 text = "00:00"
 horizontal_alignment = 1

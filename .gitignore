@@ -2,3 +2,7 @@
 .godot/
 .godot/*
 */.godot
+
+.DS_Store
+*.afphoto
+*.afphoto~lock~

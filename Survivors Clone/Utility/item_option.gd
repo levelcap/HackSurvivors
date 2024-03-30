@@ -1,4 +1,4 @@
-extends ColorRect
+extends Button
 
 @onready var lblName = $lbl_name
 @onready var lblDescription = $lbl_description
@@ -26,6 +26,7 @@ func _input(event):
 			emit_signal("selected_upgrade",item)
 
 func _on_mouse_entered():
+	
 	mouse_over = true
 
 func _on_mouse_exited():
