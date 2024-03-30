@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cvdtrx3mw8vmb" path="res://Textures/Items/Weapons/weapon_blow torch.png" id="2_xfjcg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ojwf"]
-size = Vector2(12.0012, 19.9242)
+size = Vector2(18.1159, 23.368)
 
 [node name="Blowtorch" type="Area2D" groups=["attack"]]
 top_level = true
@@ -13,14 +13,14 @@ collision_mask = 0
 script = ExtResource("1_8lqeg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_xfjcg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
+position = Vector2(-5, -8)
 rotation = -0.986559
+scale = Vector2(0.604395, 0.989455)
 shape = SubResource("RectangleShape2D_5ojwf")
-disabled = true
 
 [node name="AttackTimer" type="Timer" parent="."]
 unique_name_in_owner = true

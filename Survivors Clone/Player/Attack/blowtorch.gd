@@ -13,19 +13,19 @@ var random_position = rng.randi_range(0, 1)
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var sprite = $Sprite2D
 @onready var attackTimer = get_node("%AttackTimer")
-@onready var snd_attack = $snd_attack
 
 signal remove_from_array(object)
 
 func _ready():
 	self.global_position = Vector2(1,1)
+	update_blowtorch()
 
 func update_blowtorch():
 	level = player.blowtorch_level
 	match level:
 		1:
 			hp = 9999
-			duration = 12.0
+			duration = 2.0
 			damage = 10
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + player.spell_size)
@@ -48,7 +48,7 @@ func update_blowtorch():
 			knockback_amount = 200
 			attack_size = 1.0 * (1 + player.spell_size)
 			
-	scale = Vector2(1.0,1.0) * attack_size
+	scale = Vector2(1.0, 1.0) * attack_size
 	attackTimer.wait_time = duration
 
 func _physics_process(delta):
@@ -60,7 +60,6 @@ func _physics_process(delta):
 	position = player.position + position_change
 	
 func enemy_hit(charge = 1):
-	print("In here")
 	hp -= charge
 	if hp <= 0:
 		emit_signal("remove_from_array",self)
