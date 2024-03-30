@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://m5wqqnjuijcn"
+path="res://.godot/imported/enemy impact.mp3-5aa0ac5f42010211bc1983b7b858f548.mp3str"
+
+[deps]
+
+source_file="res://Audio/SoundEffect/new/enemy impact.mp3"
+dest_files=["res://.godot/imported/enemy impact.mp3-5aa0ac5f42010211bc1983b7b858f548.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

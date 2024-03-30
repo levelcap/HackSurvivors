@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Objects/experience_gem.gd" id="1_k4pfj"]
 [ext_resource type="Texture2D" uid="uid://jw7ji0ph3x7k" path="res://Textures/GUI/Gem.png" id="2_istbo"]
-[ext_resource type="AudioStream" uid="uid://bnm8cttqwefdx" path="res://Audio/SoundEffect/collectgem.mp3" id="3_g1t57"]
+[ext_resource type="AudioStream" uid="uid://cghhlpcd50npy" path="res://Audio/SoundEffect/new/collect-coins.mp3" id="3_aow8k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wytta"]
 size = Vector2(20, 22)
@@ -22,7 +22,7 @@ position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_wytta")
 
 [node name="snd_collected" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_g1t57")
+stream = ExtResource("3_aow8k")
 volume_db = -10.0
 
 [connection signal="finished" from="snd_collected" to="." method="_on_snd_collected_finished"]

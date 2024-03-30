@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bok7kd2psi5gl" path="res://Enemy/enemy_cyclops.tscn" id="7_unri0"]
 [ext_resource type="PackedScene" uid="uid://hcjnrdsb563h" path="res://Enemy/enemy_juggernaut.tscn" id="8_ltymd"]
 [ext_resource type="PackedScene" uid="uid://btf7clk4jja87" path="res://Enemy/enemy_super.tscn" id="9_xs42h"]
-[ext_resource type="AudioStream" uid="uid://bbufl4r1ou1rw" path="res://Audio/Music/battleThemeA.mp3" id="10_rk3we"]
+[ext_resource type="AudioStream" uid="uid://cmr8aspkbu5uh" path="res://Audio/Music/main level music.wav" id="10_a3ktd"]
 [ext_resource type="Script" path="res://Audio/Music/snd_Music.gd" id="11_ovtx6"]
-[ext_resource type="PackedScene" path="res://Utility/helper_spawner.tscn" id="12_238vd"]
+[ext_resource type="PackedScene" uid="uid://bfiy14mycchjg" path="res://Utility/helper_spawner.tscn" id="12_238vd"]
 [ext_resource type="PackedScene" uid="uid://bw5tplacy8c76" path="res://Wall/wall.tscn" id="12_kfr5j"]
 [ext_resource type="PackedScene" uid="uid://nt0ls1a3s5aq" path="res://Helper/helper_merchant.tscn" id="13_mhixp"]
 [ext_resource type="Script" path="res://Utility/helper_info.gd" id="14_wirp0"]
@@ -109,10 +109,10 @@ spawns = Array[ExtResource("5_jj7s8")]([SubResource("Resource_03m25"), SubResour
 
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]
 
-[node name="snd_Music" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("10_rk3we")
-volume_db = -15.0
+stream = ExtResource("10_a3ktd")
+volume_db = -10.0
 autoplay = true
 script = ExtResource("11_ovtx6")
 
@@ -122,4 +122,4 @@ helpers = Array[ExtResource("14_wirp0")]([SubResource("Resource_sfcrw")])
 [node name="Wall" parent="." instance=ExtResource("12_kfr5j")]
 position = Vector2(501, 286)
 
-[connection signal="playerdeath" from="Player" to="snd_Music" method="_on_player_playerdeath"]
+[connection signal="playerdeath" from="Player" to="AudioStreamPlayer" method="_on_player_playerdeath"]

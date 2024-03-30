@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcyka5e06knff"]
+[gd_scene load_steps=7 format=3 uid="uid://dcyka5e06knff"]
 
 [ext_resource type="Script" path="res://TitleScreen/menu.gd" id="1_oi0p3"]
 [ext_resource type="Texture2D" uid="uid://y8sya5vqj1me" path="res://Textures/GUI/menu_background.png" id="2_s533g"]
 [ext_resource type="PackedScene" uid="uid://b7c7gsdx2rkjm" path="res://Utility/basic_button.tscn" id="3_kwsdd"]
 [ext_resource type="FontFile" uid="uid://dwo5a5m36hr35" path="res://Font/BungeeShade-Regular.ttf" id="3_vtfx4"]
 [ext_resource type="FontFile" uid="uid://f502umyy2mu3" path="res://Font/BarlowCondensed-Medium.ttf" id="5_ptmp1"]
+[ext_resource type="AudioStream" uid="uid://ld464viujox8" path="res://Audio/Music/menu music.wav" id="6_ayfig"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -55,6 +56,11 @@ offset_bottom = 320.0
 theme_override_fonts/font = ExtResource("5_ptmp1")
 text = "EXIT
 "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ayfig")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="click_end" from="btn_play" to="." method="_on_btn_play_click_end"]
 [connection signal="click_end" from="btn_exit" to="." method="_on_btn_exit_click_end"]

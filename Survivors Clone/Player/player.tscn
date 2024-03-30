@@ -8,8 +8,8 @@
 [ext_resource type="FontFile" uid="uid://cb4e8g30xxp5u" path="res://Font/tenderness.otf" id="6_okx7u"]
 [ext_resource type="FontFile" uid="uid://f502umyy2mu3" path="res://Font/BarlowCondensed-Medium.ttf" id="6_oy7lg"]
 [ext_resource type="Texture2D" uid="uid://dhdewo2g6mb1d" path="res://Textures/GUI/Progress_Bar_Dark_small.png" id="7_qhkd8"]
-[ext_resource type="AudioStream" uid="uid://ul8hunj8tl2t" path="res://Audio/SoundEffect/levelup.ogg" id="7_wl7d2"]
 [ext_resource type="Texture2D" uid="uid://bu66uf876p3jj" path="res://Textures/GUI/Progress_Bar_Light_Fill_small.png" id="8_k6kv4"]
+[ext_resource type="AudioStream" uid="uid://b1pcocpuytvf1" path="res://Audio/SoundEffect/new/levelup.mp3" id="10_onxbm"]
 [ext_resource type="AudioStream" uid="uid://c70xabd3ajwfi" path="res://Audio/SoundEffect/Victory.wav" id="10_rwm3p"]
 [ext_resource type="AudioStream" uid="uid://ca6physj6mqei" path="res://Audio/SoundEffect/Lose.ogg" id="11_28kfi"]
 [ext_resource type="PackedScene" uid="uid://b7c7gsdx2rkjm" path="res://Utility/basic_button.tscn" id="12_i8esf"]
@@ -181,7 +181,7 @@ offset_bottom = 550.0
 
 [node name="snd_levelup" type="AudioStreamPlayer" parent="GUILayer/GUI/LevelUp"]
 unique_name_in_owner = true
-stream = ExtResource("7_wl7d2")
+stream = ExtResource("10_onxbm")
 volume_db = -10.0
 
 [node name="DeathPanel" type="Panel" parent="GUILayer/GUI"]
@@ -229,6 +229,7 @@ offset_left = 280.0
 offset_top = 20.0
 offset_right = 360.0
 offset_bottom = 44.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_oy7lg")
 theme_override_font_sizes/font_size = 20
 text = "00:00"

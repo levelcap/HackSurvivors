@@ -3,7 +3,7 @@
 [ext_resource type="AudioStream" uid="uid://bmdbw624kxa34" path="res://Audio/GUI/hover.wav" id="1_2ggfj"]
 [ext_resource type="FontFile" uid="uid://cb4e8g30xxp5u" path="res://Font/tenderness.otf" id="1_5s5k8"]
 [ext_resource type="Script" path="res://Utility/basic_button.gd" id="1_t2e60"]
-[ext_resource type="AudioStream" uid="uid://dw5ko6p1buvc7" path="res://Audio/GUI/click.wav" id="2_jbqnc"]
+[ext_resource type="AudioStream" uid="uid://bi1nyhd3yvcov" path="res://Audio/SoundEffect/new/button click.mp3" id="4_iofw3"]
 
 [node name="Button" type="Button"]
 custom_minimum_size = Vector2(80, 30)
@@ -18,7 +18,7 @@ script = ExtResource("1_t2e60")
 stream = ExtResource("1_2ggfj")
 
 [node name="snd_click" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_jbqnc")
+stream = ExtResource("4_iofw3")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

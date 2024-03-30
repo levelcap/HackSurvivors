@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://8vxmgnj3ugwj" path="res://Textures/Enemy/Villain_1b.png" id="2_vvcsd"]
 [ext_resource type="PackedScene" uid="uid://xy3cvpwdy828" path="res://Utility/hurt_box.tscn" id="3_avoap"]
 [ext_resource type="PackedScene" uid="uid://uhr6mtuisqm1" path="res://Utility/hit_box.tscn" id="4_e7l5k"]
-[ext_resource type="AudioStream" uid="uid://bi7t7cjthnhhc" path="res://Audio/SoundEffect/enemy_hit.ogg" id="5_tph6t"]
+[ext_resource type="AudioStream" uid="uid://cbk4moqxwpgpk" path="res://Audio/SoundEffect/new/death-vegetable.mp3" id="5_fjpsi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_24u87"]
 radius = 3.0
@@ -92,7 +92,7 @@ position = Vector2(-4, -4)
 shape = SubResource("RectangleShape2D_ucec4")
 
 [node name="snd_hit" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_tph6t")
+stream = ExtResource("5_fjpsi")
 volume_db = -20.0
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
