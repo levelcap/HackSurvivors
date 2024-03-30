@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://dncgepmkc4jf4"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_37q80"]
-[ext_resource type="Texture2D" uid="uid://doa3scrwgj2oq" path="res://Textures/Player/player_sprite.png" id="1_jefax"]
+[ext_resource type="Texture2D" uid="uid://dehtsxm3k1twy" path="res://Textures/Player/player.png" id="2_tjd32"]
 [ext_resource type="PackedScene" uid="uid://xy3cvpwdy828" path="res://Utility/hurt_box.tscn" id="3_gs51i"]
 [ext_resource type="Texture2D" uid="uid://dx7xx6vfahxlq" path="res://Textures/GUI/exp_background.png" id="4_pbpj5"]
 [ext_resource type="Texture2D" uid="uid://dlx33roiu0vlj" path="res://Textures/GUI/exp_progress.png" id="5_5ive2"]
@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://ul8hunj8tl2t" path="res://Audio/SoundEffect/levelup.ogg" id="7_wl7d2"]
 [ext_resource type="Texture2D" uid="uid://cj6a5rhwov14" path="res://Textures/GUI/healthbar.png" id="8_flesq"]
 [ext_resource type="Texture2D" uid="uid://da53mspvqfxq4" path="res://Textures/GUI/health.png" id="9_uker1"]
-[ext_resource type="AudioStream" uid="uid://bnv76nm5171dn" path="res://Audio/SoundEffect/Victory.wav" id="10_rwm3p"]
+[ext_resource type="AudioStream" uid="uid://c70xabd3ajwfi" path="res://Audio/SoundEffect/Victory.wav" id="10_rwm3p"]
 [ext_resource type="AudioStream" uid="uid://ca6physj6mqei" path="res://Audio/SoundEffect/Lose.ogg" id="11_28kfi"]
 [ext_resource type="PackedScene" uid="uid://b7c7gsdx2rkjm" path="res://Utility/basic_button.tscn" id="12_i8esf"]
 
@@ -24,7 +24,7 @@ size = Vector2(12, 20)
 radius = 370.951
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p2554"]
-radius = 50.0
+radius = 15.0333
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6vwp8"]
 
@@ -33,8 +33,9 @@ motion_mode = 1
 script = ExtResource("1_37q80")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_jefax")
-hframes = 2
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_tjd32")
+flip_h = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
