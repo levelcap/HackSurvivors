@@ -83,6 +83,14 @@ wait_time = 3.0
 unique_name_in_owner = true
 wait_time = 0.2
 
+[node name="BlowtorchTimer" type="Timer" parent="Attack"]
+unique_name_in_owner = true
+wait_time = 3.0
+
+[node name="BlowtorchAttackTimer" type="Timer" parent="Attack/BlowtorchTimer"]
+unique_name_in_owner = true
+wait_time = 0.2
+
 [node name="JavelinBase" type="Node2D" parent="Attack"]
 unique_name_in_owner = true
 
@@ -260,6 +268,8 @@ columns = 10
 [connection signal="timeout" from="Attack/TornadoTimer/TornadoAttackTimer" to="." method="_on_tornado_attack_timer_timeout"]
 [connection signal="timeout" from="Attack/MopTimer" to="." method="_on_mop_timer_timeout"]
 [connection signal="timeout" from="Attack/MopTimer/MopAttackTimer" to="." method="_on_mop_attack_timer_timeout"]
+[connection signal="timeout" from="Attack/BlowtorchTimer" to="." method="_on_blowtorch_timer_timeout"]
+[connection signal="timeout" from="Attack/BlowtorchTimer/BlowtorchAttackTimer" to="." method="_on_blowtorch_attack_timer_timeout"]
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
 [connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
 [connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
