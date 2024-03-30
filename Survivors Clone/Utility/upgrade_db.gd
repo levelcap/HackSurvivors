@@ -4,6 +4,14 @@ extends Node
 const ICON_PATH = "res://Textures/Items/Upgrades/"
 const WEAPON_PATH = "res://Textures/Items/Weapons/"
 const UPGRADES = {
+	"mop1": {
+		"icon": WEAPON_PATH + "mop_main.png",
+		"displayname": "Mop",
+		"details": "A mop appears to leave doom puddles on the floor",
+		"level": "Level: 1",
+		"prerequisite": [],
+		"type": "weapon"
+	},
 	"icespear1": {
 		"icon": WEAPON_PATH + "ice_spear.png",
 		"displayname": "Ice Spear",

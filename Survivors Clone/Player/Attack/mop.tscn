@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://btgeff4rg2xui"]
+
+[ext_resource type="Script" path="res://Player/Attack/mop.gd" id="1_usq22"]
+[ext_resource type="Texture2D" uid="uid://b2jb6rp4cjolx" path="res://Textures/Items/Weapons/mop_main.png" id="2_i84af"]
+[ext_resource type="AudioStream" uid="uid://bwogrv8jx4hmv" path="res://Audio/SoundEffect/ice.wav" id="3_e438v"]
+[ext_resource type="Texture2D" uid="uid://ctea67dd42sqa" path="res://Textures/Items/Weapons/mop_puddle.png" id="4_aaq2d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ban8g"]
+
+[node name="Mop" type="Area2D" groups=["attack"]]
+top_level = true
+scale = Vector2(0.1, 0.1)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_usq22")
+
+[node name="MopSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(4, 2.08165e-12)
+texture = ExtResource("2_i84af")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_ban8g")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="snd_play" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_e438v")
+volume_db = -10.0
+pitch_scale = 5.0
+autoplay = true
+
+[node name="MopPuddle" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="MopPuddleSprite" type="Sprite2D" parent="MopPuddle"]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("4_aaq2d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MopPuddle"]
+position = Vector2(0, 10)
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_ban8g")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

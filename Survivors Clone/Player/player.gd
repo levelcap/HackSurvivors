@@ -15,12 +15,15 @@ var collected_experience = 0
 var iceSpear = preload("res://Player/Attack/ice_spear.tscn")
 var tornado = preload("res://Player/Attack/tornado.tscn")
 var javelin = preload("res://Player/Attack/javelin.tscn")
+var mop = preload("res://Player/Attack/mop.tscn")
 
 #AttackNodes
 @onready var iceSpearTimer = get_node("%IceSpearTimer")
 @onready var iceSpearAttackTimer = get_node("%IceSpearAttackTimer")
 @onready var tornadoTimer = get_node("%TornadoTimer")
 @onready var tornadoAttackTimer = get_node("%TornadoAttackTimer")
+@onready var mopTimer = get_node("%MopTimer")
+@onready var mopAttackTimer = get_node("%MopAttackTimer")
 @onready var javelinBase = get_node("%JavelinBase")
 
 #UPGRADES
@@ -37,6 +40,12 @@ var icespear_ammo = 0
 var icespear_baseammo = 0
 var icespear_attackspeed = 1.5
 var icespear_level = 0
+
+#Mop
+var mop_ammo = 0
+var mop_baseammo = 0
+var mop_attackspeed = 1.5
+var mop_level = 0
 
 #Tornado
 var tornado_ammo = 0
@@ -78,7 +87,7 @@ var enemy_close = []
 signal playerdeath
 
 func _ready():
-	upgrade_character("icespear1")
+	upgrade_character("mop1")
 	attack()
 	set_expbar(experience, calculate_experiencecap())
 	_on_hurt_box_hurt(0,0,0)
@@ -118,6 +127,10 @@ func attack():
 			tornadoTimer.start()
 	if javelin_level > 0:
 		spawn_javelin()
+	if mop_level > 0:
+		mopTimer.wait_time = mop_attackspeed * (1-spell_cooldown)
+		if mopTimer.is_stopped():
+			mopTimer.start()		
 
 func _on_hurt_box_hurt(damage, _angle, _knockback):
 	hp -= clamp(damage-armor, 1.0, 999.0)
@@ -174,6 +187,23 @@ func spawn_javelin():
 	for i in get_javelins:
 		if i.has_method("update_javelin"):
 			i.update_javelin()
+			
+func _on_mop_timer_timeout():
+	mop_ammo += mop_baseammo + additional_attacks
+	mopAttackTimer.start()
+
+func _on_mop_attack_timer_timeout():
+	if mop_ammo > 0:
+		var mop_attack = mop.instantiate()
+		mop_attack.position = position
+		mop_attack.target = get_random_target()
+		mop_attack.level = mop_level
+		add_child(mop_attack)
+		mop_ammo -= 1
+		if mop_ammo > 0:
+			mopAttackTimer.start()
+		else:
+			mopAttackTimer.stop()			
 
 func get_random_target():
 	if enemy_close.size() > 0:
@@ -280,6 +310,17 @@ func upgrade_character(upgrade):
 			javelin_level = 3
 		"javelin4":
 			javelin_level = 4
+		"mop1":
+			mop_level = 1
+			mop_baseammo += 1			
+		"mop2":
+			mop_level = 2
+			mop_baseammo += 1
+		"mop3":
+			mop_level = 3
+		"mop4":
+			mop_level = 4
+			mop_baseammo += 2
 		"armor1","armor2","armor3","armor4":
 			armor += 1
 		"speed1","speed2","speed3","speed4":
