@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://cu54s0udoc14w" path="res://Audio/SoundEffect/new/weapon-blowtorch.mp3" id="3_lb7l1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ojwf"]
-size = Vector2(12.0012, 19.9242)
+size = Vector2(27.6053, 34.4956)
 
 [node name="Blowtorch" type="Area2D" groups=["attack"]]
 top_level = true
@@ -14,11 +14,11 @@ collision_mask = 0
 script = ExtResource("1_8lqeg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_xfjcg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
+position = Vector2(-8, 2)
 rotation = -0.986559
 shape = SubResource("RectangleShape2D_5ojwf")
 disabled = true

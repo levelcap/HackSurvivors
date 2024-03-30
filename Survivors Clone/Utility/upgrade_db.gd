@@ -70,7 +70,7 @@ const UPGRADES = {
 	},
 	"icespear1": {
 		"icon": WEAPON_PATH + "starting_weapon_icon.png",
-		"displayname": "Knife",
+		"displayname": "Stabitha Christie",
 		"details": "This is your pride and joy. It cuts and it chops, sometimes food and sometimes your own fingers.",
 		"level": "Level: 1",
 		"prerequisite": [],
@@ -78,7 +78,7 @@ const UPGRADES = {
 	},
 	"icespear2": {
 		"icon": WEAPON_PATH + "starting_weapon_icon.png",
-		"displayname": "Knife",
+		"displayname": "Stabitha Christie",
 		"details": "More knives!",
 		"level": "Level: 2",
 		"prerequisite": ["icespear1"],
@@ -86,7 +86,7 @@ const UPGRADES = {
 	},
 	"icespear3": {
 		"icon": WEAPON_PATH + "starting_weapon_icon.png",
-		"displayname": "Knife",
+		"displayname": "Stabitha Christie",
 		"details": "Sharper knives!",
 		"level": "Level: 3",
 		"prerequisite": ["icespear2"],
@@ -94,7 +94,7 @@ const UPGRADES = {
 	},
 	"icespear4": {
 		"icon": WEAPON_PATH + "starting_weapon_icon.png",
-		"displayname": "Knife",
+		"displayname": "Stabitha Christie",
 		"details": "Even more knives!",
 		"level": "Level: 4",
 		"prerequisite": ["icespear3"],
@@ -134,32 +134,32 @@ const UPGRADES = {
 	},
 	"fineChina1": {
 		"icon": WEAPON_PATH + "Finechina2_icon.png",
-		"displayname": "fineChina",
-		"details": "A fineChina is created and random heads somewhere in the players direction",
+		"displayname": "Grandma’s Finest",
+		"details": "The will didn't say NOT to break them, right?",
 		"level": "Level: 1",
 		"prerequisite": [],
 		"type": "weapon"
 	},
 	"fineChina2": {
 		"icon": WEAPON_PATH + "Finechina2_icon.png",
-		"displayname": "fineChina",
-		"details": "An additional fineChina is created",
+		"displayname": "Grandma’s Finest",
+		"details": "Throw two plates at once",
 		"level": "Level: 2",
 		"prerequisite": ["fineChina1"],
 		"type": "weapon"
 	},
 	"fineChina3": {
 		"icon": WEAPON_PATH + "Finechina2_icon.png",
-		"displayname": "fineChina",
-		"details": "The fineChina cooldown is reduced by 0.5 seconds",
+		"displayname": "Grandma’s Finest",
+		"details": "Wait 0.5 seconds less before throwing again",
 		"level": "Level: 3",
 		"prerequisite": ["fineChina2"],
 		"type": "weapon"
 	},
 	"fineChina4": {
 		"icon": WEAPON_PATH + "Finechina2_icon.png",
-		"displayname": "fineChina",
-		"details": "An additional fineChina is created and the knockback is increased by 25%",
+		"displayname": "Grandma’s Finest",
+		"details": "Throw yet another plate, and 25% harder",
 		"level": "Level: 4",
 		"prerequisite": ["fineChina3"],
 		"type": "weapon"
