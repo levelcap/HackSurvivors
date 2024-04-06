@@ -167,11 +167,35 @@ const UPGRADES = {
 	"salt1": {
 		"icon": WEAPON_PATH + "seasonsgreetings.png",
 		"displayname": "Seasoned Greetings",
-		"details": "Summon an aura of flavor!",
+		"details": "Summon a salt and pepper cloud and welcome enemies to Flavortown",
 		"level": "Level: 1",
 		"prerequisite": [],
 		"type": "weapon"		
 	},
+	"salt2": {
+		"icon": WEAPON_PATH + "seasonsgreetings.png",
+		"displayname": "Seasoned Greetings",
+		"details": "Your flavor cloud grows stronger",
+		"level": "Level: 2",
+		"prerequisite": ["salt1"],
+		"type": "weapon"		
+	},
+	"salt3": {
+		"icon": WEAPON_PATH + "seasonsgreetings.png",
+		"displayname": "Seasoned Greetings",
+		"details": "Your flavor cloud grows stronger",
+		"level": "Level: 3",
+		"prerequisite": ["salt2"],
+		"type": "weapon"		
+	},		
+	"salt4": {
+		"icon": WEAPON_PATH + "seasonsgreetings.png",
+		"displayname": "Seasoned Greetings",
+		"details": "Your flavor cloud grows stronger",
+		"level": "Level: 4",
+		"prerequisite": ["salt3"],
+		"type": "weapon"		
+	},	
 	"armor1": {
 		"icon": ICON_PATH + "helmet_1.png",
 		"displayname": "Apron",
