@@ -71,7 +71,7 @@ scale = Vector2(-0.0585908, 0.0274459)
 texture = ExtResource("2_67lmf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.02, 0.02)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_vvcsd")
 hframes = 2
 
