@@ -9,3 +9,7 @@
 *.exe
 *.exe
 *.pck
+
+*/android
+*.apk
+*.apk.*
