@@ -34,9 +34,10 @@ motion_mode = 1
 script = ExtResource("1_37q80")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.02, 0.02)
+scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_tjd32")
 flip_h = true
+hframes = 4
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
