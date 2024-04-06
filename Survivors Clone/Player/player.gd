@@ -11,21 +11,9 @@ var experience_level = 1
 var collected_experience = 0
 
 #Attacks
-var iceSpear = preload("res://Player/Attack/ice_spear.tscn")
-var fineChina = preload("res://Player/Attack/fine_china.tscn")
 var javelin = preload("res://Player/Attack/javelin.tscn")
-var mop = preload("res://Player/Attack/mop.tscn")
-var blowtorch = preload("res://Player/Attack/blowtorch.tscn")
 
 #AttackNodes
-@onready var iceSpearTimer = get_node("%IceSpearTimer")
-@onready var iceSpearAttackTimer = get_node("%IceSpearAttackTimer")
-@onready var fineChinaTimer = get_node("%FineChinaTimer")
-@onready var fineChinaAttackTimer = get_node("%FineChinaAttackTimer")
-@onready var mopTimer = get_node("%MopTimer")
-@onready var mopAttackTimer = get_node("%MopAttackTimer")
-@onready var blowtorchTimer = get_node("%BlowtorchTimer")
-@onready var blowtorchAttackTimer = get_node("%BlowtorchAttackTimer")
 @onready var javelinBase = get_node("%JavelinBase")
 
 #UPGRADES
@@ -37,30 +25,6 @@ var spell_cooldown = 0
 var spell_size = 0
 var additional_attacks = 0
 
-#IceSpear
-var icespear_ammo = 0
-var icespear_baseammo = 0
-var icespear_attackspeed = 1.5
-var icespear_level = 0
-
-#Mop
-var mop_ammo = 0
-var mop_baseammo = 0
-var mop_attackspeed = 1.5
-var mop_level = 0
-
-#Mop
-var blowtorch_ammo = 0
-var blowtorch_baseammo = 0
-var blowtorch_attackspeed = 1.5
-var blowtorch_level = 0
-
-#fineChina
-var fineChina_ammo = 0
-var fineChina_baseammo = 0
-var fineChina_attackspeed = 3
-var fineChina_level = 0
-
 #Javelin
 var javelin_ammo = 0
 var javelin_level = 0
@@ -70,6 +34,7 @@ var enemy_close = []
 
 @onready var sprite = $CharacterSprite
 @onready var walkTimer = get_node("%walkTimer")
+@onready var attackManager = $AttackManager
 
 #GUI
 @onready var expBar = get_node("%ExperienceBar")
@@ -94,10 +59,8 @@ var enemy_close = []
 signal playerdeath
 
 func _ready():
-	upgrade_character("icespear1")
-	upgrade_character("fineChina1")
-	upgrade_character("blowtorch1")
-	attack()
+	attackManager.add_weapon("knife")
+	attackManager.add_weapon("china")
 	set_expbar(experience, calculate_experiencecap())
 	_on_hurt_box_hurt(0,0,0)
 
@@ -126,24 +89,8 @@ func movement():
 	move_and_slide()
 
 func attack():
-	if icespear_level > 0:
-		iceSpearTimer.wait_time = icespear_attackspeed * (1-spell_cooldown)
-		if iceSpearTimer.is_stopped():
-			iceSpearTimer.start()
-	if fineChina_level > 0:
-		fineChinaTimer.wait_time = fineChina_attackspeed * (1-spell_cooldown)
-		if fineChinaTimer.is_stopped():
-			fineChinaTimer.start()
 	if javelin_level > 0:
 		spawn_javelin()
-	if mop_level > 0:
-		mopTimer.wait_time = mop_attackspeed * (1-spell_cooldown)
-		if mopTimer.is_stopped():
-			mopTimer.start()		
-	if blowtorch_level > 0:
-		blowtorchTimer.wait_time = blowtorch_attackspeed * (1-spell_cooldown)
-		if blowtorchTimer.is_stopped():
-			blowtorchTimer.start()		
 
 func _on_hurt_box_hurt(damage, _angle, _knockback):
 	hp -= clamp(damage-armor, 1.0, 999.0)
@@ -151,41 +98,6 @@ func _on_hurt_box_hurt(damage, _angle, _knockback):
 	healthBar.value = hp
 	if hp <= 0:
 		death()
-
-func _on_ice_spear_timer_timeout():
-	icespear_ammo += icespear_baseammo + additional_attacks
-	iceSpearAttackTimer.start()
-
-
-func _on_ice_spear_attack_timer_timeout():
-	if icespear_ammo > 0:
-		var icespear_attack = iceSpear.instantiate()
-		icespear_attack.position = position
-		icespear_attack.target = get_random_target()
-		icespear_attack.level = icespear_level
-		add_child(icespear_attack)
-		icespear_ammo -= 1
-		if icespear_ammo > 0:
-			iceSpearAttackTimer.start()
-		else:
-			iceSpearAttackTimer.stop()
-
-func _on_fineChina_timer_timeout():
-	fineChina_ammo += fineChina_baseammo + additional_attacks
-	fineChinaAttackTimer.start()
-
-func _on_fineChina_attack_timer_timeout():
-	if fineChina_ammo > 0:
-		var fineChina_attack = fineChina.instantiate()
-		fineChina_attack.position = position
-		fineChina_attack.last_movement = last_movement
-		fineChina_attack.level = fineChina_level
-		add_child(fineChina_attack)
-		fineChina_ammo -= 1
-		if fineChina_ammo > 0:
-			fineChinaAttackTimer.start()
-		else:
-			fineChinaAttackTimer.stop()
 
 func spawn_javelin():
 	var get_javelin_total = javelinBase.get_child_count()
@@ -201,45 +113,6 @@ func spawn_javelin():
 		if i.has_method("update_javelin"):
 			i.update_javelin()
 			
-func _on_mop_timer_timeout():
-	mop_ammo += mop_baseammo + additional_attacks
-	mopAttackTimer.start()
-
-func _on_mop_attack_timer_timeout():
-	if mop_ammo > 0:
-		var mop_attack = mop.instantiate()
-		mop_attack.position = position
-		mop_attack.target = get_random_target()
-		mop_attack.level = mop_level
-		add_child(mop_attack)
-		mop_ammo -= 1
-		if mop_ammo > 0:
-			mopAttackTimer.start()
-		else:
-			mopAttackTimer.stop()			
-			
-func _on_blowtorch_timer_timeout():
-	blowtorch_ammo += blowtorch_baseammo + additional_attacks
-	blowtorchAttackTimer.start()
-
-func _on_blowtorch_attack_timer_timeout():
-	if blowtorch_ammo > 0:
-		var blowtorch_attack = blowtorch.instantiate()
-		blowtorch_attack.level = blowtorch_level
-		add_child(blowtorch_attack)
-		blowtorch_ammo -= 1
-		if blowtorch_ammo > 0:
-			blowtorchAttackTimer.start()
-		else:
-			blowtorchAttackTimer.stop()			
-
-func get_random_target():
-	if enemy_close.size() > 0:
-		return enemy_close.pick_random().global_position
-	else:
-		return Vector2.UP
-
-
 func _on_enemy_detection_area_body_entered(body):
 	if not enemy_close.has(body):
 		enemy_close.append(body)
@@ -306,51 +179,6 @@ func levelup():
 
 func upgrade_character(upgrade):
 	match upgrade:
-		"blowtorch1":
-			blowtorch_level = 1
-			blowtorch_baseammo += 1			
-		"blowtorch2":
-			blowtorch_level = 2
-			blowtorch_baseammo += 1
-		"blowtorch3":
-			blowtorch_level = 3
-		"blowtorch4":
-			blowtorch_level = 4
-			blowtorch_baseammo += 1		
-		"mop1":
-			mop_level = 1
-			mop_baseammo += 1			
-		"mop2":
-			mop_level = 2
-			mop_baseammo += 1
-		"mop3":
-			mop_level = 3
-		"mop4":
-			mop_level = 4
-			mop_baseammo += 2
-		"icespear1":
-			icespear_level = 1
-			icespear_baseammo += 1
-		"icespear2":
-			icespear_level = 2
-			icespear_baseammo += 1
-		"icespear3":
-			icespear_level = 3
-		"icespear4":
-			icespear_level = 4
-			icespear_baseammo += 2
-		"fineChina1":
-			fineChina_level = 1
-			fineChina_baseammo += 1
-		"fineChina2":
-			fineChina_level = 2
-			fineChina_baseammo += 1
-		"fineChina3":
-			fineChina_level = 3
-			fineChina_attackspeed -= 0.5
-		"fineChina4":
-			fineChina_level = 4
-			fineChina_baseammo += 1
 		"javelin1":
 			javelin_level = 1
 			javelin_ammo = 1
