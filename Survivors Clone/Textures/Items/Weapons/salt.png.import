@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt53dgv5wmlyb"
-path="res://.godot/imported/weapon_blow torch_icon.png-67c7e191c4534989f88cc2efc274229b.ctex"
+uid="uid://crn8o5jnlngwh"
+path="res://.godot/imported/salt.png-a2a7b45239a257eb252a09a063ca56d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Items/Weapons/weapon_blow torch_icon.png"
-dest_files=["res://.godot/imported/weapon_blow torch_icon.png-67c7e191c4534989f88cc2efc274229b.ctex"]
+source_file="res://Textures/Items/Weapons/salt.png"
+dest_files=["res://.godot/imported/salt.png-a2a7b45239a257eb252a09a063ca56d6.ctex"]
 
 [params]
 

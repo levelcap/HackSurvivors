@@ -21,7 +21,7 @@ func _ready():
 	update_blowtorch()
 
 func update_blowtorch():
-	level = player.blowtorch_level
+	level = player.attackManager.active_weapons["torch"].level
 	match level:
 		1:
 			hp = 9999

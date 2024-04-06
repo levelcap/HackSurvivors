@@ -59,8 +59,7 @@ var enemy_close = []
 signal playerdeath
 
 func _ready():
-	attackManager.add_weapon("knife")
-	attackManager.add_weapon("china")
+	attackManager.add_weapon("salt")
 	set_expbar(experience, calculate_experiencecap())
 	_on_hurt_box_hurt(0,0,0)
 
@@ -201,8 +200,17 @@ func upgrade_character(upgrade):
 		"food":
 			hp += 20
 			hp = clamp(hp,0,maxhp)
+		_:
+			var num = upgrade.right(1)
+			var weapon_name = upgrade.substr(0, upgrade.length() - 1)
+			#assume weapon
+			if (num == "1"):
+				attackManager.add_weapon(weapon_name)
+			else:
+				attackManager.upgrade_weapon(weapon_name)			
+				
 	adjust_gui_collection(upgrade)
-	attack()
+	
 	var option_children = upgradeOptions.get_children()
 	for i in option_children:
 		i.queue_free()

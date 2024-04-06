@@ -7,6 +7,7 @@ var knife = preload("res://Player/Attack/ice_spear.tscn")
 var mop = preload("res://Player/Attack/mop.tscn")
 var torch = preload("res://Player/Attack/blowtorch.tscn")
 var china = preload("res://Player/Attack/fine_china.tscn")
+var salt = preload("res://Player/Attack/salt.tscn")
 
 var active_weapons = {}
 
@@ -14,7 +15,7 @@ var WEAPONS = {
 	"knife": {
 		"obj": knife,
 		"ammo": 0,
-		"baseammo": 1,
+		"baseammo": 0,
 		"speed": 1.5,
 		"level": 0,
 		"time": 1.5,
@@ -23,7 +24,7 @@ var WEAPONS = {
 	"mop": {
 		"obj": mop,
 		"ammo": 0,
-		"baseammo": 1,
+		"baseammo": 0,
 		"speed": 1.5,
 		"level": 0,
 		"time": 1.5,
@@ -32,7 +33,7 @@ var WEAPONS = {
 	"torch": {
 		"obj": torch,
 		"ammo": 0,
-		"baseammo": 1,
+		"baseammo": 0,
 		"speed": 1.5,
 		"level": 0,
 		"time": 1.5,
@@ -41,7 +42,16 @@ var WEAPONS = {
 	"china": {
 		"obj": china,
 		"ammo": 0,
-		"baseammo": 1,
+		"baseammo": 0,
+		"speed": 1.5,
+		"level": 0,
+		"time": 1.5,
+		"attack_time": .075,
+	},	
+	"salt": {
+		"obj": salt,
+		"ammo": 0,
+		"baseammo": 0,
 		"speed": 1.5,
 		"level": 0,
 		"time": 1.5,
@@ -55,7 +65,6 @@ func _process(delta):
 	
 func add_weapon(weapon_name):
 	var weapon = WEAPONS[weapon_name]
-	print(weapon)
 	var timer := Timer.new()
 	var attack_timer := Timer.new()
 	
@@ -102,7 +111,6 @@ func _on_attack_timer_timeout(weapon_name):
 		
 		add_child(weapon_attack)
 		weapon["ammo"] -= 1
-		print(weapon["ammo"])
 		if weapon["ammo"] > 0:
 			weapon["attack_timer"].start()
 		else:

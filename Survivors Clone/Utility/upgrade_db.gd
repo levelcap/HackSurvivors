@@ -36,39 +36,39 @@ const UPGRADES = {
 		"prerequisite": ["mop3"],
 		"type": "weapon"
 	},
-	"blowtorch1": {
+	"torch1": {
 		"icon": WEAPON_PATH + "weapon_blow_torch_icon.png",
 		"displayname": "Old Faithful",
-		"details": "A butane refill grows the fire.",
+		"details": "She makes a mean creme brulee, but you shouldn’t get too close.",
 		"level": "Level: 1",
 		"prerequisite": [],
 		"type": "weapon"
 	},
-	"blowtorch2": {
+	"torch2": {
 		"icon": WEAPON_PATH + "weapon_blow_torch_icon.png",
 		"displayname": "Old Faithful",
 		"details": "She makes a mean creme brulee, but you shouldn’t get too close. ",
 		"level": "Level: 2",
-		"prerequisite": ["blowtorch1"],
+		"prerequisite": ["torch1"],
 		"type": "weapon"
 	},
-	"blowtorch3": {
+	"torch3": {
 		"icon": WEAPON_PATH + "weapon_blow_torch_icon.png",
 		"displayname": "Old Faithful",
 		"details": "She makes a mean creme brulee, but you shouldn’t get too close. ",
 		"level": "Level: 3",
-		"prerequisite": ["blowtorch2"],
+		"prerequisite": ["torch2"],
 		"type": "weapon"
 	},
-	"blowtorch4": {
+	"torch4": {
 		"icon": WEAPON_PATH + "weapon_blow_torch_icon.png",
 		"displayname": "Old Faithful",
 		"details": "A butane refill grows the fire.",
 		"level": "Level: 4",
-		"prerequisite": ["blowtorch3"],
+		"prerequisite": ["torch3"],
 		"type": "weapon"
 	},
-	"icespear1": {
+	"knife1": {
 		"icon": WEAPON_PATH + "starting_weapon_icon.png",
 		"displayname": "Stabitha Christie",
 		"details": "This is your pride and joy. It cuts and it chops, sometimes food and sometimes your own fingers.",
@@ -76,28 +76,28 @@ const UPGRADES = {
 		"prerequisite": [],
 		"type": "weapon"
 	},
-	"icespear2": {
+	"knife2": {
 		"icon": WEAPON_PATH + "starting_weapon_icon.png",
 		"displayname": "Stabitha Christie",
 		"details": "More knives!",
 		"level": "Level: 2",
-		"prerequisite": ["icespear1"],
+		"prerequisite": ["knife1"],
 		"type": "weapon"
 	},
-	"icespear3": {
+	"knife3": {
 		"icon": WEAPON_PATH + "starting_weapon_icon.png",
 		"displayname": "Stabitha Christie",
 		"details": "Sharper knives!",
 		"level": "Level: 3",
-		"prerequisite": ["icespear2"],
+		"prerequisite": ["knife2"],
 		"type": "weapon"
 	},
-	"icespear4": {
+	"knife4": {
 		"icon": WEAPON_PATH + "starting_weapon_icon.png",
 		"displayname": "Stabitha Christie",
 		"details": "Even more knives!",
 		"level": "Level: 4",
-		"prerequisite": ["icespear3"],
+		"prerequisite": ["knife3"],
 		"type": "weapon"
 	},
 	"javelin1": {
@@ -132,7 +132,7 @@ const UPGRADES = {
 		"prerequisite": ["javelin3"],
 		"type": "weapon"
 	},
-	"fineChina1": {
+	"china1": {
 		"icon": WEAPON_PATH + "Finechina2_icon.png",
 		"displayname": "Grandma’s Finest",
 		"details": "The will didn't say NOT to break them, right?",
@@ -140,29 +140,37 @@ const UPGRADES = {
 		"prerequisite": [],
 		"type": "weapon"
 	},
-	"fineChina2": {
+	"china2": {
 		"icon": WEAPON_PATH + "Finechina2_icon.png",
 		"displayname": "Grandma’s Finest",
 		"details": "Throw two plates at once",
 		"level": "Level: 2",
-		"prerequisite": ["fineChina1"],
+		"prerequisite": ["china1"],
 		"type": "weapon"
 	},
-	"fineChina3": {
+	"china3": {
 		"icon": WEAPON_PATH + "Finechina2_icon.png",
 		"displayname": "Grandma’s Finest",
 		"details": "Wait 0.5 seconds less before throwing again",
 		"level": "Level: 3",
-		"prerequisite": ["fineChina2"],
+		"prerequisite": ["china2"],
 		"type": "weapon"
 	},
-	"fineChina4": {
+	"china4": {
 		"icon": WEAPON_PATH + "Finechina2_icon.png",
 		"displayname": "Grandma’s Finest",
 		"details": "Throw yet another plate, and 25% harder",
 		"level": "Level: 4",
-		"prerequisite": ["fineChina3"],
+		"prerequisite": ["china3"],
 		"type": "weapon"
+	},
+	"salt1": {
+		"icon": WEAPON_PATH + "seasonsgreetings.png",
+		"displayname": "Seasoned Greetings",
+		"details": "Summon an aura of flavor!",
+		"level": "Level: 1",
+		"prerequisite": [],
+		"type": "weapon"		
 	},
 	"armor1": {
 		"icon": ICON_PATH + "helmet_1.png",
