@@ -68,7 +68,7 @@ scale = Vector2(0.0725, 0.06)
 texture = ExtResource("2_sbm6o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.02, 0.02)
+scale = Vector2(0.125, 0.125)
 texture = ExtResource("2_k1vvp")
 hframes = 2
 
