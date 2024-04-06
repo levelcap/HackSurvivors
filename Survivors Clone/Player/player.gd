@@ -71,7 +71,7 @@ var javelin_level = 0
 var enemy_close = []
 
 
-@onready var sprite = $Sprite2D
+@onready var sprite = $CharacterSprite
 @onready var walkTimer = get_node("%walkTimer")
 
 #GUI

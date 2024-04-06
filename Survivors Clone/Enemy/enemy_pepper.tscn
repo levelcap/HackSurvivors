@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bbvhxvk65o8el"]
+[gd_scene load_steps=13 format=3 uid="uid://bbvhxvk65o8el"]
 
 [ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_dnf7l"]
+[ext_resource type="Texture2D" uid="uid://bilydodkygq8x" path="res://Textures/Wall/character-shadow.png" id="2_67lmf"]
 [ext_resource type="Texture2D" uid="uid://8vxmgnj3ugwj" path="res://Textures/Enemy/Villain_1b.png" id="2_vvcsd"]
 [ext_resource type="PackedScene" uid="uid://xy3cvpwdy828" path="res://Utility/hurt_box.tscn" id="3_avoap"]
 [ext_resource type="PackedScene" uid="uid://uhr6mtuisqm1" path="res://Utility/hit_box.tscn" id="4_e7l5k"]
@@ -63,9 +64,16 @@ movement_speed = 28.0
 hp = 20
 enemy_damage = 2
 
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0.188235, 0.188235, 0.188235, 0.745098)
+position = Vector2(-5, 14)
+scale = Vector2(-0.0585908, 0.0274459)
+texture = ExtResource("2_67lmf")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.02, 0.02)
 texture = ExtResource("2_vvcsd")
+hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4, -1)

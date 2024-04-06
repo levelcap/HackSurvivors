@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cgyopk4kjswo4"]
+[gd_scene load_steps=13 format=3 uid="uid://cgyopk4kjswo4"]
 
 [ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_1bh7b"]
 [ext_resource type="Texture2D" uid="uid://cx8sf00iiic3f" path="res://Textures/Enemy/Villian1a.png" id="2_k1vvp"]
+[ext_resource type="Texture2D" uid="uid://bilydodkygq8x" path="res://Textures/Wall/character-shadow.png" id="2_sbm6o"]
 [ext_resource type="PackedScene" uid="uid://xy3cvpwdy828" path="res://Utility/hurt_box.tscn" id="3_gamcv"]
 [ext_resource type="PackedScene" uid="uid://uhr6mtuisqm1" path="res://Utility/hit_box.tscn" id="4_vdnsx"]
 [ext_resource type="AudioStream" uid="uid://cbk4moqxwpgpk" path="res://Audio/SoundEffect/new/death-vegetable.mp3" id="5_07dv3"]
@@ -60,9 +61,16 @@ collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_1bh7b")
 
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0.168627, 0.168627, 0.168627, 0.745098)
+position = Vector2(-1, 16)
+scale = Vector2(0.0725, 0.06)
+texture = ExtResource("2_sbm6o")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.02, 0.02)
 texture = ExtResource("2_k1vvp")
+hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 5)
