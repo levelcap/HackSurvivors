@@ -30,6 +30,7 @@ func _on_timer_timeout():
 				while  counter < i.enemy_num:
 					var enemy_spawn = new_enemy.instantiate()
 					enemy_spawn.global_position = get_random_position()
+					enemy_spawn.scale = 0.5
 					add_child(enemy_spawn)
 					counter += 1
 	emit_signal("changetime",time)

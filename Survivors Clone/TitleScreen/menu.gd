@@ -7,3 +7,8 @@ func _on_btn_play_click_end():
 
 func _on_btn_exit_click_end():
 	get_tree().quit()
+
+
+func _on_ready():
+	var test_label = %Test
+	test_label.text = str(PlayerInfo.character, " has ", PlayerInfo.gold, " gold!")

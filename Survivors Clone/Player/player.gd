@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 var movement_speed = 40.0
 var hp = 80
 var maxhp = 80
@@ -66,10 +65,8 @@ var fineChina_level = 0
 var javelin_ammo = 0
 var javelin_level = 0
 
-
 #Enemy Related
 var enemy_close = []
-
 
 @onready var sprite = $CharacterSprite
 @onready var walkTimer = get_node("%walkTimer")
