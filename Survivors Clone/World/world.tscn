@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cgyopk4kjswo4" path="res://Enemy/enemy_onion.tscn" id="4_ee8bm"]
 [ext_resource type="Script" path="res://Utility/spawn_info.gd" id="5_jj7s8"]
 [ext_resource type="PackedScene" uid="uid://bbvhxvk65o8el" path="res://Enemy/enemy_pepper.tscn" id="6_rumbx"]
-[ext_resource type="PackedScene" uid="uid://bok7kd2psi5gl" path="res://Enemy/enemy_cyclops.tscn" id="7_unri0"]
+[ext_resource type="PackedScene" uid="uid://bok7kd2psi5gl" path="res://Enemy/enemy_carrot.tscn" id="7_unri0"]
 [ext_resource type="PackedScene" uid="uid://hcjnrdsb563h" path="res://Enemy/enemy_juggernaut.tscn" id="8_ltymd"]
 [ext_resource type="PackedScene" uid="uid://btf7clk4jja87" path="res://Enemy/enemy_super.tscn" id="9_xs42h"]
 [ext_resource type="AudioStream" uid="uid://cmr8aspkbu5uh" path="res://Audio/Music/main level music.wav" id="10_a3ktd"]
