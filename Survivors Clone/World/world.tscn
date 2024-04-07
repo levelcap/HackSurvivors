@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://du6qbgqucaqov"]
+[gd_scene load_steps=33 format=3 uid="uid://du6qbgqucaqov"]
 
 [ext_resource type="Texture2D" uid="uid://b5o40jqpeqglb" path="res://Textures/kitchen_tile.png" id="1_3eqd4"]
 [ext_resource type="PackedScene" uid="uid://dncgepmkc4jf4" path="res://Player/player.tscn" id="2_40uwv"]
@@ -6,13 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://cgyopk4kjswo4" path="res://Enemy/enemy_onion.tscn" id="4_ee8bm"]
 [ext_resource type="Script" path="res://Utility/spawn_info.gd" id="5_jj7s8"]
 [ext_resource type="PackedScene" uid="uid://bbvhxvk65o8el" path="res://Enemy/enemy_pepper.tscn" id="6_rumbx"]
-[ext_resource type="PackedScene" uid="uid://bok7kd2psi5gl" path="res://Enemy/enemy_carrot.tscn" id="7_unri0"]
+[ext_resource type="PackedScene" uid="uid://bok7kd2psi5gl" path="res://Enemy/enemy_carrot.tscn" id="7_pwb0s"]
 [ext_resource type="PackedScene" uid="uid://hcjnrdsb563h" path="res://Enemy/enemy_juggernaut.tscn" id="8_ltymd"]
 [ext_resource type="PackedScene" uid="uid://btf7clk4jja87" path="res://Enemy/enemy_super.tscn" id="9_xs42h"]
 [ext_resource type="AudioStream" uid="uid://cmr8aspkbu5uh" path="res://Audio/Music/main level music.wav" id="10_a3ktd"]
+[ext_resource type="PackedScene" uid="uid://dba7neotcwg38" path="res://Enemy/enemy_hot.tscn" id="10_gkij1"]
+[ext_resource type="PackedScene" uid="uid://bc15g3w7dpblk" path="res://Enemy/enemy_sharp.tscn" id="10_vqibq"]
 [ext_resource type="Script" path="res://Audio/Music/snd_Music.gd" id="11_ovtx6"]
 [ext_resource type="PackedScene" uid="uid://bfiy14mycchjg" path="res://Utility/helper_spawner.tscn" id="12_238vd"]
 [ext_resource type="PackedScene" uid="uid://bw5tplacy8c76" path="res://Wall/wall.tscn" id="12_kfr5j"]
+[ext_resource type="PackedScene" uid="uid://dnupp55rmyew1" path="res://Enemy/enemy_behind.tscn" id="12_monei"]
 [ext_resource type="PackedScene" uid="uid://nt0ls1a3s5aq" path="res://Helper/helper_merchant.tscn" id="13_mhixp"]
 [ext_resource type="Script" path="res://Utility/helper_info.gd" id="14_wirp0"]
 [ext_resource type="Script" path="res://Wall/wall.gd" id="16_67qi3"]
@@ -48,7 +51,7 @@ boss = false
 script = ExtResource("5_jj7s8")
 time_start = 180
 time_end = 210
-enemy = ExtResource("7_unri0")
+enemy = ExtResource("7_pwb0s")
 enemy_num = 1
 enemy_spawn_delay = 2
 boss = false
@@ -66,7 +69,7 @@ boss = false
 script = ExtResource("5_jj7s8")
 time_start = 240
 time_end = 270
-enemy = ExtResource("7_unri0")
+enemy = ExtResource("7_pwb0s")
 enemy_num = 2
 enemy_spawn_delay = 1
 boss = false
@@ -98,6 +101,33 @@ enemy_num = 1
 enemy_spawn_delay = 1
 boss = true
 
+[sub_resource type="Resource" id="Resource_w1f1e"]
+script = ExtResource("5_jj7s8")
+time_start = 20
+time_end = 60
+enemy = ExtResource("10_vqibq")
+enemy_num = 3
+enemy_spawn_delay = 1
+boss = false
+
+[sub_resource type="Resource" id="Resource_g7xkr"]
+script = ExtResource("5_jj7s8")
+time_start = 25
+time_end = 65
+enemy = ExtResource("10_gkij1")
+enemy_num = 3
+enemy_spawn_delay = 1
+boss = false
+
+[sub_resource type="Resource" id="Resource_hme4m"]
+script = ExtResource("5_jj7s8")
+time_start = 30
+time_end = 70
+enemy = ExtResource("12_monei")
+enemy_num = 3
+enemy_spawn_delay = 1
+boss = false
+
 [sub_resource type="Resource" id="Resource_sfcrw"]
 script = ExtResource("14_wirp0")
 time_start = 1
@@ -115,7 +145,7 @@ region_rect = Rect2(-4000, -4000, 4000, 4000)
 [node name="Player" parent="." instance=ExtResource("2_40uwv")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_p01g4")]
-spawns = Array[ExtResource("5_jj7s8")]([SubResource("Resource_03m25"), SubResource("Resource_ij20a"), SubResource("Resource_68oxv"), SubResource("Resource_l8y0x"), SubResource("Resource_daq1w"), SubResource("Resource_0gpiy"), SubResource("Resource_4teun"), SubResource("Resource_rx6id"), SubResource("Resource_t2np8")])
+spawns = Array[ExtResource("5_jj7s8")]([SubResource("Resource_03m25"), SubResource("Resource_ij20a"), SubResource("Resource_68oxv"), SubResource("Resource_l8y0x"), SubResource("Resource_daq1w"), SubResource("Resource_0gpiy"), SubResource("Resource_4teun"), SubResource("Resource_rx6id"), SubResource("Resource_t2np8"), SubResource("Resource_w1f1e"), SubResource("Resource_g7xkr"), SubResource("Resource_hme4m")])
 
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]
 

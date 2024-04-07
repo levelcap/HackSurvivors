@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var knockback_recovery = 3.5
 @export var experience = 1
 @export var enemy_damage = 1
+@export var flip = true
 var knockback = Vector2.ZERO
 
 @onready var player = get_tree().get_first_node_in_group("player")
@@ -32,9 +33,9 @@ func _physics_process(_delta):
 	velocity += knockback
 	move_and_slide()
 	
-	if direction.x > 0.1:
+	if direction.x > 0.1 && flip:
 		sprite.flip_h = true
-	elif direction.x < -0.1:
+	elif direction.x < -0.1 && flip:
 		sprite.flip_h = false
 
 func death():
