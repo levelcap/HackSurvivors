@@ -197,7 +197,7 @@ const UPGRADES = {
 		"type": "weapon"		
 	},	
 	"armor1": {
-		"icon": ICON_PATH + "helmet_1.png",
+		"icon": ICON_PATH + "apron.png",
 		"displayname": "Apron",
 		"details": "Reduces damage by 1 point",
 		"level": "Level: 1",
@@ -205,7 +205,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"armor2": {
-		"icon": ICON_PATH + "helmet_1.png",
+		"icon": ICON_PATH + "apron.png",
 		"displayname": "Apron",
 		"details": "Reduces damage by an additional 1 point",
 		"level": "Level: 2",
@@ -213,7 +213,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"armor3": {
-		"icon": ICON_PATH + "helmet_1.png",
+		"icon": ICON_PATH + "apron.png",
 		"displayname": "Apron",
 		"details": "Reduces damage by an additional 1 point",
 		"level": "Level: 3",
@@ -221,7 +221,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"armor4": {
-		"icon": ICON_PATH + "helmet_1.png",
+		"icon": ICON_PATH + "apron.png",
 		"displayname": "Apron",
 		"details": "Reduces damage by an additional 1 point",
 		"level": "Level: 4",
