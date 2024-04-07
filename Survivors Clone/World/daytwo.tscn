@@ -1,0 +1,137 @@
+[gd_scene load_steps=27 format=3 uid="uid://dljvwwfsujeac"]
+
+[ext_resource type="Texture2D" uid="uid://b5o40jqpeqglb" path="res://Textures/kitchen_tile.png" id="1_a7ucu"]
+[ext_resource type="PackedScene" uid="uid://dncgepmkc4jf4" path="res://Player/player.tscn" id="2_oynoy"]
+[ext_resource type="PackedScene" uid="uid://ba2claihwes2y" path="res://Utility/enemy_spawner.tscn" id="3_p6isx"]
+[ext_resource type="PackedScene" uid="uid://cgyopk4kjswo4" path="res://Enemy/enemy_onion.tscn" id="4_f3b62"]
+[ext_resource type="Script" path="res://Utility/spawn_info.gd" id="5_186s7"]
+[ext_resource type="PackedScene" uid="uid://bbvhxvk65o8el" path="res://Enemy/enemy_pepper.tscn" id="6_6vjpo"]
+[ext_resource type="PackedScene" uid="uid://bok7kd2psi5gl" path="res://Enemy/enemy_cyclops.tscn" id="7_bxo2i"]
+[ext_resource type="PackedScene" uid="uid://hcjnrdsb563h" path="res://Enemy/enemy_juggernaut.tscn" id="8_ghf77"]
+[ext_resource type="PackedScene" uid="uid://btf7clk4jja87" path="res://Enemy/enemy_super.tscn" id="9_6sqqu"]
+[ext_resource type="AudioStream" uid="uid://cmr8aspkbu5uh" path="res://Audio/Music/main level music.wav" id="10_bng13"]
+[ext_resource type="Script" path="res://Audio/Music/snd_Music.gd" id="11_yh0y0"]
+[ext_resource type="PackedScene" uid="uid://bfiy14mycchjg" path="res://Utility/helper_spawner.tscn" id="12_1f8en"]
+[ext_resource type="PackedScene" uid="uid://nt0ls1a3s5aq" path="res://Helper/helper_merchant.tscn" id="13_2v83v"]
+[ext_resource type="Script" path="res://Utility/helper_info.gd" id="14_un8xh"]
+[ext_resource type="PackedScene" uid="uid://bw5tplacy8c76" path="res://Wall/wall.tscn" id="15_a30ck"]
+[ext_resource type="Script" path="res://Wall/wall.gd" id="16_vjaiu"]
+
+[sub_resource type="Resource" id="Resource_03m25"]
+script = ExtResource("5_186s7")
+time_start = 0
+time_end = 30
+enemy = ExtResource("4_f3b62")
+enemy_num = 1
+enemy_spawn_delay = 2
+boss = false
+
+[sub_resource type="Resource" id="Resource_ij20a"]
+script = ExtResource("5_186s7")
+time_start = 30
+time_end = 210
+enemy = ExtResource("4_f3b62")
+enemy_num = 2
+enemy_spawn_delay = 2
+boss = false
+
+[sub_resource type="Resource" id="Resource_68oxv"]
+script = ExtResource("5_186s7")
+time_start = 60
+time_end = 180
+enemy = ExtResource("6_6vjpo")
+enemy_num = 1
+enemy_spawn_delay = 2
+boss = false
+
+[sub_resource type="Resource" id="Resource_l8y0x"]
+script = ExtResource("5_186s7")
+time_start = 180
+time_end = 210
+enemy = ExtResource("7_bxo2i")
+enemy_num = 1
+enemy_spawn_delay = 2
+boss = false
+
+[sub_resource type="Resource" id="Resource_daq1w"]
+script = ExtResource("5_186s7")
+time_start = 210
+time_end = 240
+enemy = ExtResource("6_6vjpo")
+enemy_num = 2
+enemy_spawn_delay = 1
+boss = false
+
+[sub_resource type="Resource" id="Resource_0gpiy"]
+script = ExtResource("5_186s7")
+time_start = 240
+time_end = 270
+enemy = ExtResource("7_bxo2i")
+enemy_num = 2
+enemy_spawn_delay = 1
+boss = false
+
+[sub_resource type="Resource" id="Resource_4teun"]
+script = ExtResource("5_186s7")
+time_start = 240
+time_end = 240
+enemy = ExtResource("8_ghf77")
+enemy_num = 2
+enemy_spawn_delay = 1
+boss = false
+
+[sub_resource type="Resource" id="Resource_rx6id"]
+script = ExtResource("5_186s7")
+time_start = 270
+time_end = 300
+enemy = ExtResource("6_6vjpo")
+enemy_num = 4
+enemy_spawn_delay = 1
+boss = false
+
+[sub_resource type="Resource" id="Resource_t2np8"]
+script = ExtResource("5_186s7")
+time_start = 300
+time_end = 300
+enemy = ExtResource("9_6sqqu")
+enemy_num = 1
+enemy_spawn_delay = 1
+boss = true
+
+[sub_resource type="Resource" id="Resource_sfcrw"]
+script = ExtResource("14_un8xh")
+time_start = 1
+helper = ExtResource("13_2v83v")
+
+[node name="DayTwo" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(1, 0.564706, 0.501961, 1)
+texture_filter = 2
+texture_repeat = 2
+texture = ExtResource("1_a7ucu")
+region_enabled = true
+region_rect = Rect2(-4000, -4000, 4000, 4000)
+
+[node name="Player" parent="." instance=ExtResource("2_oynoy")]
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_p6isx")]
+spawns = Array[ExtResource("5_186s7")]([SubResource("Resource_03m25"), SubResource("Resource_ij20a"), SubResource("Resource_68oxv"), SubResource("Resource_l8y0x"), SubResource("Resource_daq1w"), SubResource("Resource_0gpiy"), SubResource("Resource_4teun"), SubResource("Resource_rx6id"), SubResource("Resource_t2np8")])
+
+[node name="Loot" type="Node2D" parent="." groups=["loot"]]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("10_bng13")
+volume_db = -10.0
+autoplay = true
+script = ExtResource("11_yh0y0")
+
+[node name="HelperSpawner" parent="." instance=ExtResource("12_1f8en")]
+helpers = Array[ExtResource("14_un8xh")]([SubResource("Resource_sfcrw")])
+
+[node name="Wall" parent="." instance=ExtResource("15_a30ck")]
+position = Vector2(-1972, -1978)
+script = ExtResource("16_vjaiu")
+
+[connection signal="playerdeath" from="Player" to="AudioStreamPlayer" method="_on_player_playerdeath"]

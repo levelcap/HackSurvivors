@@ -1,0 +1,113 @@
+[gd_scene load_steps=8 format=3 uid="uid://cf2xc8n0g4w32"]
+
+[ext_resource type="Script" path="res://LevelSelect/levelselect.gd" id="1_aae8f"]
+[ext_resource type="Texture2D" uid="uid://dtq0ljkgmi88i" path="res://Textures/GUI/menu_v3.png" id="2_vbt4k"]
+[ext_resource type="FontFile" uid="uid://dwo5a5m36hr35" path="res://Font/BungeeShade-Regular.ttf" id="3_1l1aj"]
+[ext_resource type="AudioStream" uid="uid://ld464viujox8" path="res://Audio/Music/menu music.wav" id="4_xlp6f"]
+[ext_resource type="Texture2D" uid="uid://chwtxjxr8687i" path="res://Textures/Buttons/levelone.png" id="5_a6gj3"]
+[ext_resource type="FontFile" uid="uid://f502umyy2mu3" path="res://Font/BarlowCondensed-Medium.ttf" id="6_c5eo4"]
+[ext_resource type="Texture2D" uid="uid://2xm7sny1nr6l" path="res://Textures/Buttons/leveltwo.png" id="7_r56oc"]
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aae8f")
+
+[node name="MenuBackdrop" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 361.0
+texture = ExtResource("2_vbt4k")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.25
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.32549, 0.294118, 0.65098, 1)
+theme_override_fonts/font = ExtResource("3_1l1aj")
+theme_override_font_sizes/font_size = 48
+text = "Kitchen Survivor"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_xlp6f")
+volume_db = -10.0
+autoplay = true
+
+[node name="Test" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 394.0
+offset_top = 302.0
+offset_right = 434.0
+offset_bottom = 325.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+
+[node name="levelone_group" type="Node2D" parent="."]
+
+[node name="levelone_btn" type="TextureButton" parent="levelone_group"]
+offset_left = 183.0
+offset_top = 136.0
+offset_right = 223.0
+offset_bottom = 176.0
+scale = Vector2(2.28, 1.32)
+texture_normal = ExtResource("5_a6gj3")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="levelone_text" type="Label" parent="levelone_group"]
+offset_left = 298.0
+offset_top = 137.0
+offset_right = 639.0
+offset_bottom = 238.0
+scale = Vector2(0.52, 0.52)
+theme_override_colors/font_color = Color(0.356863, 0.341176, 0.670588, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("6_c5eo4")
+theme_override_font_sizes/font_size = 13
+text = "Day One: 
+
+It's your first day in the ktichen and you're just out here trying to make it through without getting fired. Good luck..."
+autowrap_mode = 3
+
+[node name="leveltwo_group" type="Node2D" parent="."]
+position = Vector2(2, 73)
+
+[node name="leveltwo_btn" type="TextureButton" parent="leveltwo_group"]
+offset_left = 183.0
+offset_top = 136.0
+offset_right = 223.0
+offset_bottom = 176.0
+scale = Vector2(2.28, 1.32)
+texture_normal = ExtResource("7_r56oc")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="leveltwo_text" type="Label" parent="leveltwo_group"]
+offset_left = 298.0
+offset_top = 137.0
+offset_right = 639.0
+offset_bottom = 238.0
+scale = Vector2(0.52, 0.52)
+theme_override_colors/font_color = Color(0.356863, 0.341176, 0.670588, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("6_c5eo4")
+theme_override_font_sizes/font_size = 13
+text = "Day Two: 
+
+Things are getting weird..."
+autowrap_mode = 3
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="pressed" from="levelone_group/levelone_btn" to="." method="_on_levelone_btn_pressed"]
+[connection signal="pressed" from="leveltwo_group/leveltwo_btn" to="." method="_on_leveltwo_btn_pressed"]
