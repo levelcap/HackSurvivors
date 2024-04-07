@@ -187,9 +187,11 @@ offset_bottom = -16.0
 [node name="lbl_Result" type="Label" parent="GUILayer/GUI/DeathPanel"]
 unique_name_in_owner = true
 layout_mode = 0
+offset_top = 36.0
 offset_right = 200.0
-offset_bottom = 50.0
+offset_bottom = 86.0
 theme_override_fonts/font = ExtResource("6_okx7u")
+theme_override_font_sizes/font_size = 10
 text = "Result"
 horizontal_alignment = 1
 vertical_alignment = 1

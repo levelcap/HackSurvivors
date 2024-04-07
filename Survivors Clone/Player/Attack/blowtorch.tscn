@@ -1,11 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://d276jjb6slldb"]
+[gd_scene load_steps=6 format=3 uid="uid://d276jjb6slldb"]
 
 [ext_resource type="Script" path="res://Player/Attack/blowtorch.gd" id="1_8lqeg"]
 [ext_resource type="Texture2D" uid="uid://cvdtrx3mw8vmb" path="res://Textures/Items/Weapons/weapon_blow torch.png" id="2_xfjcg"]
 [ext_resource type="AudioStream" uid="uid://cu54s0udoc14w" path="res://Audio/SoundEffect/new/weapon-blowtorch.mp3" id="3_lb7l1"]
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u2nhl"]
+lifetime_randomness = 0.54
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 2.0
+emission_ring_inner_radius = 0.0
+gravity = Vector3(-40, -25, 2.08165e-12)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ojwf"]
-size = Vector2(27.6053, 34.4956)
+size = Vector2(14.4628, 28.0101)
 
 [node name="Blowtorch" type="Area2D" groups=["attack"]]
 top_level = true
@@ -13,12 +23,26 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_8lqeg")
 
+[node name="YellowFlame" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(0.435294, 1, 0.109804, 1)
+position = Vector2(-3, -7)
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_u2nhl")
+
+[node name="BlueFlame" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 0.109804, 0.909804, 1)
+position = Vector2(-3, -7)
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_u2nhl")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_xfjcg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-8, 2)
+position = Vector2(-8.30652, -10.2434)
 rotation = -0.986559
 shape = SubResource("RectangleShape2D_5ojwf")
 disabled = true

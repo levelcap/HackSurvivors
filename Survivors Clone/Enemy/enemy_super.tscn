@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://btf7clk4jja87"]
 
 [ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_friak"]
-[ext_resource type="Texture2D" uid="uid://ce0hue7fwpa3a" path="res://Textures/Enemy/giant_amoeba_new.png" id="2_f58yx"]
+[ext_resource type="Texture2D" uid="uid://b8csq76oki1ta" path="res://Textures/Enemy/chef_boss.png" id="2_2ce58"]
 [ext_resource type="PackedScene" uid="uid://xy3cvpwdy828" path="res://Utility/hurt_box.tscn" id="3_otm2x"]
 [ext_resource type="PackedScene" uid="uid://uhr6mtuisqm1" path="res://Utility/hit_box.tscn" id="4_vpjbj"]
 [ext_resource type="AudioStream" uid="uid://cbk4moqxwpgpk" path="res://Audio/SoundEffect/new/death-vegetable.mp3" id="5_1smyd"]
@@ -12,6 +12,7 @@ height = 14.0
 
 [sub_resource type="Animation" id="Animation_xfnyu"]
 length = 0.001
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -29,6 +30,7 @@ tracks/0/keys = {
 resource_name = "walk"
 length = 0.6
 loop_mode = 1
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -36,10 +38,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0]
+"values": [0, 1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_regpg"]
@@ -66,8 +68,9 @@ experience = 100
 enemy_damage = 20
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(5, 5)
-texture = ExtResource("2_f58yx")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_2ce58")
+hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_24u87")

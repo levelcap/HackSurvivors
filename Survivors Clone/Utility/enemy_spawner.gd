@@ -30,7 +30,7 @@ func _on_timer_timeout():
 				var counter = 0
 				if i.boss:
 					emit_signal("bossbattle")
-				while  counter < i.enemy_num:
+				while counter < i.enemy_num:
 					var enemy_spawn = new_enemy.instantiate()
 					enemy_spawn.global_position = get_random_position()
 					add_child(enemy_spawn)

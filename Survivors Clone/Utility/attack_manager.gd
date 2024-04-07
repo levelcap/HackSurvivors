@@ -93,16 +93,14 @@ func add_weapon(weapon_name):
 		attack_timer.timeout.connect(_on_attack_timer_timeout.bind(weapon_name))
 	
 func upgrade_weapon(weapon_name):
-	var weapon = active_weapons[weapon_name]
-	weapon["level"] += 1
-	weapon["baseammo"] += 1
-	
 	if weapon_name == "salt":
-		remove_child(salt)
-		var weapon_attack = weapon["obj"].instantiate()
-		weapon_attack.level = weapon["level"]
-		active_salt = weapon_attack
-		add_child(weapon_attack)
+		remove_child(active_salt)
+		active_salt.level += 1
+		add_child(active_salt)
+	else: 
+		var weapon = active_weapons[weapon_name]
+		weapon["level"] += 1
+		weapon["baseammo"] += 1
 		
 	
 func _on_timer_timeout(weapon_name):
