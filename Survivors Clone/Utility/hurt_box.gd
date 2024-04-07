@@ -8,8 +8,25 @@ extends Area2D
 signal hurt(damage, angle, knockback)
 
 var hit_once_array = []
+var aura_array = []
 
 func _on_area_entered(area):
+	if area.is_in_group("aura"):
+		if not area.get("damage") == null:
+			aura_array.append(area)
+			var damage = area.damage
+			var angle = Vector2.from_angle(get_parent().velocity.angle()) * -1
+			var knockback = 1
+			if not area.get("angle") == null:
+				angle = area.angle
+			if not area.get("knockback_amount") == null:
+				knockback = area.knockback_amount
+			var aura_timer := Timer.new()
+			aura_timer.wait_time = area.get("speed")
+			add_child(aura_timer)
+			aura_timer.start()
+			aura_timer.timeout.connect(_on_aura_timer_timeout.bind(aura_timer, area, damage, angle, knockback))
+				
 	if area.is_in_group("attack"):
 		if not area.get("damage") == null:
 			match HurtBoxType:
@@ -39,9 +56,20 @@ func _on_area_entered(area):
 			if area.has_method("enemy_hit"):
 				area.enemy_hit(1)
 
+func _on_area_exited(area):
+	if aura_array.has(area):
+		aura_array.erase(area)	
+
 func remove_from_list(object):
 	if hit_once_array.has(object):
 		hit_once_array.erase(object)
 
 func _on_disable_timer_timeout():
 	collision.call_deferred("set","disabled",false)
+	
+func _on_aura_timer_timeout(timer, area, damage, angle, knockback):
+	if aura_array.has(area):
+		emit_signal("hurt", damage, angle, knockback)
+	else:
+		timer.stop()
+		remove_child(timer)

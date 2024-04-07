@@ -68,10 +68,10 @@ emission_normal_texture = SubResource("ImageTexture_5h8hy")
 emission_point_count = 704
 gravity = Vector3(2.08165e-12, 5, 2.08165e-12)
 
-[node name="SeasonsGreetings" type="Area2D" groups=["attack"]]
+[node name="SeasonsGreetings" type="Area2D" groups=["aura"]]
 top_level = true
 collision_layer = 4
-collision_mask = 0
+collision_mask = 4
 script = ExtResource("1_sgwky")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -79,7 +79,8 @@ scale = Vector2(4.68, 4.68)
 shape = SubResource("CircleShape2D_fwp0s")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 5.0
+autostart = true
 
 [node name="Salt" type="GPUParticles2D" parent="."]
 amount = 50
@@ -96,4 +97,6 @@ lifetime = 0.5
 explosiveness = 0.28
 randomness = 0.5
 
-[connection signal="timeout" from="Timer" to="Salt" method="_on_timer_timeout"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

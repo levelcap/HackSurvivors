@@ -204,7 +204,7 @@ func upgrade_character(upgrade):
 			var num = upgrade.right(1)
 			var weapon_name = upgrade.substr(0, upgrade.length() - 1)
 			#assume weapon
-			if (num == "1"):
+			if num == "1":
 				attackManager.add_weapon(weapon_name)
 			else:
 				attackManager.upgrade_weapon(weapon_name)			
