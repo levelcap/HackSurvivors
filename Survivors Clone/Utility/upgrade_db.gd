@@ -196,7 +196,7 @@ const UPGRADES = {
 		"prerequisite": ["salt3"],
 		"type": "weapon"		
 	},	
-	"armor1": {
+	"apron1": {
 		"icon": ICON_PATH + "apron.png",
 		"displayname": "Apron",
 		"details": "Reduces damage by 1 point",
@@ -204,28 +204,28 @@ const UPGRADES = {
 		"prerequisite": [],
 		"type": "upgrade"
 	},
-	"armor2": {
+	"apron2": {
 		"icon": ICON_PATH + "apron.png",
 		"displayname": "Apron",
 		"details": "Reduces damage by an additional 1 point",
 		"level": "Level: 2",
-		"prerequisite": ["armor1"],
+		"prerequisite": ["apron1"],
 		"type": "upgrade"
 	},
-	"armor3": {
+	"apron3": {
 		"icon": ICON_PATH + "apron.png",
 		"displayname": "Apron",
 		"details": "Reduces damage by an additional 1 point",
 		"level": "Level: 3",
-		"prerequisite": ["armor2"],
+		"prerequisite": ["apron2"],
 		"type": "upgrade"
 	},
-	"armor4": {
+	"apron4": {
 		"icon": ICON_PATH + "apron.png",
 		"displayname": "Apron",
 		"details": "Reduces damage by an additional 1 point",
 		"level": "Level: 4",
-		"prerequisite": ["armor3"],
+		"prerequisite": ["apron3"],
 		"type": "upgrade"
 	},
 	"speed1": {

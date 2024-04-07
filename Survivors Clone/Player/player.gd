@@ -187,7 +187,7 @@ func upgrade_character(upgrade):
 			javelin_level = 3
 		"javelin4":
 			javelin_level = 4
-		"armor1","armor2","armor3","armor4":
+		"apron1","apron2","apron3","apron4":
 			armor += 1
 		"speed1","speed2","speed3","speed4":
 			movement_speed += 20.0
