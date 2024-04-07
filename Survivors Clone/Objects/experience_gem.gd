@@ -7,7 +7,7 @@ var speed = -1
 
 @onready var sprite = $Sprite2D
 @onready var collision = $CollisionShape2D
-@onready var sound = $snd_collected
+@onready var sound = %snd_collected
 
 func _ready():
 	if experience < 5:
@@ -20,7 +20,7 @@ func _ready():
 func _physics_process(delta):
 	if target != null:
 		global_position = global_position.move_toward(target.global_position, speed)
-		speed += 2*delta
+		speed += 5*delta
 
 func collect():
 	sound.play()

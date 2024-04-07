@@ -22,7 +22,7 @@ position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_wytta")
 
 [node name="snd_collected" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 stream = ExtResource("3_aow8k")
-volume_db = -10.0
 
 [connection signal="finished" from="snd_collected" to="." method="_on_snd_collected_finished"]
