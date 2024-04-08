@@ -13,3 +13,4 @@
 */android
 *.apk
 *.apk.*
+*/web_export
