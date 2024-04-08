@@ -7,11 +7,11 @@ extends Node2D
 @export var time = 0
 
 signal changetime(time)
-signal bossbattle
+signal bossbattle(enemy)
 
 func _ready():
-	connect("changetime",Callable(player,"change_time"))
-	connect("bossbattle",Callable(player,"bossFight"))
+	connect("changetime", Callable(player,"change_time"))
+	connect("bossbattle", Callable(player,"bossFight"))
 	
 func _process(delta):
 	if Input.is_action_pressed("escape"):
@@ -28,12 +28,13 @@ func _on_timer_timeout():
 				i.spawn_delay_counter = 0
 				var new_enemy = i.enemy
 				var counter = 0
-				if i.boss:
-					emit_signal("bossbattle")
 				while counter < i.enemy_num:
 					var enemy_spawn = new_enemy.instantiate()
 					enemy_spawn.global_position = get_random_position()
-					add_child(enemy_spawn)
+					if i.boss:
+						emit_signal("bossbattle", enemy_spawn)
+					else: 
+						add_child(enemy_spawn)
 					counter += 1
 	emit_signal("changetime",time)
 

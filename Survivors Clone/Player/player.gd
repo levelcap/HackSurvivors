@@ -297,13 +297,14 @@ func death():
 		Keep trying!"""
 		sndLose.play()
 		
-func bossFight():
+func bossFight(enemy_spawn):
 	var conversation = conversationScene.instantiate()
 	add_child(conversation)
 	get_tree().paused = true
 	await conversation.bossFight()
 	get_tree().paused = false
 	remove_child(conversation)
+	add_child(enemy_spawn)
 	
 func play_conversation():
 	var conversation = conversationScene.instantiate()
