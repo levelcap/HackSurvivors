@@ -298,29 +298,24 @@ func death():
 		sndLose.play()
 		
 func bossFight():
-	bossPanel.visible = true
+	var conversation = conversationScene.instantiate()
+	add_child(conversation)
 	get_tree().paused = true
-	var tween = bossPanel.create_tween()
-	tween.tween_property(bossPanel, "position", Vector2(600, 550),3.0).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
-	tween.play()
-	await get_tree().create_timer(3.0).timeout
+	await conversation.bossFight()
 	get_tree().paused = false
-	bossPanel.visible = false
+	remove_child(conversation)
 	
 func play_conversation():
 	var conversation = conversationScene.instantiate()
-	conversation.get_node("%CharacterOneText").text = """My first day! 
+	var textOne = """My first day! 
 I'm pretty nervous... but what could go wrong?"""
-	conversation.get_node("%CharacterTwoText").text = """WHO ARE YOU TALKING TO?? 
+	var textTwo = """WHO ARE YOU TALKING TO?? 
 
 GET TO F****NG WORK!!!"""
-	#conversation.global_position = Vector2(0,0)
 	add_child(conversation)
 	get_tree().paused = true
-	await get_tree().create_timer(3.0).timeout
-	conversation.get_node("%CharacterOneGroup").visible = false
-	conversation.get_node("%CharacterTwoGroup").visible = true
-	await get_tree().create_timer(3.0).timeout
+	await conversation.playText("one", textOne)
+	await conversation.playText("two", textTwo)	
 	get_tree().paused = false
 	remove_child(conversation)
 
