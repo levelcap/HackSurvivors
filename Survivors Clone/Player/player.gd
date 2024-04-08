@@ -299,11 +299,11 @@ func death():
 		
 func bossFight(enemy_spawn):
 	var conversation = conversationScene.instantiate()
-	add_child(conversation)
+	%OverlayLayer.add_child(conversation)
 	get_tree().paused = true
 	await conversation.bossFight()
 	get_tree().paused = false
-	remove_child(conversation)
+	%OverlayLayer.remove_child(conversation)
 	add_child(enemy_spawn)
 	
 func play_conversation():
@@ -313,12 +313,12 @@ I'm pretty nervous... but what could go wrong?"""
 	var textTwo = """WHO ARE YOU TALKING TO?? 
 
 GET TO F****NG WORK!!!"""
-	add_child(conversation)
+	%OverlayLayer.add_child(conversation)
 	get_tree().paused = true
 	await conversation.playText("one", textOne)
 	await conversation.playText("two", textTwo)	
 	get_tree().paused = false
-	remove_child(conversation)
+	%OverlayLayer.remove_child(conversation)
 
 func _on_btn_menu_click_end():
 	get_tree().paused = false

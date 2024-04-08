@@ -17,7 +17,9 @@ extends Node2D
 
 @onready var versus = get_node("Versus")
 @onready var player = get_tree().get_first_node_in_group("player")
-@onready var whoosh = get_node("Whoosh")
+@onready var whoosh = get_node("snd_whoosh")
+@onready var bossBell = get_node("snd_boss")
+@onready var bossBg = get_node("BossBackground")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,7 +49,7 @@ func playText(character_num, text):
 	await tween.finished
 	characterText.visible = true
 	characterTextSprite.visible = true
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	characterText.visible = false
 	characterTextSprite.visible = false
 	
@@ -58,8 +60,8 @@ func bossFight():
 	var characterTwo = characters["two"]["group"]
 	var characterTwoText = characters["two"]["text"]
 	var characterTwoTextSprite = characters["two"]["text_sprite"]
-	characterOne.position = Vector2(-200, -150)
-	characterTwo.position = Vector2(840, -150)
+	characterOne.position = Vector2(-200, -75)
+	characterTwo.position = Vector2(840, -50)
 	characterOne.visible = true
 	characterOneText.visible = false
 	characterOneTextSprite.visible = false
@@ -68,16 +70,20 @@ func bossFight():
 	characterTwoText.visible = false
 	characterTwoTextSprite.visible = false
 	
+	var bossBgTween = create_tween()
 	var characterOneTween = create_tween()
 	var characterTwoTween = create_tween()
 	var versusTweeen = create_tween()
 	characterOneTween.pause()
 	characterTwoTween.pause()
 	versusTweeen.pause()
-	characterOneTween.tween_property(characterOne, "position", Vector2(100,-150), 0.25)
-	characterTwoTween.tween_property(characterTwo, "position", Vector2(-100, -150), 0.25)
+	bossBell.play()
+	bossBgTween.tween_property(bossBg, "modulate", Color("ffffff", 1), 1.5)
+	characterOneTween.tween_property(characterOne, "position", Vector2(100, -75), 0.25)
+	characterTwoTween.tween_property(characterTwo, "position", Vector2(-100, -50), 0.25)
 	versusTweeen.tween_property(versus, "global_position", player.global_position, 0.25)
 	
+	await get_tree().create_timer(1).timeout
 	characterOneTween.play()
 	whoosh.play()
 	await get_tree().create_timer(.5).timeout

@@ -101,6 +101,7 @@ shape = SubResource("CircleShape2D_6vwp8")
 [node name="GUILayer" type="CanvasLayer" parent="."]
 
 [node name="GUI" type="Control" parent="GUILayer"]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
@@ -264,6 +265,10 @@ text = "THE BIG BOSS APPROACHES!
 FIGHT!!!!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="OverlayLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+follow_viewport_enabled = true
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
