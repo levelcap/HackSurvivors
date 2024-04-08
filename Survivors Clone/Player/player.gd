@@ -49,6 +49,8 @@ var enemy_close = []
 @onready var collectedUpgrades = get_node("%CollectedUpgrades")
 @onready var itemContainer = preload("res://Player/GUI/item_container.tscn")
 
+@onready var conversationScene = preload("res://Utility/conversation.tscn")
+
 @onready var deathPanel = get_node("%DeathPanel")
 @onready var lblResult = get_node("%lbl_Result")
 @onready var sndVictory = get_node("%snd_victory")
@@ -62,6 +64,9 @@ func _ready():
 	attackManager.add_weapon("salt")
 	set_expbar(experience, calculate_experiencecap())
 	_on_hurt_box_hurt(0,0,0)
+	if not PlayerInfo.dayOnePlayed:
+		play_conversation()	
+	
 
 func _physics_process(delta):
 	movement()
@@ -301,6 +306,23 @@ func bossFight():
 	await get_tree().create_timer(3.0).timeout
 	get_tree().paused = false
 	bossPanel.visible = false
+	
+func play_conversation():
+	var conversation = conversationScene.instantiate()
+	conversation.get_node("%CharacterOneText").text = """My first day! 
+I'm pretty nervous... but what could go wrong?"""
+	conversation.get_node("%CharacterTwoText").text = """WHO ARE YOU TALKING TO?? 
+
+GET TO F****NG WORK!!!"""
+	#conversation.global_position = Vector2(0,0)
+	add_child(conversation)
+	get_tree().paused = true
+	await get_tree().create_timer(3.0).timeout
+	conversation.get_node("%CharacterOneGroup").visible = false
+	conversation.get_node("%CharacterTwoGroup").visible = true
+	await get_tree().create_timer(3.0).timeout
+	get_tree().paused = false
+	remove_child(conversation)
 
 func _on_btn_menu_click_end():
 	get_tree().paused = false

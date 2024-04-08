@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8vidfvxwf1gt"]
+
+[ext_resource type="Script" path="res://Utility/conversation.gd" id="1_uyht2"]
+[ext_resource type="Texture2D" uid="uid://dehtsxm3k1twy" path="res://Textures/Player/player.png" id="2_oygb3"]
+[ext_resource type="Texture2D" uid="uid://b8csq76oki1ta" path="res://Textures/Enemy/chef_boss.png" id="3_bgu5s"]
+[ext_resource type="Texture2D" uid="uid://h2e73eybkm86" path="res://Textures/Wall/ground_shadow.png" id="3_tsb13"]
+
+[node name="Conversation" type="Node2D"]
+z_index = 4096
+position = Vector2(-306, -130)
+script = ExtResource("1_uyht2")
+
+[node name="CharacterOneGroup" type="CanvasGroup" parent="."]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterOneGroup"]
+modulate = Color(0, 0, 0, 0.784314)
+position = Vector2(244, 202.38)
+scale = Vector2(0.712889, 0.4269)
+texture = ExtResource("3_tsb13")
+
+[node name="CharacterOneText" type="RichTextLabel" parent="CharacterOneGroup"]
+unique_name_in_owner = true
+offset_left = 126.0
+offset_top = 138.38
+offset_right = 344.0
+offset_bottom = 268.38
+scale = Vector2(1.078, 1)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+fit_content = true
+
+[node name="CharacterOne" type="Sprite2D" parent="CharacterOneGroup"]
+position = Vector2(22, 338.38)
+rotation = 3.14159
+scale = Vector2(0.25, -0.25)
+texture = ExtResource("2_oygb3")
+hframes = 4
+
+[node name="CharacterTwoGroup" type="CanvasGroup" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="CharacterTwoGroup"]
+modulate = Color(0, 0, 0, 0.784314)
+position = Vector2(413, 225.2)
+scale = Vector2(0.665, 0.37)
+texture = ExtResource("3_tsb13")
+
+[node name="CharacterTwoText" type="RichTextLabel" parent="CharacterTwoGroup"]
+unique_name_in_owner = true
+offset_left = 307.0
+offset_top = 172.0
+offset_right = 491.0
+offset_bottom = 278.0
+scale = Vector2(1.168, 1)
+fit_content = true
+
+[node name="CharacterTwo" type="Sprite2D" parent="CharacterTwoGroup"]
+position = Vector2(596, 216.2)
+rotation = 3.14159
+scale = Vector2(0.4, -0.4)
+texture = ExtResource("3_bgu5s")
+hframes = 2
