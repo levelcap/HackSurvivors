@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8vidfvxwf1gt"]
+[gd_scene load_steps=9 format=3 uid="uid://c8vidfvxwf1gt"]
 
 [ext_resource type="Script" path="res://Utility/conversation.gd" id="1_uyht2"]
 [ext_resource type="Texture2D" uid="uid://dehtsxm3k1twy" path="res://Textures/Player/player.png" id="2_oygb3"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://du5h3kfdugcne" path="res://Textures/GUI/vs.png" id="5_1sjlk"]
 [ext_resource type="AudioStream" uid="uid://dm14x014gr5t0" path="res://Audio/SoundEffect/new/whoosh-6316(1).mp3" id="6_g8uat"]
 [ext_resource type="AudioStream" uid="uid://myun7ki4wopi" path="res://Audio/SoundEffect/new/boss-appears.mp3" id="7_37d5v"]
+[ext_resource type="AudioStream" uid="uid://ih8xegdw6f25" path="res://Audio/SoundEffect/new/blah.wav" id="8_f5sdo"]
 
 [node name="Conversation" type="Node2D"]
 process_mode = 2
@@ -40,6 +41,7 @@ offset_bottom = 268.38
 scale = Vector2(1.078, 1)
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 fit_content = true
+visible_characters = 0
 
 [node name="CharacterOne" type="Sprite2D" parent="CharacterOneGroup"]
 position = Vector2(22, 338.38)
@@ -67,6 +69,7 @@ offset_right = 491.0
 offset_bottom = 278.0
 scale = Vector2(1.168, 1)
 fit_content = true
+visible_characters = 0
 
 [node name="CharacterTwo" type="Sprite2D" parent="CharacterTwoGroup"]
 position = Vector2(596, 216.2)
@@ -84,3 +87,10 @@ stream = ExtResource("6_g8uat")
 
 [node name="snd_boss" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_37d5v")
+
+[node name="snd_blah1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_f5sdo")
+
+[node name="snd_blah2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_f5sdo")
+pitch_scale = 0.72

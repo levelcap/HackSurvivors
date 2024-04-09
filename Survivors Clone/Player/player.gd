@@ -308,11 +308,8 @@ func bossFight(enemy_spawn):
 	
 func play_conversation():
 	var conversation = conversationScene.instantiate()
-	var textOne = """My first day! 
-I'm pretty nervous... but what could go wrong?"""
-	var textTwo = """WHO ARE YOU TALKING TO?? 
-
-GET TO F****NG WORK!!!"""
+	var textOne = """My first day! I'm pretty nervous... but what could go wrong?"""
+	var textTwo = """WHO ARE YOU TALKING TO?? \n\n GET TO F****NG WORK!!!"""
 	%OverlayLayer.add_child(conversation)
 	get_tree().paused = true
 	await conversation.playText("one", textOne)

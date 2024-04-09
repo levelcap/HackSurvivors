@@ -19,6 +19,8 @@ extends Node2D
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var whoosh = get_node("snd_whoosh")
 @onready var bossBell = get_node("snd_boss")
+@onready var blah1 = get_node("snd_blah1")
+@onready var blah2 = get_node("snd_blah2")
 @onready var bossBg = get_node("BossBackground")
 
 # Called when the node enters the scene tree for the first time.
@@ -34,23 +36,29 @@ func playText(character_num, text):
 	var character = characters[character_num]["group"]
 	var characterText = characters[character_num]["text"]
 	var characterTextSprite = characters[character_num]["text_sprite"]
+	var blah = blah1
 	character.visible = true
 	characterText.text = text
-	characterText.visible = false
+	characterText.visible_characters = 0;
 	characterTextSprite.visible = false
 	
 	var tween = create_tween()
 	if (character_num == "one"):
 		tween.tween_property(character, "position", Vector2(5,0), 1)
 	else:
+		blah = blah2
 		tween.tween_property(character, "position", Vector2(-5,0), 1)
 		
 	tween.play()
 	await tween.finished
-	characterText.visible = true
 	characterTextSprite.visible = true
-	await get_tree().create_timer(2.0).timeout
-	characterText.visible = false
+	var textTween = create_tween()
+	blah.play()
+	textTween.tween_property(characterText, "visible_characters", characterText.text.length(), 2)
+	await textTween.finished
+	blah.stop()
+	await get_tree().create_timer(1.0).timeout
+	characterText.visible_characters = 0;
 	characterTextSprite.visible = false
 	
 func bossFight():	
