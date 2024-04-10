@@ -62,7 +62,7 @@ func playText(character_type, text):
 	characterTextSprite.visible = true
 	var textTween = create_tween()
 	blah.play()
-	textTween.tween_property(characterText, "visible_characters", characterText.text.length(), 2)
+	textTween.tween_property(characterText, "visible_characters", characterText.text.length(), characterText.text.length() * .05)
 	await textTween.finished
 	blah.stop()
 	await get_tree().create_timer(1.0).timeout

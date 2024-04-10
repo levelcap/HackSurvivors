@@ -61,7 +61,7 @@ var enemy_close = []
 signal playerdeath
 
 func _ready():
-	attackManager.add_weapon("salt")
+	upgrade_character("salt1")
 	set_expbar(experience, calculate_experiencecap())
 	_on_hurt_box_hurt(0,0,0)
 	if not PlayerInfo.dayOnePlayed:

@@ -51,7 +51,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rborl"]
-size = Vector2(135, 123)
+size = Vector2(94.25, 80.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ucec4"]
 size = Vector2(97, 101)
@@ -61,15 +61,16 @@ collision_layer = 5
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_friak")
-movement_speed = 15.0
+movement_speed = 30.0
 hp = 600
-knockback_recovery = 100.0
+knockback_recovery = 5.0
 experience = 100
 enemy_damage = 15
+flip = false
 boss = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_2ce58")
 hframes = 2
 
@@ -83,11 +84,12 @@ libraries = {
 }
 
 [node name="HurtBox" parent="." instance=ExtResource("3_otm2x")]
+position = Vector2(228, 140)
 collision_mask = 4
 HurtBoxType = 1
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2(0.5, 8.5)
+position = Vector2(-224.125, -124.375)
 shape = SubResource("RectangleShape2D_rborl")
 
 [node name="HitBox" parent="." instance=ExtResource("4_vpjbj")]

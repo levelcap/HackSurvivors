@@ -50,10 +50,10 @@ boss = false
 
 [sub_resource type="Resource" id="Resource_l8y0x"]
 script = ExtResource("5_jj7s8")
-time_start = 180
+time_start = 150
 time_end = 210
 enemy = ExtResource("7_pwb0s")
-enemy_num = 1
+enemy_num = 2
 enemy_spawn_delay = 2
 boss = false
 
@@ -93,14 +93,14 @@ enemy_num = 4
 enemy_spawn_delay = 1
 boss = false
 
-[sub_resource type="Resource" id="Resource_t2np8"]
+[sub_resource type="Resource" id="Resource_5qy43"]
 script = ExtResource("5_jj7s8")
-time_start = 300
-time_end = 300
-enemy = ExtResource("9_xs42h")
+time_start = 70
+time_end = 70
+enemy = ExtResource("13_0632a")
 enemy_num = 1
 enemy_spawn_delay = 0
-boss = true
+boss = false
 
 [sub_resource type="Resource" id="Resource_w1f1e"]
 script = ExtResource("5_jj7s8")
@@ -129,14 +129,14 @@ enemy_num = 3
 enemy_spawn_delay = 1
 boss = false
 
-[sub_resource type="Resource" id="Resource_5qy43"]
+[sub_resource type="Resource" id="Resource_t2np8"]
 script = ExtResource("5_jj7s8")
-time_start = 70
-time_end = 70
-enemy = ExtResource("13_0632a")
+time_start = 300
+time_end = 300
+enemy = ExtResource("9_xs42h")
 enemy_num = 1
 enemy_spawn_delay = 0
-boss = false
+boss = true
 
 [sub_resource type="Resource" id="Resource_sfcrw"]
 script = ExtResource("14_wirp0")
@@ -155,7 +155,7 @@ region_rect = Rect2(-4000, -4000, 4000, 4000)
 [node name="Player" parent="." instance=ExtResource("2_40uwv")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_p01g4")]
-spawns = Array[ExtResource("5_jj7s8")]([SubResource("Resource_03m25"), SubResource("Resource_ij20a"), SubResource("Resource_68oxv"), SubResource("Resource_l8y0x"), SubResource("Resource_daq1w"), SubResource("Resource_0gpiy"), SubResource("Resource_4teun"), SubResource("Resource_rx6id"), SubResource("Resource_t2np8"), SubResource("Resource_w1f1e"), SubResource("Resource_g7xkr"), SubResource("Resource_hme4m"), SubResource("Resource_5qy43")])
+spawns = Array[ExtResource("5_jj7s8")]([SubResource("Resource_03m25"), SubResource("Resource_ij20a"), SubResource("Resource_68oxv"), SubResource("Resource_l8y0x"), SubResource("Resource_daq1w"), SubResource("Resource_0gpiy"), SubResource("Resource_4teun"), SubResource("Resource_rx6id"), SubResource("Resource_5qy43"), SubResource("Resource_w1f1e"), SubResource("Resource_g7xkr"), SubResource("Resource_hme4m"), SubResource("Resource_t2np8")])
 
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]
 
