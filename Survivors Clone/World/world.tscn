@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bbvhxvk65o8el" path="res://Enemy/enemy_pepper.tscn" id="6_rumbx"]
 [ext_resource type="PackedScene" uid="uid://bok7kd2psi5gl" path="res://Enemy/enemy_carrot.tscn" id="7_pwb0s"]
 [ext_resource type="PackedScene" uid="uid://hcjnrdsb563h" path="res://Enemy/enemy_juggernaut.tscn" id="8_ltymd"]
-[ext_resource type="PackedScene" uid="uid://btf7clk4jja87" path="res://Enemy/enemy_super.tscn" id="9_xs42h"]
+[ext_resource type="PackedScene" uid="uid://btf7clk4jja87" path="res://Enemy/enemy_chefboss.tscn" id="9_xs42h"]
 [ext_resource type="AudioStream" uid="uid://cmr8aspkbu5uh" path="res://Audio/Music/main level music.wav" id="10_a3ktd"]
 [ext_resource type="PackedScene" uid="uid://dba7neotcwg38" path="res://Enemy/enemy_hot.tscn" id="10_gkij1"]
 [ext_resource type="PackedScene" uid="uid://bc15g3w7dpblk" path="res://Enemy/enemy_sharp.tscn" id="10_vqibq"]

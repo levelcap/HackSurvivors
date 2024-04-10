@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8vidfvxwf1gt"]
+[gd_scene load_steps=10 format=3 uid="uid://c8vidfvxwf1gt"]
 
 [ext_resource type="Script" path="res://Utility/conversation.gd" id="1_uyht2"]
 [ext_resource type="Texture2D" uid="uid://dehtsxm3k1twy" path="res://Textures/Player/player.png" id="2_oygb3"]
 [ext_resource type="Texture2D" uid="uid://b8csq76oki1ta" path="res://Textures/Enemy/chef_boss.png" id="3_bgu5s"]
 [ext_resource type="Texture2D" uid="uid://h2e73eybkm86" path="res://Textures/Wall/ground_shadow.png" id="3_tsb13"]
 [ext_resource type="Texture2D" uid="uid://du5h3kfdugcne" path="res://Textures/GUI/vs.png" id="5_1sjlk"]
+[ext_resource type="Texture2D" uid="uid://nh0vkrj8d5o4" path="res://Textures/Enemy/shadowy.png" id="5_foa03"]
 [ext_resource type="AudioStream" uid="uid://dm14x014gr5t0" path="res://Audio/SoundEffect/new/whoosh-6316(1).mp3" id="6_g8uat"]
 [ext_resource type="AudioStream" uid="uid://myun7ki4wopi" path="res://Audio/SoundEffect/new/boss-appears.mp3" id="7_37d5v"]
 [ext_resource type="AudioStream" uid="uid://ih8xegdw6f25" path="res://Audio/SoundEffect/new/blah.wav" id="8_f5sdo"]
@@ -12,7 +13,7 @@
 [node name="Conversation" type="Node2D"]
 process_mode = 2
 z_index = 4096
-position = Vector2(-306, -130)
+position = Vector2(-69, 35)
 script = ExtResource("1_uyht2")
 
 [node name="BossBackground" type="Sprite2D" parent="."]
@@ -24,9 +25,10 @@ texture = ExtResource("3_tsb13")
 [node name="CharacterOneGroup" type="CanvasGroup" parent="."]
 unique_name_in_owner = true
 visible = false
-position = Vector2(-112, 8)
+position = Vector2(-67, -23)
 
 [node name="TextSprite" type="Sprite2D" parent="CharacterOneGroup"]
+visible = false
 modulate = Color(0, 0, 0, 0.784314)
 position = Vector2(244, 202.38)
 scale = Vector2(0.712889, 0.4269)
@@ -44,6 +46,7 @@ fit_content = true
 visible_characters = 0
 
 [node name="CharacterOne" type="Sprite2D" parent="CharacterOneGroup"]
+visible = false
 position = Vector2(22, 338.38)
 rotation = 3.14159
 scale = Vector2(0.25, -0.25)
@@ -52,34 +55,43 @@ hframes = 4
 
 [node name="CharacterTwoGroup" type="CanvasGroup" parent="."]
 unique_name_in_owner = true
-visible = false
-position = Vector2(181, 0)
+position = Vector2(241, -17)
 
 [node name="TextSprite" type="Sprite2D" parent="CharacterTwoGroup"]
+visible = false
 modulate = Color(0, 0, 0, 0.784314)
-position = Vector2(413, 225.2)
+position = Vector2(390, 233)
 scale = Vector2(0.665, 0.37)
 texture = ExtResource("3_tsb13")
 
 [node name="CharacterTwoText" type="RichTextLabel" parent="CharacterTwoGroup"]
 unique_name_in_owner = true
-offset_left = 307.0
-offset_top = 172.0
-offset_right = 491.0
-offset_bottom = 278.0
+offset_left = 284.0
+offset_top = 179.8
+offset_right = 468.0
+offset_bottom = 285.8
 scale = Vector2(1.168, 1)
 fit_content = true
 visible_characters = 0
 
 [node name="CharacterTwo" type="Sprite2D" parent="CharacterTwoGroup"]
+visible = false
 position = Vector2(596, 216.2)
 rotation = 3.14159
 scale = Vector2(0.4, -0.4)
 texture = ExtResource("3_bgu5s")
 hframes = 2
 
+[node name="ShadowMan" type="Sprite2D" parent="CharacterTwoGroup"]
+visible = false
+position = Vector2(620, 336.2)
+rotation = 3.14159
+scale = Vector2(0.4, -0.4)
+texture = ExtResource("5_foa03")
+flip_h = true
+
 [node name="Versus" type="Sprite2D" parent="."]
-position = Vector2(306, -171)
+position = Vector2(370, -172)
 texture = ExtResource("5_1sjlk")
 
 [node name="snd_whoosh" type="AudioStreamPlayer" parent="."]

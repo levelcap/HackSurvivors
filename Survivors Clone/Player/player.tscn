@@ -268,7 +268,6 @@ vertical_alignment = 1
 
 [node name="OverlayLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
-follow_viewport_enabled = true
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]

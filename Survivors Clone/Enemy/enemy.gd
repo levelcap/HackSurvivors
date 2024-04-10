@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var experience = 1
 @export var enemy_damage = 1
 @export var flip = true
+@export var boss = false
 var knockback = Vector2.ZERO
 
 @onready var player = get_tree().get_first_node_in_group("player")
@@ -20,11 +21,13 @@ var death_anim = preload("res://Enemy/explosion.tscn")
 var exp_gem = preload("res://Objects/experience_gem.tscn")
 
 signal remove_from_array(object)
+signal boss_death
 
 
 func _ready():
 	anim.play("walk")
 	hitBox.damage = enemy_damage
+	connect("boss_death", Callable(player,"boss_death"))
 
 func _physics_process(_delta):
 	knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
@@ -40,6 +43,8 @@ func _physics_process(_delta):
 
 func death():
 	emit_signal("remove_from_array",self)
+	if boss:
+		emit_signal("boss_death")
 	var enemy_death = death_anim.instantiate()
 	enemy_death.global_position = global_position
 	get_parent().call_deferred("add_child",enemy_death)

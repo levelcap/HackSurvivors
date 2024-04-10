@@ -284,18 +284,10 @@ func death():
 	var tween = deathPanel.create_tween()
 	tween.tween_property(deathPanel,"position",Vector2(220,50),3.0).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	tween.play()
-	if time >= 300:
-		lblResult.text = """A shadowy figure appears! 
-		'Have you seen anything shady? 
-		Anyone talking to anyone they shouldn’t be?' 
-		…Who is this? 
-		Talking to whom?"""
-		sndVictory.play()
-	else:
-		lblResult.text = """It happens! 
-		Nerves get to everyone. 
-		Keep trying!"""
-		sndLose.play()
+	lblResult.text = """It happens! 
+	Nerves get to everyone. 
+	Keep trying!"""
+	sndLose.play()
 		
 func bossFight(enemy_spawn):
 	var conversation = conversationScene.instantiate()
@@ -312,10 +304,30 @@ func play_conversation():
 	var textTwo = """WHO ARE YOU TALKING TO?? \n\n GET TO F****NG WORK!!!"""
 	%OverlayLayer.add_child(conversation)
 	get_tree().paused = true
-	await conversation.playText("one", textOne)
-	await conversation.playText("two", textTwo)	
+	await conversation.playText("player", textOne)
+	await conversation.playText("chefboss", textTwo)	
 	get_tree().paused = false
 	%OverlayLayer.remove_child(conversation)
+	
+func boss_death():
+	var conversation = conversationScene.instantiate()
+	var textOne = "Whoa! A shadowy figure!"
+	var textTwo = "Have you seen anything shady? Anyone talking to anyone they shouldn’t be?"
+	%OverlayLayer.add_child(conversation)
+	get_tree().paused = true
+	await conversation.playText("player", textOne)
+	await conversation.playText("shadowy", textTwo)	
+	
+	get_tree().paused = false
+	%OverlayLayer.remove_child(conversation)
+	deathPanel.visible = true
+	emit_signal("playerdeath")
+	get_tree().paused = true
+	var tween = deathPanel.create_tween()
+	tween.tween_property(deathPanel,"position",Vector2(220,50),3.0).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	tween.play()
+	lblResult.text = "Who was that? Talking to who?\n\nWell... at least your survived the day"
+	sndLose.play()
 
 func _on_btn_menu_click_end():
 	get_tree().paused = false
