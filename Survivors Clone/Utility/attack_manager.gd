@@ -12,6 +12,7 @@ var whisk = preload("res://Player/Attack/whisk.tscn")
 
 #Permanent weapons
 var active_salt = null
+var active_torch = null
 
 var active_weapons = {}
 
@@ -86,7 +87,7 @@ func add_weapon(weapon_name):
 	elif weapon_name == "torch":
 		var weapon_attack = weapon["obj"].instantiate()
 		weapon_attack.level = weapon["level"]
-		active_salt = weapon_attack
+		active_torch = weapon_attack
 		add_child(weapon_attack)		
 	else:
 		var timer := Timer.new()
@@ -111,6 +112,10 @@ func upgrade_weapon(weapon_name):
 		remove_child(active_salt)
 		active_salt.level += 1
 		add_child(active_salt)
+	elif weapon_name == "torch":
+		remove_child(active_torch)
+		active_torch.level += 1
+		add_child(active_torch)
 	else: 
 		var weapon = active_weapons[weapon_name]
 		weapon["level"] += 1

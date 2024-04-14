@@ -27,11 +27,13 @@ stream = ExtResource("3_lb7l1")
 
 [node name="Sprite2D" type="Sprite2D" parent="TorchPivot"]
 position = Vector2(35, 0)
+rotation = 0.576678
 scale = Vector2(0.0493608, 0.0493608)
 texture = ExtResource("3_ux71y")
 
 [node name="FirePoint" type="Marker2D" parent="TorchPivot/Sprite2D"]
 unique_name_in_owner = true
 position = Vector2(65.0521, -156.125)
+rotation = 1.70647
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

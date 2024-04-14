@@ -53,7 +53,7 @@ func update_blowtorch():
 
 func _physics_process(delta):
 	if active_enemy && is_instance_valid(active_enemy):
-		look_at(active_enemy.global_position)
+		rotation = look_at_node(self, active_enemy, delta*3)
 		
 func enemy_in_range(enemy):
 	if not active_enemy:
@@ -78,3 +78,7 @@ func _on_attack_timer_timeout():
 		flame.knockback = knockback_amount
 		flame.scale = Vector2(1.0, 1.0) * attack_size
 		%FirePoint.add_child(flame)
+
+func look_at_node(source: Node2D, target: Node2D, delta: float):
+	var direction = target.global_position - source.global_position
+	return lerp_angle(source.global_rotation, direction.angle(), delta)
