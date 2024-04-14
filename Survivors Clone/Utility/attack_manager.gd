@@ -3,11 +3,12 @@ extends Node2D
 @onready var player = get_tree().get_first_node_in_group("player")
 
 #Attacks
-var knife = preload("res://Player/Attack/ice_spear.tscn")
+var knife = preload("res://Player/Attack/knife.tscn")
 var mop = preload("res://Player/Attack/mop.tscn")
 var torch = preload("res://Player/Attack/blowtorch.tscn")
 var china = preload("res://Player/Attack/fine_china.tscn")
 var salt = preload("res://Player/Attack/salt.tscn")
+var whisk = preload("res://Player/Attack/whisk.tscn")
 
 #Permanent weapons
 var active_salt = null
@@ -59,6 +60,15 @@ var WEAPONS = {
 		"level": 0,
 		"time": 1.5,
 		"attack_time": .075,
+	},	
+	"whisk": {
+		"obj": whisk,
+		"ammo": 0,
+		"baseammo": 0,
+		"speed": 1,
+		"level": 0,
+		"time": 4,
+		"attack_time": .5,
 	},	
 }
 	
@@ -114,6 +124,9 @@ func _on_timer_timeout(weapon_name):
 	
 func _on_attack_timer_timeout(weapon_name):
 	var weapon = active_weapons[weapon_name]
+	print(weapon_name)
+	print(weapon)
+	print(weapon["level"])
 	if weapon["ammo"] > 0:
 		var weapon_attack = weapon["obj"].instantiate()
 		weapon_attack.level = weapon["level"]

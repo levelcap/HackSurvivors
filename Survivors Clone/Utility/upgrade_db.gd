@@ -195,6 +195,38 @@ const UPGRADES = {
 		"prerequisite": ["salt3"],
 		"type": "weapon"		
 	},	
+	"whisk1": {
+		"icon": WEAPON_PATH + "whisk_icon.png",
+		"displayname": "Whisky Business",
+		"details": "Your trusty whisk spins around you",
+		"level": "Level: 1",
+		"prerequisite": [],
+		"type": "weapon"		
+	},
+	"whisk2": {
+		"icon": WEAPON_PATH + "whisk_icon.png",
+		"displayname": "Whisky Business",
+		"details": "Your trusty whisk spins around you",
+		"level": "Level: 2",
+		"prerequisite": ["whisk1"],
+		"type": "weapon"		
+	},
+	"whisk3": {
+		"icon": WEAPON_PATH + "seasonsgreetings.png",
+		"displayname": "Whisky Business",
+		"details": "Your trusty whisk spins around you",
+		"level": "Level: 3",
+		"prerequisite": ["whisk2"],
+		"type": "weapon"		
+	},		
+	"whisk4": {
+		"icon": WEAPON_PATH + "seasonsgreetings.png",
+		"displayname": "Whisky Business",
+		"details": "Your trusty whisk spins around you",
+		"level": "Level: 4",
+		"prerequisite": ["whisk4"],
+		"type": "weapon"		
+	},	
 	"apron1": {
 		"icon": ICON_PATH + "apron.png",
 		"displayname": "Apron",

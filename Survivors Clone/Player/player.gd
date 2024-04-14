@@ -61,7 +61,9 @@ var enemy_close = []
 signal playerdeath
 
 func _ready():
-	upgrade_character("torch1")
+	upgrade_character("whisk1")
+	upgrade_character("whisk2")
+	upgrade_character("whisk3")
 	set_expbar(experience, calculate_experiencecap())
 	_on_hurt_box_hurt(0,0,0)
 	#if not PlayerInfo.dayOnePlayed:
@@ -208,6 +210,7 @@ func upgrade_character(upgrade):
 		_:
 			var num = upgrade.right(1)
 			var weapon_name = upgrade.substr(0, upgrade.length() - 1)
+			print(weapon_name)
 			#assume weapon
 			if num == "1":
 				attackManager.add_weapon(weapon_name)
