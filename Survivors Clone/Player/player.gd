@@ -61,14 +61,11 @@ var enemy_close = []
 signal playerdeath
 
 func _ready():
-	upgrade_character("torch1")
-	upgrade_character("torch2")
-	upgrade_character("torch3")
+	upgrade_character("knife1")
 	set_expbar(experience, calculate_experiencecap())
 	_on_hurt_box_hurt(0,0,0)
-	#if not PlayerInfo.dayOnePlayed:
-		#play_conversation()	
-	
+	if not PlayerInfo.dayOnePlayed:
+		play_conversation()		
 
 func _physics_process(delta):
 	movement()
@@ -304,7 +301,7 @@ func bossFight(enemy_spawn):
 func play_conversation():
 	var conversation = conversationScene.instantiate()
 	var textOne = """My first day! I'm pretty nervous... but what could go wrong?"""
-	var textTwo = """WHO ARE YOU TALKING TO?? \n\n GET TO F****NG WORK!!!"""
+	var textTwo = """WHO ARE YOU TALKING TO??\n\nGET TO F****NG WORK!!!"""
 	%OverlayLayer.add_child(conversation)
 	get_tree().paused = true
 	await conversation.playText("player", textOne)
