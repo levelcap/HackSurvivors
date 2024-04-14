@@ -1,14 +1,19 @@
 extends Area2D
 
+const FLAME = preload("res://Player/Attack/torch_flame.tscn")
+
 var level = 1
-var hp = 9999
-var duration = 2.0
+var speed = 50
+var range = 50
 var damage = 10
 var knockback_amount = 100
 var attack_size = 1.0
 
 var rng = RandomNumberGenerator.new()
 var random_position = rng.randi_range(0, 1)
+
+var active_enemy = null
+var enemies_in_range = []
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var sprite = $Sprite2D
@@ -17,54 +22,59 @@ var random_position = rng.randi_range(0, 1)
 signal remove_from_array(object)
 
 func _ready():
-	self.global_position = Vector2(1,1)
 	update_blowtorch()
 
 func update_blowtorch():
-	level = player.attackManager.active_weapons["torch"].level
 	match level:
 		1:
-			hp = 9999
-			duration = 2.0
+			speed = 50
+			range = 50
 			damage = 10
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + player.spell_size)
 		2:
-			hp = 9999
-			duration = 4.0
-			damage = 20
+			speed = 20
+			range = 100
+			damage = 15
 			knockback_amount = 100
 			attack_size = 1.0 * (1 + player.spell_size)
 		3:
-			hp = 9999
-			duration = 6.0
+			speed = 20
+			range = 120
 			damage = 30
 			knockback_amount = 150
-			attack_size = 1.0 * (1 + player.spell_size)
+			attack_size = 1.5 * (1 + player.spell_size)
 		4:
-			hp = 9999
-			duration = 10.0
-			damage = 50
-			knockback_amount = 200
-			attack_size = 1.0 * (1 + player.spell_size)
-			
-	scale = Vector2(1.0, 1.0) * attack_size
-	attackTimer.wait_time = duration
+			speed = 20
+			range = 120
+			damage = 30
+			knockback_amount = 150
+			attack_size = 2.0 * (1 + player.spell_size)
 
 func _physics_process(delta):
-	var position_change = Vector2(25, 0)
-	sprite.flip_h = true
-	if random_position == 1:
-		position_change = Vector2(-25, 0)
-		sprite.flip_h = false
-	position = player.position + position_change
-	
-func enemy_hit(charge = 1):
-	hp -= charge
-	if hp <= 0:
-		emit_signal("remove_from_array",self)
-		queue_free()
+	if active_enemy && is_instance_valid(active_enemy):
+		look_at(active_enemy.global_position)
+		
+func enemy_in_range(enemy):
+	if not active_enemy:
+		active_enemy = enemy
+	else:
+		enemies_in_range.append(enemy)
+		
+func remove_enemy():
+	if (enemies_in_range.size() > 0):
+		active_enemy = enemies_in_range.pop_front()
+	else:
+		active_enemy = null
 
 func _on_attack_timer_timeout():
-	emit_signal("remove_from_array",self)
-	queue_free()
+	if (active_enemy):
+		var flame = FLAME.instantiate()
+		flame.global_position = %FirePoint.global_position
+		flame.rotation = rotation
+		flame.speed = speed
+		flame.range = range
+		flame.damage = damage
+		flame.knockback = knockback_amount
+		flame.scale = Vector2(1.0, 1.0) * attack_size
+		%FirePoint.add_child(flame)

@@ -72,8 +72,12 @@ func add_weapon(weapon_name):
 		var weapon_attack = weapon["obj"].instantiate()
 		weapon_attack.level = weapon["level"]
 		active_salt = weapon_attack
-		add_child(weapon_attack)
-		
+		add_child(weapon_attack)		
+	elif weapon_name == "torch":
+		var weapon_attack = weapon["obj"].instantiate()
+		weapon_attack.level = weapon["level"]
+		active_salt = weapon_attack
+		add_child(weapon_attack)		
 	else:
 		var timer := Timer.new()
 		var attack_timer := Timer.new()

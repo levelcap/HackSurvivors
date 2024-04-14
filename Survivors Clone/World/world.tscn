@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://du6qbgqucaqov"]
+[gd_scene load_steps=31 format=3 uid="uid://du6qbgqucaqov"]
 
 [ext_resource type="Texture2D" uid="uid://b5o40jqpeqglb" path="res://Textures/kitchen_tile.png" id="1_3eqd4"]
 [ext_resource type="PackedScene" uid="uid://dncgepmkc4jf4" path="res://Player/player.tscn" id="2_40uwv"]
@@ -13,12 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://dba7neotcwg38" path="res://Enemy/enemy_hot.tscn" id="10_gkij1"]
 [ext_resource type="PackedScene" uid="uid://bc15g3w7dpblk" path="res://Enemy/enemy_sharp.tscn" id="10_vqibq"]
 [ext_resource type="Script" path="res://Audio/Music/snd_Music.gd" id="11_ovtx6"]
-[ext_resource type="PackedScene" uid="uid://bfiy14mycchjg" path="res://Utility/helper_spawner.tscn" id="12_238vd"]
 [ext_resource type="PackedScene" uid="uid://bw5tplacy8c76" path="res://Wall/wall.tscn" id="12_kfr5j"]
 [ext_resource type="PackedScene" uid="uid://dnupp55rmyew1" path="res://Enemy/enemy_behind.tscn" id="12_monei"]
 [ext_resource type="PackedScene" uid="uid://daht8whbvbdae" path="res://Enemy/enemy_megabubble.tscn" id="13_0632a"]
-[ext_resource type="PackedScene" uid="uid://nt0ls1a3s5aq" path="res://Helper/helper_merchant.tscn" id="13_mhixp"]
-[ext_resource type="Script" path="res://Utility/helper_info.gd" id="14_wirp0"]
 [ext_resource type="Script" path="res://Wall/wall.gd" id="16_67qi3"]
 
 [sub_resource type="Resource" id="Resource_03m25"]
@@ -138,11 +135,6 @@ enemy_num = 1
 enemy_spawn_delay = 0
 boss = true
 
-[sub_resource type="Resource" id="Resource_sfcrw"]
-script = ExtResource("14_wirp0")
-time_start = 1
-helper = ExtResource("13_mhixp")
-
 [node name="World" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -165,9 +157,6 @@ stream = ExtResource("10_a3ktd")
 volume_db = -10.0
 autoplay = true
 script = ExtResource("11_ovtx6")
-
-[node name="HelperSpawner" parent="." instance=ExtResource("12_238vd")]
-helpers = Array[ExtResource("14_wirp0")]([SubResource("Resource_sfcrw")])
 
 [node name="Wall" parent="." instance=ExtResource("12_kfr5j")]
 position = Vector2(-1972, -1978)

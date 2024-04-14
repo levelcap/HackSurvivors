@@ -30,4 +30,5 @@ func _ready():
 	scale = Vector2(1.0, 1.0) * attack_size
 
 func _physics_process(delta):
-	position = player.global_position
+	pass
+	#position = player.global_position
