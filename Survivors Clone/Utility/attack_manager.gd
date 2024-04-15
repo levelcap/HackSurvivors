@@ -9,10 +9,12 @@ var torch = preload("res://Player/Attack/blowtorch.tscn")
 var china = preload("res://Player/Attack/fine_china.tscn")
 var salt = preload("res://Player/Attack/salt.tscn")
 var whisk = preload("res://Player/Attack/whisk.tscn")
+var rolling_pin = preload("res://Player/Attack/rolling_pin.tscn")
 
 #Permanent weapons
 var active_salt = null
 var active_torch = null
+var active_mop = null
 
 var active_weapons = {}
 
@@ -71,6 +73,15 @@ var WEAPONS = {
 		"time": 4,
 		"attack_time": .5,
 	},	
+	"rolling_pin": {
+		"obj": rolling_pin,
+		"ammo": 0,
+		"baseammo": 0,
+		"speed": 1.5,
+		"level": 0,
+		"time": 1.5,
+		"attack_time": .2,
+	},		
 }
 	
 func _process(delta):
@@ -89,6 +100,12 @@ func add_weapon(weapon_name):
 		weapon_attack.level = weapon["level"]
 		active_torch = weapon_attack
 		add_child(weapon_attack)		
+	elif weapon_name == "mop":
+		var weapon_attack = weapon["obj"].instantiate()
+		weapon_attack.level = weapon["level"]
+		active_mop = weapon_attack
+		print("Adding mop")
+		add_child(weapon_attack)
 	else:
 		var timer := Timer.new()
 		var attack_timer := Timer.new()
@@ -116,6 +133,10 @@ func upgrade_weapon(weapon_name):
 		remove_child(active_torch)
 		active_torch.level += 1
 		add_child(active_torch)
+	elif weapon_name == "mop":
+		remove_child(active_mop)
+		active_mop.level += 1
+		add_child(active_mop)		
 	else: 
 		var weapon = active_weapons[weapon_name]
 		weapon["level"] += 1

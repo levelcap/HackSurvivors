@@ -10,12 +10,6 @@ var experience = 0
 var experience_level = 1
 var collected_experience = 0
 
-#Attacks
-var javelin = preload("res://Player/Attack/javelin.tscn")
-
-#AttackNodes
-@onready var javelinBase = get_node("%JavelinBase")
-
 #UPGRADES
 var collected_upgrades = []
 var upgrade_options = []
@@ -24,10 +18,6 @@ var speed = 0
 var spell_cooldown = 0
 var spell_size = 0
 var additional_attacks = 0
-
-#Javelin
-var javelin_ammo = 0
-var javelin_level = 0
 
 #Enemy Related
 var enemy_close = []
@@ -64,8 +54,8 @@ func _ready():
 	upgrade_character("knife1")
 	set_expbar(experience, calculate_experiencecap())
 	_on_hurt_box_hurt(0,0,0)
-	if not PlayerInfo.dayOnePlayed:
-		play_conversation()		
+	#if not PlayerInfo.dayOnePlayed:
+		#play_conversation()		
 
 func _physics_process(delta):
 	movement()
@@ -92,9 +82,8 @@ func movement():
 	move_and_slide()
 
 func attack():
-	if javelin_level > 0:
-		spawn_javelin()
-
+	pass
+	
 func _on_hurt_box_hurt(damage, _angle, _knockback):
 	hp -= clamp(damage-armor, 1.0, 999.0)
 	healthBar.max_value = maxhp
@@ -102,20 +91,6 @@ func _on_hurt_box_hurt(damage, _angle, _knockback):
 	if hp <= 0:
 		death()
 
-func spawn_javelin():
-	var get_javelin_total = javelinBase.get_child_count()
-	var calc_spawns = (javelin_ammo + additional_attacks) - get_javelin_total
-	while calc_spawns > 0:
-		var javelin_spawn = javelin.instantiate()
-		javelin_spawn.global_position = global_position
-		javelinBase.add_child(javelin_spawn)
-		calc_spawns -= 1
-	#Upgrade Javelin
-	var get_javelins = javelinBase.get_children()
-	for i in get_javelins:
-		if i.has_method("update_javelin"):
-			i.update_javelin()
-			
 func _on_enemy_detection_area_body_entered(body):
 	if not enemy_close.has(body):
 		enemy_close.append(body)
@@ -182,15 +157,6 @@ func levelup():
 
 func upgrade_character(upgrade):
 	match upgrade:
-		"javelin1":
-			javelin_level = 1
-			javelin_ammo = 1
-		"javelin2":
-			javelin_level = 2
-		"javelin3":
-			javelin_level = 3
-		"javelin4":
-			javelin_level = 4
 		"apron1","apron2","apron3","apron4":
 			armor += 1
 		"speed1","speed2","speed3","speed4":

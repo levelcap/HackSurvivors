@@ -35,18 +35,18 @@ radius = 15.0333
 motion_mode = 1
 script = ExtResource("1_37q80")
 
-[node name="CharacterShadowSprite" type="Sprite2D" parent="."]
-modulate = Color(0.156863, 0.156863, 0.156863, 0.745098)
-position = Vector2(-1, 20)
-scale = Vector2(0.07875, 0.0625)
-texture = ExtResource("2_fel6v")
-
 [node name="CharacterSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("2_tjd32")
 flip_h = true
 hframes = 4
+
+[node name="CharacterShadowSprite" type="Sprite2D" parent="."]
+modulate = Color(0.156863, 0.156863, 0.156863, 0.745098)
+position = Vector2(-1, 20)
+scale = Vector2(0.07875, 0.0625)
+texture = ExtResource("2_fel6v")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -69,9 +69,6 @@ shape = SubResource("RectangleShape2D_yfi4i")
 
 [node name="Attack" type="Node2D" parent="."]
 
-[node name="JavelinBase" type="Node2D" parent="Attack"]
-unique_name_in_owner = true
-
 [node name="AttackManager" parent="." instance=ExtResource("5_ijdha")]
 unique_name_in_owner = true
 
@@ -89,6 +86,7 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+scale = Vector2(1.75, 1.75)
 shape = SubResource("CircleShape2D_p2554")
 
 [node name="CollectArea" type="Area2D" parent="."]

@@ -4,7 +4,7 @@ const ICON_PATH = "res://Textures/Items/Upgrades/"
 const WEAPON_PATH = "res://Textures/Items/Weapons/"
 const UPGRADES = {
 	"mop1": {
-		"icon": WEAPON_PATH + "mop_main.png",
+		"icon": WEAPON_PATH + "mop_icon.png",
 		"displayname": "Slip ‘n Slide",
 		"details": " Oops, I guess I forgot to put up a “Caution, Wet Floor” Sign. Hope no one slips…",
 		"level": "Level: 1",
@@ -12,7 +12,7 @@ const UPGRADES = {
 		"type": "weapon"
 	},
 	"mop2": {
-		"icon": WEAPON_PATH + "mop_main.png",
+		"icon": WEAPON_PATH + "mop_icon.png",
 		"displayname": "Slip ‘n Slide",
 		"details": "The puddles just keep growing.  ",
 		"level": "Level: 2",
@@ -20,7 +20,7 @@ const UPGRADES = {
 		"type": "weapon"
 	},
 	"mop3": {
-		"icon": WEAPON_PATH + "mop_main.png",
+		"icon": WEAPON_PATH + "mop_icon.png",
 		"displayname": "Slip ‘n Slide",
 		"details": "The puddles just keep growing.  ",
 		"level": "Level: 3",
@@ -28,7 +28,7 @@ const UPGRADES = {
 		"type": "weapon"
 	},
 	"mop4": {
-		"icon": WEAPON_PATH + "mop_main.png",
+		"icon": WEAPON_PATH + "mop_icon.png",
 		"displayname": "Slip ‘n Slide",
 		"details": "The puddles just keep growing.  ",
 		"level": "Level: 4",
@@ -68,7 +68,7 @@ const UPGRADES = {
 		"type": "weapon"
 	},
 	"knife1": {
-		"icon": WEAPON_PATH + "starting_weapon_icon.png",
+		"icon": WEAPON_PATH + "knife_icon.png",
 		"displayname": "Stabitha Christie",
 		"details": "This is your pride and joy. It cuts and it chops, sometimes food and sometimes your own fingers.",
 		"level": "Level: 1",
@@ -76,7 +76,7 @@ const UPGRADES = {
 		"type": "weapon"
 	},
 	"knife2": {
-		"icon": WEAPON_PATH + "starting_weapon_icon.png",
+		"icon": WEAPON_PATH + "knife_icon.png",
 		"displayname": "Stabitha Christie",
 		"details": "More knives!",
 		"level": "Level: 2",
@@ -84,7 +84,7 @@ const UPGRADES = {
 		"type": "weapon"
 	},
 	"knife3": {
-		"icon": WEAPON_PATH + "starting_weapon_icon.png",
+		"icon": WEAPON_PATH + "knife_icon.png",
 		"displayname": "Stabitha Christie",
 		"details": "Sharper knives!",
 		"level": "Level: 3",
@@ -92,43 +92,11 @@ const UPGRADES = {
 		"type": "weapon"
 	},
 	"knife4": {
-		"icon": WEAPON_PATH + "starting_weapon_icon.png",
+		"icon": WEAPON_PATH + "knife_icon.png",
 		"displayname": "Stabitha Christie",
 		"details": "Even more knives!",
 		"level": "Level: 4",
 		"prerequisite": ["knife3"],
-		"type": "weapon"
-	},
-	"javelin1": {
-		"icon": WEAPON_PATH + "javelin_3_new_attack.png",
-		"displayname": "Javelin",
-		"details": "A magical javelin will follow you attacking enemies in a straight line",
-		"level": "Level: 1",
-		"prerequisite": [],
-		"type": "weapon"
-	},
-	"javelin2": {
-		"icon": WEAPON_PATH + "javelin_3_new_attack.png",
-		"displayname": "Javelin",
-		"details": "The javelin will now attack an additional enemy per attack",
-		"level": "Level: 2",
-		"prerequisite": ["javelin1"],
-		"type": "weapon"
-	},
-	"javelin3": {
-		"icon": WEAPON_PATH + "javelin_3_new_attack.png",
-		"displayname": "Javelin",
-		"details": "The javelin will attack another additional enemy per attack",
-		"level": "Level: 3",
-		"prerequisite": ["javelin2"],
-		"type": "weapon"
-	},
-	"javelin4": {
-		"icon": WEAPON_PATH + "javelin_3_new_attack.png",
-		"displayname": "Javelin",
-		"details": "The javelin now does + 5 damage per attack and causes 20% additional knockback",
-		"level": "Level: 4",
-		"prerequisite": ["javelin3"],
 		"type": "weapon"
 	},
 	"china1": {
@@ -227,6 +195,38 @@ const UPGRADES = {
 		"prerequisite": ["whisk4"],
 		"type": "weapon"		
 	},	
+	"rolling_pin1": {
+		"icon": WEAPON_PATH + "rolling_pin_icon.png",
+		"displayname": "Roller Derby",
+		"details": "Rollin rollin rollin",
+		"level": "Level: 1",
+		"prerequisite": [],
+		"type": "weapon"		
+	},
+	"rolling_pin2": {
+		"icon": WEAPON_PATH + "rolling_pin_icon.png",
+		"displayname": "Roller Derby",
+		"details": "Rollin rollin rollin",
+		"level": "Level: 2",
+		"prerequisite": ["rolling_pin1"],
+		"type": "weapon"		
+	},
+	"rolling_pin3": {
+		"icon": WEAPON_PATH + "rolling_pin_icon.png",
+		"displayname": "Roller Derby",
+		"details": "Rollin rollin rollin",
+		"level": "Level: 3",
+		"prerequisite": ["rolling_pin2"],
+		"type": "weapon"		
+	},		
+	"rolling_pin4": {
+		"icon": WEAPON_PATH + "rolling_pin_icon.png",
+		"displayname": "Roller Derby",
+		"details": "Rollin rollin rollin",
+		"level": "Level: 3",
+		"prerequisite": ["rolling_pin3"],
+		"type": "weapon"		
+	},		
 	"apron1": {
 		"icon": ICON_PATH + "apron.png",
 		"displayname": "Apron",

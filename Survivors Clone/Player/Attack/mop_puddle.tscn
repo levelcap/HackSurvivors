@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxunqwtfrpxid"]
+
+[ext_resource type="Script" path="res://Player/Attack/mop_puddle.gd" id="1_0dyy8"]
+[ext_resource type="Texture2D" uid="uid://ctea67dd42sqa" path="res://Textures/Items/Weapons/mop_puddle.png" id="2_df15u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8o67j"]
+radius = 13.2918
+
+[node name="MopPuddle" type="Area2D" groups=["attack"]]
+top_level = true
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_0dyy8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -4)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("2_df15u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+scale = Vector2(0.902813, 0.641304)
+shape = SubResource("CircleShape2D_8o67j")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

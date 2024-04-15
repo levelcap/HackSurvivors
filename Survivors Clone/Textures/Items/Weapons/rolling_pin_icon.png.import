@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8vxmgnj3ugwj"
-path="res://.godot/imported/Villain_1b.png-f1380d310c5bca430fe543ea75036544.ctex"
+uid="uid://chvoh26mx7tj7"
+path="res://.godot/imported/rolling_pin_icon.png-14f382dbe7b8ef21d2103df7ff283d22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Enemy/Villain_1b.png"
-dest_files=["res://.godot/imported/Villain_1b.png-f1380d310c5bca430fe543ea75036544.ctex"]
+source_file="res://Textures/Items/Weapons/rolling_pin_icon.png"
+dest_files=["res://.godot/imported/rolling_pin_icon.png-14f382dbe7b8ef21d2103df7ff283d22.ctex"]
 
 [params]
 

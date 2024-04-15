@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://wpliv06gy0pq"]
 
 [ext_resource type="Script" path="res://Player/Attack/knife.gd" id="1_cxwq5"]
-[ext_resource type="Texture2D" uid="uid://dc7v006yqbaae" path="res://Textures/Items/Weapons/Starting_Weapon_Mirror.png" id="2_5yhae"]
+[ext_resource type="Texture2D" uid="uid://bp12ycom8vlrc" path="res://Textures/Items/Weapons/knife.png" id="2_ydi42"]
 [ext_resource type="AudioStream" uid="uid://bmdbmw2221k2b" path="res://Audio/SoundEffect/new/weapon-knife.mp3" id="3_6yr2a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p4tiy"]
@@ -15,8 +15,8 @@ collision_mask = 0
 script = ExtResource("1_cxwq5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.02, 0.02)
-texture = ExtResource("2_5yhae")
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("2_ydi42")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.5, -2.5)

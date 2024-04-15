@@ -1,32 +1,65 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmnffmaj1oepq"]
+[gd_scene load_steps=8 format=3 uid="uid://bmnffmaj1oepq"]
 
 [ext_resource type="Script" path="res://Player/Attack/mop.gd" id="1_usq22"]
 [ext_resource type="Texture2D" uid="uid://b2jb6rp4cjolx" path="res://Textures/Items/Weapons/mop_main.png" id="2_i84af"]
 [ext_resource type="AudioStream" uid="uid://da55gt3ei1p4l" path="res://Audio/SoundEffect/new/weapon-mop.mp3" id="3_ojypi"]
-[ext_resource type="Texture2D" uid="uid://ctea67dd42sqa" path="res://Textures/Items/Weapons/mop_puddle.png" id="4_aaq2d"]
 [ext_resource type="AudioStream" uid="uid://bllnc630dss05" path="res://Audio/SoundEffect/new/enemy puddle.mp3" id="5_5uncu"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ban8g"]
+[sub_resource type="Animation" id="Animation_5tjob"]
+resource_name = "mop"
+loop_mode = 1
+step = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MopSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
 
-[node name="Mop" type="Area2D" groups=["attack"]]
-top_level = true
-scale = Vector2(0.1, 0.1)
-collision_layer = 4
-collision_mask = 0
+[sub_resource type="Animation" id="Animation_3ybfu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MopSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2pfbr"]
+_data = {
+"RESET": SubResource("Animation_3ybfu"),
+"mop": SubResource("Animation_5tjob")
+}
+
+[node name="Mop" type="Node2D" groups=["attack"]]
 script = ExtResource("1_usq22")
 
 [node name="MopSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(4, 2.08165e-12)
+position = Vector2(26, 15)
+scale = Vector2(0.065, 0.065)
 texture = ExtResource("2_i84af")
+hframes = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 10)
-shape = SubResource("CircleShape2D_ban8g")
+[node name="PuddlePoint" type="Marker2D" parent="MopSprite"]
+unique_name_in_owner = true
+position = Vector2(-8, 213.6)
+scale = Vector2(4, 4)
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
-one_shot = true
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 4.0
 autostart = true
 
 [node name="snd_play" type="AudioStreamPlayer" parent="."]
@@ -35,21 +68,13 @@ volume_db = -10.0
 pitch_scale = 5.0
 autoplay = true
 
-[node name="MopPuddle" type="Area2D" parent="."]
-unique_name_in_owner = true
-
-[node name="MopPuddleSprite" type="Sprite2D" parent="MopPuddle"]
-unique_name_in_owner = true
-visible = false
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("4_aaq2d")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MopPuddle"]
-position = Vector2(0, 10)
-shape = SubResource("CircleShape2D_ban8g")
-
 [node name="snd_collide" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_5uncu")
 volume_db = -10.0
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2pfbr")
+}
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

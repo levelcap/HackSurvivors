@@ -1,75 +1,43 @@
-extends Area2D
+extends Node2D
 
+const PUDDLE = preload("res://Player/Attack/mop_puddle.tscn")
 var level = 1
 var hp = 10
-var speed = 100
-var damage = 5
-var knockback_amount = 100
+var damage = 10
 var attack_size = 1.0
 
-var target = Vector2.ZERO
-var angle = Vector2.ZERO
-var totalChange = 0
-var state = 0
-
 @onready var player = get_tree().get_first_node_in_group("player")
-@onready var mopSprite = get_node("%MopSprite")
-@onready var mopPuddleSprite = get_node("%MopPuddleSprite")
-@onready var collisionSound = $snd_collide
-
-signal remove_from_array(object)
+@onready var anim = $AnimationPlayer
 
 func _ready():
-	angle = global_position.direction_to(target)
-	rotation = angle.angle() + deg_to_rad(135)
+	anim.play("mop")
+	
 	match level:
 		1:
-			hp = 3
-			speed = 100
 			damage = 10
-			knockback_amount = 100
 			attack_size = 1.0 * (1 + player.spell_size)
 		2:
-			hp = 5
-			speed = 100
 			damage = 15
-			knockback_amount = 100
 			attack_size = 1.0 * (1 + player.spell_size)
 		3:
-			hp = 7
-			speed = 100
-			damage = 20
-			knockback_amount = 100
-			attack_size = 1.0 * (1 + player.spell_size)
+			damage = 15
+			attack_size = 1.5 * (1 + player.spell_size)
 		4:
-			hp = 10
-			speed = 100
 			damage = 20
-			knockback_amount = 100
-			attack_size = 1.0 * (1 + player.spell_size)
+			attack_size = 2.0 * (1 + player.spell_size)
+			
+func _process(delta):
+	if player.sprite.flip_h:
+		global_position = player.global_position + Vector2(-55, 0)
+		$MopSprite.flip_h = true
+	else:
+		global_position = player.global_position + Vector2(0, 0)
+		$MopSprite.flip_h = false
 
-	
-	var tween = create_tween()
-	tween.tween_property(self,"scale",Vector2(1,1)*attack_size,1).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
-	tween.play()
-
-func _physics_process(delta):
-	var change = angle*speed*delta
-	totalChange += change.length()
-	if totalChange < 120:
-		position += angle*speed*delta
-	elif state == 0:
-		state = 1
-		mopSprite.visible = false
-		mopPuddleSprite.visible = true
-
-func enemy_hit(charge = 1):
-	hp -= charge
-	if hp <= 0:
-		emit_signal("remove_from_array",self)
-		queue_free()
-
-func _on_timer_timeout():
-	collisionSound.play()
-	emit_signal("remove_from_array",self)
-	queue_free()
+func _on_attack_timer_timeout():
+	print("Puddlin")
+	var puddle = PUDDLE.instantiate()
+	puddle.global_position = %PuddlePoint.global_position
+	puddle.damage = damage
+	puddle.scale = Vector2(1.0, 1.0) * attack_size
+	%PuddlePoint.add_child(puddle)

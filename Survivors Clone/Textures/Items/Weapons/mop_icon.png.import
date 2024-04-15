@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd7qd0p85wtqh"
-path="res://.godot/imported/Villain_2a.png-592f799d66224b658990a816b1135306.ctex"
+uid="uid://86agqenanbmh"
+path="res://.godot/imported/mop_icon.png-7b5e71910c9c5d25d7d0b99b34f02efa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Enemy/Villain_2a.png"
-dest_files=["res://.godot/imported/Villain_2a.png-592f799d66224b658990a816b1135306.ctex"]
+source_file="res://Textures/Items/Weapons/mop_icon.png"
+dest_files=["res://.godot/imported/mop_icon.png-7b5e71910c9c5d25d7d0b99b34f02efa.ctex"]
 
 [params]
 

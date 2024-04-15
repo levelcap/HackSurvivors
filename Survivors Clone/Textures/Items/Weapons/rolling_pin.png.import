@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blpjl8raquq2s"
-path="res://.godot/imported/juggernaut.png-d5a89c18e9dab51b476eb18ab8258fc7.ctex"
+uid="uid://c4k122sf80vou"
+path="res://.godot/imported/rolling_pin.png-51f33005f4f3583ffa66b377d8d927e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Enemy/juggernaut.png"
-dest_files=["res://.godot/imported/juggernaut.png-d5a89c18e9dab51b476eb18ab8258fc7.ctex"]
+source_file="res://Textures/Items/Weapons/rolling_pin.png"
+dest_files=["res://.godot/imported/rolling_pin.png-51f33005f4f3583ffa66b377d8d927e5.ctex"]
 
 [params]
 

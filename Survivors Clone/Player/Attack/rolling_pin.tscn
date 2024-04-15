@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://c282vqlm7nr8q"]
+
+[ext_resource type="Script" path="res://Player/Attack/rolling_pin.gd" id="1_mbeet"]
+[ext_resource type="Texture2D" uid="uid://c4k122sf80vou" path="res://Textures/Items/Weapons/rolling_pin.png" id="1_o0xqy"]
+[ext_resource type="AudioStream" uid="uid://bmdbmw2221k2b" path="res://Audio/SoundEffect/new/weapon-knife.mp3" id="3_kpdl7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p4tiy"]
+size = Vector2(98.7677, 400.307)
+
+[sub_resource type="Animation" id="Animation_tmpel"]
+resource_name = "rolling"
+length = 0.4
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_f3b2i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cjcpq"]
+_data = {
+"RESET": SubResource("Animation_f3b2i"),
+"rolling": SubResource("Animation_tmpel")
+}
+
+[node name="RollingPin" type="Area2D" groups=["attack"]]
+top_level = true
+scale = Vector2(0.1, 0.1)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_mbeet")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.90735e-06, 0)
+scale = Vector2(0.722515, 0.722515)
+texture = ExtResource("1_o0xqy")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-10, 0)
+rotation = -0.00307971
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_p4tiy")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_cjcpq")
+}
+
+[node name="snd_play" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_kpdl7")
+volume_db = -10.0
+pitch_scale = 5.0
+autoplay = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
