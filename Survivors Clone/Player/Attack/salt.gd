@@ -8,6 +8,8 @@ var knockback_amount = 50
 var attack_size = 1.0
 
 @onready var player = get_tree().get_first_node_in_group("player")
+@onready var snd_hit = $snd_hit
+
 signal remove_from_array(object)
 
 func _ready():
@@ -29,6 +31,7 @@ func _ready():
 			
 	scale = Vector2(1.0, 1.0) * attack_size
 
-func _physics_process(delta):
-	pass
-	#position = player.global_position
+func enemy_hit(charge):
+	snd_hit.play()
+	
+	

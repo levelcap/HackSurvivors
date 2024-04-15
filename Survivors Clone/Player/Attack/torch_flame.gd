@@ -4,7 +4,8 @@ var travelled_distance = 0
 var speed = 1
 var range = 1
 var damage = 1
-var knockback = 1
+var knockback_amount = 1
+var angle = Vector2.UP
 
 func _physics_process(delta):
 	var direction = Vector2.RIGHT.rotated(rotation)

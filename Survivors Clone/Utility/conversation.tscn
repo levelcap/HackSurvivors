@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://h2e73eybkm86" path="res://Textures/Wall/ground_shadow.png" id="3_tsb13"]
 [ext_resource type="Texture2D" uid="uid://du5h3kfdugcne" path="res://Textures/GUI/vs.png" id="5_1sjlk"]
 [ext_resource type="Texture2D" uid="uid://nh0vkrj8d5o4" path="res://Textures/Enemy/shadowy.png" id="5_foa03"]
-[ext_resource type="AudioStream" uid="uid://dm14x014gr5t0" path="res://Audio/SoundEffect/new/whoosh-6316(1).mp3" id="6_g8uat"]
+[ext_resource type="AudioStream" uid="uid://dm14x014gr5t0" path="res://Audio/SoundEffect/new/weapon-china.mp3" id="6_g8uat"]
 [ext_resource type="AudioStream" uid="uid://myun7ki4wopi" path="res://Audio/SoundEffect/new/boss-appears.mp3" id="7_37d5v"]
 [ext_resource type="AudioStream" uid="uid://ih8xegdw6f25" path="res://Audio/SoundEffect/new/blah.wav" id="8_f5sdo"]
 

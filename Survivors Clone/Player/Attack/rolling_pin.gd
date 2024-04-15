@@ -6,17 +6,19 @@ var speed = 100
 var damage = 5
 var knockback_amount = 100
 var attack_size = 1.0
-var direction = Vector2.RIGHT
+var angle = Vector2.RIGHT
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var anim = $AnimationPlayer
+@onready var snd_hit = $snd_hit
+
 signal remove_from_array(object)
 
 func _ready():
 	var vpr = get_viewport_rect().size * randf_range(1.0, 1.1)
-	direction = [Vector2.RIGHT, Vector2.LEFT].pick_random()
+	angle = [Vector2.RIGHT, Vector2.LEFT].pick_random()
 	var x_spawn = player.global_position.x + vpr.x/2
-	if direction == Vector2.RIGHT:
+	if angle == Vector2.RIGHT:
 		x_spawn = player.global_position.x - vpr.x/2
 		
 	var y_spawn = player.global_position.y + randf_range(-100.0, 100.0)
@@ -51,13 +53,20 @@ func _ready():
 		
 
 func _physics_process(delta):
-	position += direction * speed *delta
+	position += angle * speed *delta
 
 func enemy_hit(charge = 1):
+	snd_hit.play()
 	hp -= charge
 	if hp <= 0:
 		emit_signal("remove_from_array",self)
 		queue_free()
+		
+	# Bounce bounce!
+	if angle == Vector2.RIGHT:
+		angle = Vector2.LEFT
+	else:
+		angle = Vector2.RIGHT
 
 func _on_timer_timeout():
 	emit_signal("remove_from_array",self)

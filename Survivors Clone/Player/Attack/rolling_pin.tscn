@@ -2,10 +2,25 @@
 
 [ext_resource type="Script" path="res://Player/Attack/rolling_pin.gd" id="1_mbeet"]
 [ext_resource type="Texture2D" uid="uid://c4k122sf80vou" path="res://Textures/Items/Weapons/rolling_pin.png" id="1_o0xqy"]
-[ext_resource type="AudioStream" uid="uid://bmdbmw2221k2b" path="res://Audio/SoundEffect/new/weapon-knife.mp3" id="3_kpdl7"]
+[ext_resource type="AudioStream" uid="uid://2o2pm00njc51" path="res://Audio/SoundEffect/new/weapon-rolling-pin.mp3" id="3_5xotr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p4tiy"]
 size = Vector2(98.7677, 400.307)
+
+[sub_resource type="Animation" id="Animation_f3b2i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_tmpel"]
 resource_name = "rolling"
@@ -23,21 +38,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
-}
-
-[sub_resource type="Animation" id="Animation_f3b2i"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cjcpq"]
@@ -76,8 +76,8 @@ libraries = {
 "": SubResource("AnimationLibrary_cjcpq")
 }
 
-[node name="snd_play" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_kpdl7")
+[node name="snd_hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5xotr")
 volume_db = -10.0
 pitch_scale = 5.0
 autoplay = true

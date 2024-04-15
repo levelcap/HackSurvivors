@@ -79,6 +79,8 @@ func _on_disable_timer_timeout():
 func _on_aura_timer_timeout(timer, area, damage, angle, knockback):
 	if aura_array.has(area):
 		emit_signal("hurt", damage, angle, knockback)
+		if area.has_method("enemy_hit"):
+			area.enemy_hit(1)
 	else:
 		timer.stop()
 		remove_child(timer)

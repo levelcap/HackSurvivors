@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bis78tmxnqw4c"]
+[gd_scene load_steps=5 format=3 uid="uid://ci0jl8b4squ7m"]
 
 [ext_resource type="Script" path="res://Player/Attack/fine_china.gd" id="1_33d0p"]
 [ext_resource type="Texture2D" uid="uid://b6xksohckbr6l" path="res://Textures/Items/Weapons/Finechina2.png" id="2_vjfy1"]
-[ext_resource type="AudioStream" uid="uid://dm14x014gr5t0" path="res://Audio/SoundEffect/new/whoosh-6316(1).mp3" id="3_u0oce"]
+[ext_resource type="AudioStream" uid="uid://dm14x014gr5t0" path="res://Audio/SoundEffect/new/weapon-china.mp3" id="3_t2cqi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dfset"]
 radius = 9.55249
@@ -27,7 +27,7 @@ wait_time = 20.0
 autostart = true
 
 [node name="snd_attack" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_u0oce")
+stream = ExtResource("3_t2cqi")
 volume_db = -8.0
 autoplay = true
 
