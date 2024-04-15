@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://du6qbgqucaqov"]
+[gd_scene load_steps=35 format=3 uid="uid://du6qbgqucaqov"]
 
 [ext_resource type="Texture2D" uid="uid://b5o40jqpeqglb" path="res://Textures/kitchen_tile.png" id="1_3eqd4"]
 [ext_resource type="PackedScene" uid="uid://dncgepmkc4jf4" path="res://Player/player.tscn" id="2_40uwv"]
@@ -12,12 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://dba7neotcwg38" path="res://Enemy/enemy_hot.tscn" id="10_gkij1"]
 [ext_resource type="PackedScene" uid="uid://bc15g3w7dpblk" path="res://Enemy/enemy_sharp.tscn" id="10_vqibq"]
 [ext_resource type="Script" path="res://Audio/Music/snd_Music.gd" id="11_ovtx6"]
-[ext_resource type="PackedScene" uid="uid://bw5tplacy8c76" path="res://Wall/wall.tscn" id="12_kfr5j"]
+[ext_resource type="PackedScene" uid="uid://bw5tplacy8c76" path="res://Scenery/stove.tscn" id="12_kfr5j"]
 [ext_resource type="PackedScene" uid="uid://dnupp55rmyew1" path="res://Enemy/enemy_behind.tscn" id="12_monei"]
 [ext_resource type="PackedScene" uid="uid://daht8whbvbdae" path="res://Enemy/enemy_megabubble.tscn" id="13_0632a"]
 [ext_resource type="PackedScene" uid="uid://btkxn5tqh3ivk" path="res://Enemy/enemy_chicken.tscn" id="13_iw6ay"]
 [ext_resource type="PackedScene" uid="uid://bjqafwai37mad" path="res://Enemy/enemy_fryingpan.tscn" id="14_kaq3j"]
-[ext_resource type="Script" path="res://Wall/wall.gd" id="16_67qi3"]
+[ext_resource type="Script" path="res://Scenery/fridge.gd" id="16_67qi3"]
 
 [sub_resource type="Resource" id="Resource_03m25"]
 script = ExtResource("5_jj7s8")
@@ -154,6 +154,9 @@ enemy_num = 4
 enemy_spawn_delay = 4
 boss = false
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bpn6"]
+size = Vector2(70, 7987.5)
+
 [node name="World" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -161,7 +164,7 @@ texture_filter = 2
 texture_repeat = 2
 texture = ExtResource("1_3eqd4")
 region_enabled = true
-region_rect = Rect2(-4000, -4000, 4000, 4000)
+region_rect = Rect2(-8000, -8000, 8000, 8000)
 
 [node name="Player" parent="." instance=ExtResource("2_40uwv")]
 
@@ -180,5 +183,26 @@ script = ExtResource("11_ovtx6")
 [node name="Wall" parent="." instance=ExtResource("12_kfr5j")]
 position = Vector2(-1972, -1978)
 script = ExtResource("16_67qi3")
+
+[node name="OuterWalls" type="StaticBody2D" parent="."]
+position = Vector2(4937, -2420)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="OuterWalls"]
+position = Vector2(-4906, -1540)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_1bpn6")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="OuterWalls"]
+position = Vector2(-8896, 2403)
+shape = SubResource("RectangleShape2D_1bpn6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OuterWalls"]
+position = Vector2(-977, 2422.25)
+shape = SubResource("RectangleShape2D_1bpn6")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="OuterWalls"]
+position = Vector2(-4960, 6385)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_1bpn6")
 
 [connection signal="playerdeath" from="Player" to="AudioStreamPlayer" method="_on_player_playerdeath"]

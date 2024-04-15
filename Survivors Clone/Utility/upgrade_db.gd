@@ -365,8 +365,8 @@ const UPGRADES = {
 	},
 	"ring2": {
 		"icon": ICON_PATH + "urand_mage.png",
-		"displayname": "Tripledexterity",
-		"details": "Yes, a third hand.",
+		"displayname": "Ambidexterity",
+		"details": "Again? Yes, a third hand.",
 		"level": "Level: 2",
 		"prerequisite": ["ring1"],
 		"type": "upgrade"

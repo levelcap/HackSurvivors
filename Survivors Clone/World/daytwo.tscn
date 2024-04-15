@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://btf7clk4jja87" path="res://Enemy/enemy_chefboss.tscn" id="9_6sqqu"]
 [ext_resource type="AudioStream" uid="uid://cmr8aspkbu5uh" path="res://Audio/Music/main level music.wav" id="10_bng13"]
 [ext_resource type="Script" path="res://Audio/Music/snd_Music.gd" id="11_yh0y0"]
-[ext_resource type="PackedScene" uid="uid://bw5tplacy8c76" path="res://Wall/wall.tscn" id="15_a30ck"]
-[ext_resource type="Script" path="res://Wall/wall.gd" id="16_vjaiu"]
+[ext_resource type="PackedScene" uid="uid://bw5tplacy8c76" path="res://Scenery/stove.tscn" id="15_a30ck"]
+[ext_resource type="Script" path="res://Scenery/fridge.gd" id="16_vjaiu"]
 
 [sub_resource type="Resource" id="Resource_03m25"]
 script = ExtResource("5_186s7")

@@ -104,7 +104,6 @@ func add_weapon(weapon_name):
 		var weapon_attack = weapon["obj"].instantiate()
 		weapon_attack.level = weapon["level"]
 		active_mop = weapon_attack
-		print("Adding mop")
 		add_child(weapon_attack)
 	else:
 		var timer := Timer.new()
@@ -150,9 +149,6 @@ func _on_timer_timeout(weapon_name):
 	
 func _on_attack_timer_timeout(weapon_name):
 	var weapon = active_weapons[weapon_name]
-	print(weapon_name)
-	print(weapon)
-	print(weapon["level"])
 	if weapon["ammo"] > 0:
 		var weapon_attack = weapon["obj"].instantiate()
 		weapon_attack.level = weapon["level"]
