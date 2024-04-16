@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cf2xc8n0g4w32"]
+[gd_scene load_steps=11 format=3 uid="uid://cf2xc8n0g4w32"]
 
 [ext_resource type="Script" path="res://LevelSelect/levelselect.gd" id="1_aae8f"]
 [ext_resource type="Texture2D" uid="uid://dtq0ljkgmi88i" path="res://Textures/GUI/menu_v3.png" id="2_vbt4k"]
@@ -6,7 +6,10 @@
 [ext_resource type="AudioStream" uid="uid://ld464viujox8" path="res://Audio/Music/menu music.wav" id="4_xlp6f"]
 [ext_resource type="Texture2D" uid="uid://chwtxjxr8687i" path="res://Textures/Buttons/levelone.png" id="5_a6gj3"]
 [ext_resource type="FontFile" uid="uid://f502umyy2mu3" path="res://Font/BarlowCondensed-Medium.ttf" id="6_c5eo4"]
+[ext_resource type="Texture2D" uid="uid://bjlvrdas432lr" path="res://Textures/Buttons/levelone_focus.png" id="6_tlite"]
 [ext_resource type="Texture2D" uid="uid://2xm7sny1nr6l" path="res://Textures/Buttons/leveltwo.png" id="7_r56oc"]
+[ext_resource type="Texture2D" uid="uid://c02mc0etcqpk3" path="res://Textures/Buttons/leveltwo_focus.png" id="9_argvk"]
+[ext_resource type="PackedScene" uid="uid://b7c7gsdx2rkjm" path="res://Utility/basic_button.tscn" id="10_qmkho"]
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3
@@ -58,10 +61,12 @@ theme_override_font_sizes/font_size = 10
 [node name="levelone_btn" type="TextureButton" parent="levelone_group"]
 offset_left = 183.0
 offset_top = 136.0
-offset_right = 223.0
-offset_bottom = 176.0
-scale = Vector2(2.28, 1.32)
+offset_right = 283.0
+offset_bottom = 186.0
+focus_neighbor_top = NodePath("../../btn_back")
+focus_neighbor_bottom = NodePath("../../leveltwo_group/leveltwo_btn")
 texture_normal = ExtResource("5_a6gj3")
+texture_focused = ExtResource("6_tlite")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -86,10 +91,12 @@ position = Vector2(2, 73)
 [node name="leveltwo_btn" type="TextureButton" parent="leveltwo_group"]
 offset_left = 183.0
 offset_top = 136.0
-offset_right = 223.0
-offset_bottom = 176.0
-scale = Vector2(2.28, 1.32)
+offset_right = 283.0
+offset_bottom = 186.0
+focus_neighbor_top = NodePath("../../levelone_group/levelone_btn")
+focus_neighbor_bottom = NodePath("../../btn_back")
 texture_normal = ExtResource("7_r56oc")
+texture_focused = ExtResource("9_argvk")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -108,6 +115,17 @@ text = "Day Two:
 Things are getting weird..."
 autowrap_mode = 3
 
+[node name="btn_back" parent="." instance=ExtResource("10_qmkho")]
+offset_left = 280.0
+offset_top = 279.0
+offset_right = 360.0
+offset_bottom = 311.0
+focus_neighbor_top = NodePath("../leveltwo_group/leveltwo_btn")
+focus_neighbor_bottom = NodePath("../levelone_group/levelone_btn")
+theme_override_fonts/font = ExtResource("6_c5eo4")
+text = "BACK"
+
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="levelone_group/levelone_btn" to="." method="_on_levelone_btn_pressed"]
 [connection signal="pressed" from="leveltwo_group/leveltwo_btn" to="." method="_on_leveltwo_btn_pressed"]
+[connection signal="click_end" from="btn_back" to="." method="_on_btn_back_click_end"]

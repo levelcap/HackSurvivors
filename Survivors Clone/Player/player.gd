@@ -51,7 +51,8 @@ var enemy_close = []
 signal playerdeath
 
 func _ready():
-	upgrade_character("knife1")
+	upgrade_character("mop1")
+	upgrade_character("rolling_pin1")
 	set_expbar(experience, calculate_experiencecap())
 	_on_hurt_box_hurt(0,0,0)
 	if not PlayerInfo.dayOnePlayed:
