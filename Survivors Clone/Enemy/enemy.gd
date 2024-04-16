@@ -19,15 +19,16 @@ var knockback = Vector2.ZERO
 
 var death_anim = preload("res://Enemy/explosion.tscn")
 var exp_gem = preload("res://Objects/experience_gem.tscn")
+var og_modulate = Color(1,1,1,1)
 
 signal remove_from_array(object)
 signal boss_death
-
 
 func _ready():
 	anim.play("walk")
 	hitBox.damage = enemy_damage
 	connect("boss_death", Callable(player,"boss_death"))
+	og_modulate = self.modulate
 
 func _physics_process(_delta):
 	knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
@@ -57,7 +58,14 @@ func death():
 func _on_hurt_box_hurt(damage, angle, knockback_amount):
 	hp -= damage
 	knockback = angle * knockback_amount
+	var tween = create_tween()
+	tween.pause()
+	
 	if hp <= 0:
 		death()
 	else:
+		tween.tween_property(self, "modulate", Color("e31616", 1), 0.1)
+		tween.play()
+		await tween.finished
+		self.modulate = og_modulate
 		snd_hit.play()

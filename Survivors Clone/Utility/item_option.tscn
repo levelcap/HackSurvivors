@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4xujaakdsubi"]
+[gd_scene load_steps=3 format=3 uid="uid://b4xujaakdsubi"]
 
-[ext_resource type="Texture2D" uid="uid://bu2son8g2konp" path="res://Textures/Items/Weapons/sword.png" id="1_583l0"]
 [ext_resource type="Script" path="res://Utility/item_option.gd" id="1_unejd"]
 [ext_resource type="FontFile" uid="uid://f502umyy2mu3" path="res://Font/BarlowCondensed-Medium.ttf" id="3_5llqk"]
 
@@ -26,7 +25,6 @@ layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("1_583l0")
 
 [node name="lbl_name" type="Label" parent="."]
 layout_mode = 0
@@ -35,14 +33,16 @@ offset_top = 2.0
 offset_right = 79.0
 offset_bottom = 25.0
 theme_override_fonts/font = ExtResource("3_5llqk")
+theme_override_font_sizes/font_size = 12
 text = "Name"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="lbl_description" type="Label" parent="."]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 27.0
-offset_right = 166.0
+offset_right = 175.0
 offset_bottom = 48.0
 theme_override_fonts/font = ExtResource("3_5llqk")
 theme_override_font_sizes/font_size = 8
@@ -51,13 +51,15 @@ autowrap_mode = 3
 
 [node name="lbl_level" type="Label" parent="."]
 layout_mode = 0
-offset_left = 130.0
-offset_top = 3.0
-offset_right = 170.0
-offset_bottom = 26.0
+offset_left = 137.0
+offset_top = 2.0
+offset_right = 177.0
+offset_bottom = 25.0
 theme_override_fonts/font = ExtResource("3_5llqk")
 theme_override_font_sizes/font_size = 12
 text = "level: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

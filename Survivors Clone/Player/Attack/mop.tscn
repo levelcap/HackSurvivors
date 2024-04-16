@@ -59,6 +59,7 @@ position = Vector2(-8, 213.6)
 scale = Vector2(4, 4)
 
 [node name="AttackTimer" type="Timer" parent="."]
+unique_name_in_owner = true
 wait_time = 4.0
 autostart = true
 

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var movement_speed = 40.0
+var movement_speed = 45.0
 var hp = 80
 var maxhp = 80
 var last_movement = Vector2.UP
@@ -10,14 +10,15 @@ var experience = 0
 var experience_level = 1
 var collected_experience = 0
 
-#UPGRADES
+# UPGRADES
 var collected_upgrades = []
 var upgrade_options = []
 var armor = 0
 var speed = 0
-var spell_cooldown = 0
+var spell_cooldown = .05
 var spell_size = 0
 var additional_attacks = 0
+var knockback = 0
 
 #Enemy Related
 var enemy_close = []
@@ -52,17 +53,7 @@ signal playerdeath
 
 func _ready():
 	upgrade_character("mop1")
-	upgrade_character("mop2")
-	upgrade_character("mop3")
-	upgrade_character("mop4")
-	upgrade_character("torch1")
-	upgrade_character("torch2")
-	upgrade_character("torch3")
-	upgrade_character("torch4")
-	upgrade_character("salt1")
-	upgrade_character("salt2")
-	upgrade_character("salt3")
-	upgrade_character("salt4")
+	upgrade_character("knife1")
 	set_expbar(experience, calculate_experiencecap())
 	_on_hurt_box_hurt(0,0,0)
 	#if not PlayerInfo.dayOnePlayed:
@@ -137,7 +128,9 @@ func calculate_experience(gem_exp):
 
 func calculate_experiencecap():
 	var exp_cap = experience_level
-	if experience_level < 20:
+	if experience_level < 3:
+		exp_cap = experience_level*2
+	elif experience_level < 20:
 		exp_cap = experience_level*5
 	elif experience_level < 40:
 		exp_cap = 95 * (experience_level-19)*8
@@ -176,6 +169,8 @@ func upgrade_character(upgrade):
 			spell_size += 0.10
 		"scroll1","scroll2","scroll3","scroll4":
 			spell_cooldown += 0.05
+		"caution1","caution2","caution3","caution4":
+			knockback += 0.1			
 		"ring1","ring2":
 			additional_attacks += 1
 		"food":

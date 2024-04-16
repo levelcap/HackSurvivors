@@ -54,6 +54,7 @@ size = Vector2(26, 24)
 size = Vector2(15, 21)
 
 [node name="enemy_fryingpan" type="CharacterBody2D"]
+z_index = 5
 collision_layer = 5
 collision_mask = 5
 motion_mode = 1
@@ -65,6 +66,7 @@ enemy_damage = 2
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0.188235, 0.188235, 0.188235, 0.745098)
+z_index = 5
 position = Vector2(-5, 16)
 scale = Vector2(-0.0585908, 0.0274459)
 texture = ExtResource("2_es51h")
@@ -75,10 +77,12 @@ texture = ExtResource("3_owc71")
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 5
 position = Vector2(-6, 3)
 rotation = -1.58084
 scale = Vector2(0.538859, 0.538859)
 shape = SubResource("CapsuleShape2D_6g5mn")
+disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

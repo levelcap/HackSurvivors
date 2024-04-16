@@ -54,12 +54,13 @@ size = Vector2(23, 31)
 size = Vector2(15, 21)
 
 [node name="enemy_hot" type="CharacterBody2D"]
+z_index = 5
 collision_layer = 5
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_a3wts")
 movement_speed = 50.0
-hp = 2
+hp = 3
 flip = false
 
 [node name="Shadow" type="Sprite2D" parent="."]
@@ -74,9 +75,11 @@ texture = ExtResource("3_8bhj8")
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 5
 position = Vector2(-2, 0)
 scale = Vector2(0.766668, 0.765255)
 shape = SubResource("CircleShape2D_7alyx")
+disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

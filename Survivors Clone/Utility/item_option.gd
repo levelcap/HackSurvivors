@@ -23,7 +23,7 @@ func _ready():
 func _input(event):
 	if event.is_action("click"):
 		if mouse_over:
-			emit_signal("selected_upgrade",item)
+			emit_signal("selected_upgrade", item)
 
 func _on_mouse_entered():
 	

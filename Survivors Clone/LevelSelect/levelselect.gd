@@ -1,6 +1,6 @@
 extends Control
 
-var dayone = "res://World/world.tscn"
+var dayone = "res://World/dayone.tscn"
 var daytwo = "res://World/daytwo.tscn"
 var menu = "res://TitleScreen/menu.tscn"
 

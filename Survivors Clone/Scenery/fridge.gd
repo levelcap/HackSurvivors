@@ -14,7 +14,6 @@ func _ready():
 		
 		for v in sceneryVectors:
 			if scenery_position.distance_to(v) < 75.0:
-				print("Scenery tooooo close")
 				place = false
 				break
 	

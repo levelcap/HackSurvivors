@@ -15,8 +15,8 @@ func _on_timer_timeout():
 	time += 1
 	var helper_spawns = helpers
 	for helper in helper_spawns:
-	if time == helper.time_start
-			var new_helper = enemy.enemy
+		if time == helper.time_start:
+			var new_helper = helper.helper
 			var helper_spawn = new_helper.instantiate()
 			add_child(helper_spawn)
 	emit_signal("changetime",time)			

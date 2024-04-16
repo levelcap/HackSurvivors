@@ -6,7 +6,7 @@ const UPGRADES = {
 	"mop1": {
 		"icon": WEAPON_PATH + "mop_icon.png",
 		"displayname": "Slip ‘n Slide",
-		"details": " Oops, I guess I forgot to put up a “Caution, Wet Floor” Sign. Hope no one slips…",
+		"details": "Oops, I guess I forgot to put up a “Caution, Wet Floor” Sign. Hope no one slips…",
 		"level": "Level: 1",
 		"prerequisite": [],
 		"type": "weapon"
@@ -371,6 +371,38 @@ const UPGRADES = {
 		"prerequisite": ["ring1"],
 		"type": "upgrade"
 	},
+	"caution1": {
+		"icon": ICON_PATH + "caution.png",
+		"displayname": "Caution Sign",
+		"details": "Increase knockback",
+		"level": "Level: 1",
+		"prerequisite": [],
+		"type": "upgrade"
+	},
+	"caution2": {
+		"icon": ICON_PATH + "caution.png",
+		"displayname": "Caution Sign",
+		"details": "Increase knockback",
+		"level": "Level: 2",
+		"prerequisite": ["caution1"],
+		"type": "upgrade"
+	},
+	"caution3": {
+		"icon": ICON_PATH + "caution.png",
+		"displayname": "Caution Sign",
+		"details": "Increase knockback",
+		"level": "Level: 3",
+		"prerequisite": ["caution2"],
+		"type": "upgrade"
+	},
+	"caution4": {
+		"icon": ICON_PATH + "caution.png",
+		"displayname": "Caution Sign",
+		"details": "Increase knockback",
+		"level": "Level: 4",
+		"prerequisite": ["caution3"],
+		"type": "upgrade"
+	},	
 	"food": {
 		"icon": ICON_PATH + "Firstaidkit_icon.png",
 		"displayname": "First Aid Kit",

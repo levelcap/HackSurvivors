@@ -5,14 +5,18 @@ var level = 1
 var hp = 10
 var damage = 10
 var attack_size = 1.0
+var cooldown = 0
+var base_time = 4
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var anim = $AnimationPlayer
 @onready var snd_puddle = $snd_puddle
 @onready var snd_collide = $snd_collide
+@onready var attack_timer = %AttackTimer
 
 func _ready():
 	anim.play("mop")
+	attack_timer.wait_time = base_time
 			
 func _process(delta):
 	if player.sprite.flip_h:
@@ -46,3 +50,4 @@ func _on_attack_timer_timeout():
 	puddle.snd_collide = snd_collide
 	snd_puddle.play()
 	%PuddlePoint.add_child(puddle)
+	attack_timer.wait_time = base_time * (1 - player.spell_cooldown)

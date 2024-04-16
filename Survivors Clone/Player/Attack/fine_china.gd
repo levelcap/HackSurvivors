@@ -47,6 +47,7 @@ func _ready():
 			
 	var move_to_less = Vector2.ZERO
 	var move_to_more = Vector2.ZERO
+	
 	match last_movement:
 		Vector2.UP, Vector2.DOWN:
 			move_to_less = global_position + Vector2(randf_range(-1,-0.25), last_movement.y)*500
@@ -91,6 +92,7 @@ func _ready():
 
 func _physics_process(delta):
 	position += angle*speed*delta
+	rotation += 0.5
 
 func enemy_hit(charge = 1):
 	collisionSound.play()

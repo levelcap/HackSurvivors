@@ -82,7 +82,6 @@ func _on_attack_timer_timeout():
 		flame.damage = damage
 		flame.knockback_amount = knockback_amount
 		flame.scale = Vector2(1.0, 1.0) * attack_size
-		print(str("Flame: ", attack_size))
 		flame.angle = angle
 		%FirePoint.add_child(flame)
 

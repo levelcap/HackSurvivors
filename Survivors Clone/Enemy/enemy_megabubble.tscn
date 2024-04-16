@@ -55,6 +55,7 @@ size = Vector2(23, 31)
 size = Vector2(15, 21)
 
 [node name="enemy_megabubble" type="CharacterBody2D"]
+z_index = 5
 collision_layer = 5
 collision_mask = 5
 motion_mode = 1
@@ -72,6 +73,7 @@ scale = Vector2(-0.0585908, 0.0274459)
 texture = ExtResource("2_i7hck")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 6
 position = Vector2(-3, 0)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_slb2c")
