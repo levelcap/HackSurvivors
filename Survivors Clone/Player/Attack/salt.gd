@@ -13,6 +13,10 @@ var attack_size = 1.0
 signal remove_from_array(object)
 
 func _ready():
+	pass
+	
+func level_up():
+	level += 1
 	match level:
 		1:
 			damage = 5
@@ -23,13 +27,14 @@ func _ready():
 		3:
 			damage = 8
 			knockback_amount = 75
-			attack_size = 1.5 * (1 + player.spell_size)
+			attack_size = 2.0 * (1 + player.spell_size)
 		4:
 			damage = 9
 			knockback_amount = 80
-			attack_size = 1.75 * (1 + player.spell_size)
+			attack_size = 2.5 * (1 + player.spell_size)
 			
-	scale = Vector2(1.0, 1.0) * attack_size
+	var tween = create_tween()
+	tween.tween_property(self, "scale", Vector2(1.0, 1.0) * attack_size, 1).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 
 func enemy_hit(charge):
 	snd_hit.play()

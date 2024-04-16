@@ -24,9 +24,10 @@ var enemies_in_range = []
 signal remove_from_array(object)
 
 func _ready():
-	update_blowtorch()
+	pass
 
-func update_blowtorch():
+func level_up():
+	level += 1
 	match level:
 		1:
 			speed = 50
@@ -56,7 +57,7 @@ func update_blowtorch():
 func _physics_process(delta):
 	if active_enemy && is_instance_valid(active_enemy):
 		rotation = look_at_node(self, active_enemy, delta*3)
-		angle = global_position.direction_to(active_enemy)
+		angle = global_position.direction_to(active_enemy.global_position)
 		
 func enemy_in_range(enemy):
 	if not active_enemy:
@@ -81,6 +82,7 @@ func _on_attack_timer_timeout():
 		flame.damage = damage
 		flame.knockback_amount = knockback_amount
 		flame.scale = Vector2(1.0, 1.0) * attack_size
+		print(str("Flame: ", attack_size))
 		flame.angle = angle
 		%FirePoint.add_child(flame)
 

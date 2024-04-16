@@ -52,11 +52,21 @@ signal playerdeath
 
 func _ready():
 	upgrade_character("mop1")
-	upgrade_character("rolling_pin1")
+	upgrade_character("mop2")
+	upgrade_character("mop3")
+	upgrade_character("mop4")
+	upgrade_character("torch1")
+	upgrade_character("torch2")
+	upgrade_character("torch3")
+	upgrade_character("torch4")
+	upgrade_character("salt1")
+	upgrade_character("salt2")
+	upgrade_character("salt3")
+	upgrade_character("salt4")
 	set_expbar(experience, calculate_experiencecap())
 	_on_hurt_box_hurt(0,0,0)
-	if not PlayerInfo.dayOnePlayed:
-		play_conversation()		
+	#if not PlayerInfo.dayOnePlayed:
+		#play_conversation()		
 
 func _physics_process(delta):
 	movement()

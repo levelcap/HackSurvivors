@@ -95,16 +95,19 @@ func add_weapon(weapon_name):
 		weapon_attack.level = weapon["level"]
 		active_salt = weapon_attack
 		add_child(weapon_attack)		
+		active_salt.level_up()
 	elif weapon_name == "torch":
 		var weapon_attack = weapon["obj"].instantiate()
 		weapon_attack.level = weapon["level"]
 		active_torch = weapon_attack
 		add_child(weapon_attack)		
+		active_torch.level_up()
 	elif weapon_name == "mop":
 		var weapon_attack = weapon["obj"].instantiate()
 		weapon_attack.level = weapon["level"]
 		active_mop = weapon_attack
 		add_child(weapon_attack)
+		active_mop.level_up()
 	else:
 		var timer := Timer.new()
 		var attack_timer := Timer.new()
@@ -125,17 +128,11 @@ func add_weapon(weapon_name):
 	
 func upgrade_weapon(weapon_name):
 	if weapon_name == "salt":
-		remove_child(active_salt)
-		active_salt.level += 1
-		add_child(active_salt)
+		active_salt.level_up()
 	elif weapon_name == "torch":
-		remove_child(active_torch)
-		active_torch.level += 1
-		add_child(active_torch)
+		active_torch.level_up()
 	elif weapon_name == "mop":
-		remove_child(active_mop)
-		active_mop.level += 1
-		add_child(active_mop)		
+		active_mop.level_up()
 	else: 
 		var weapon = active_weapons[weapon_name]
 		weapon["level"] += 1
