@@ -124,7 +124,7 @@ wait_time = 5.0
 autostart = true
 
 [node name="Salt" type="GPUParticles2D" parent="."]
-amount = 50
+amount = 70
 process_material = SubResource("ParticleProcessMaterial_fbbnx")
 lifetime = 0.5
 explosiveness = 0.28
@@ -132,7 +132,7 @@ randomness = 0.5
 
 [node name="Pepper" type="GPUParticles2D" parent="."]
 modulate = Color(0.12549, 0.12549, 0.12549, 1)
-amount = 30
+amount = 50
 process_material = SubResource("ParticleProcessMaterial_vvlbc")
 lifetime = 0.5
 explosiveness = 0.28

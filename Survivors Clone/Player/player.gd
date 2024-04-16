@@ -52,12 +52,11 @@ var enemy_close = []
 signal playerdeath
 
 func _ready():
-	upgrade_character("mop1")
 	upgrade_character("knife1")
 	set_expbar(experience, calculate_experiencecap())
 	_on_hurt_box_hurt(0,0,0)
-	#if not PlayerInfo.dayOnePlayed:
-		#play_conversation()		
+	if not PlayerInfo.dayOnePlayed:
+		play_conversation()		
 
 func _physics_process(delta):
 	movement()

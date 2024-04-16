@@ -180,7 +180,7 @@ const UPGRADES = {
 		"type": "weapon"		
 	},
 	"whisk3": {
-		"icon": WEAPON_PATH + "seasonsgreetings.png",
+		"icon": WEAPON_PATH + "whisk_icon.png",
 		"displayname": "Whisky Business",
 		"details": "Your trusty whisk spins around you",
 		"level": "Level: 3",
@@ -188,7 +188,7 @@ const UPGRADES = {
 		"type": "weapon"		
 	},		
 	"whisk4": {
-		"icon": WEAPON_PATH + "seasonsgreetings.png",
+		"icon": WEAPON_PATH + "whisk_icon.png",
 		"displayname": "Whisky Business",
 		"details": "Your trusty whisk spins around you",
 		"level": "Level: 4",
