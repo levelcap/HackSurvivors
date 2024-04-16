@@ -4,6 +4,7 @@
 */.godot
 
 .DS_Store
+*/.DS_Store
 *.afphoto
 *.afphoto~lock~
 *.exe
