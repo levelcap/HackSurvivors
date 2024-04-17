@@ -58,6 +58,49 @@ theme_override_font_sizes/font_size = 10
 
 [node name="levelone_group" type="Node2D" parent="."]
 
+[node name="Border" type="ReferenceRect" parent="levelone_group"]
+offset_left = 179.0
+offset_top = 132.0
+offset_right = 486.0
+offset_bottom = 192.0
+border_color = Color(0.631373, 0.623529, 0.776471, 1)
+editor_only = false
+
+[node name="Seperator" type="ReferenceRect" parent="levelone_group"]
+offset_left = 422.0
+offset_top = 132.0
+offset_right = 422.0
+offset_bottom = 192.0
+border_color = Color(0.631373, 0.623529, 0.776471, 1)
+editor_only = false
+
+[node name="played" type="Label" parent="levelone_group"]
+offset_left = 430.0
+offset_top = 143.0
+offset_right = 543.0
+offset_bottom = 166.0
+scale = Vector2(0.52, 0.52)
+theme_override_colors/font_color = Color(0.356863, 0.341176, 0.670588, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("6_c5eo4")
+theme_override_font_sizes/font_size = 13
+text = "Tries: 0"
+autowrap_mode = 3
+
+[node name="won" type="Label" parent="levelone_group"]
+offset_left = 430.0
+offset_top = 162.0
+offset_right = 543.0
+offset_bottom = 181.0
+scale = Vector2(0.52, 0.52)
+theme_override_colors/font_color = Color(0.356863, 0.341176, 0.670588, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("6_c5eo4")
+theme_override_font_sizes/font_size = 13
+text = "Wins: 0
+"
+autowrap_mode = 3
+
 [node name="levelone_btn" type="TextureButton" parent="levelone_group"]
 offset_left = 183.0
 offset_top = 136.0
@@ -73,7 +116,7 @@ stretch_mode = 0
 [node name="levelone_text" type="Label" parent="levelone_group"]
 offset_left = 298.0
 offset_top = 137.0
-offset_right = 639.0
+offset_right = 533.0
 offset_bottom = 238.0
 scale = Vector2(0.52, 0.52)
 theme_override_colors/font_color = Color(0.356863, 0.341176, 0.670588, 1)
@@ -86,7 +129,23 @@ It's your first day in the ktichen and you're just out here trying to make it th
 autowrap_mode = 3
 
 [node name="leveltwo_group" type="Node2D" parent="."]
-position = Vector2(2, 73)
+position = Vector2(0, 62)
+
+[node name="Seperator" type="ReferenceRect" parent="leveltwo_group"]
+offset_left = 422.0
+offset_top = 132.0
+offset_right = 422.0
+offset_bottom = 192.0
+border_color = Color(0.631373, 0.623529, 0.776471, 1)
+editor_only = false
+
+[node name="Border" type="ReferenceRect" parent="leveltwo_group"]
+offset_left = 179.0
+offset_top = 132.0
+offset_right = 486.0
+offset_bottom = 192.0
+border_color = Color(0.631373, 0.623529, 0.776471, 1)
+editor_only = false
 
 [node name="leveltwo_btn" type="TextureButton" parent="leveltwo_group"]
 offset_left = 183.0
@@ -103,7 +162,7 @@ stretch_mode = 0
 [node name="leveltwo_text" type="Label" parent="leveltwo_group"]
 offset_left = 298.0
 offset_top = 137.0
-offset_right = 639.0
+offset_right = 533.0
 offset_bottom = 238.0
 scale = Vector2(0.52, 0.52)
 theme_override_colors/font_color = Color(0.356863, 0.341176, 0.670588, 1)
@@ -115,7 +174,34 @@ text = "Day Two:
 Things are getting weird..."
 autowrap_mode = 3
 
+[node name="played" type="Label" parent="leveltwo_group"]
+offset_left = 430.0
+offset_top = 136.0
+offset_right = 543.0
+offset_bottom = 159.0
+scale = Vector2(0.52, 0.52)
+theme_override_colors/font_color = Color(0.356863, 0.341176, 0.670588, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("6_c5eo4")
+theme_override_font_sizes/font_size = 13
+text = "Tries: 0"
+autowrap_mode = 3
+
+[node name="won" type="Label" parent="leveltwo_group"]
+offset_left = 430.0
+offset_top = 155.0
+offset_right = 543.0
+offset_bottom = 174.0
+scale = Vector2(0.52, 0.52)
+theme_override_colors/font_color = Color(0.356863, 0.341176, 0.670588, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("6_c5eo4")
+theme_override_font_sizes/font_size = 13
+text = "Wins: 0"
+autowrap_mode = 3
+
 [node name="btn_back" parent="." instance=ExtResource("10_qmkho")]
+layout_mode = 0
 offset_left = 280.0
 offset_top = 279.0
 offset_right = 360.0

@@ -55,7 +55,7 @@ func _ready():
 	upgrade_character("knife1")
 	set_expbar(experience, calculate_experiencecap())
 	_on_hurt_box_hurt(0,0,0)
-	if not PlayerInfo.dayOnePlayed:
+	if not PlayerInfo.level_stats('dayone', 'won') >= 1:
 		play_conversation()		
 
 func _physics_process(delta):

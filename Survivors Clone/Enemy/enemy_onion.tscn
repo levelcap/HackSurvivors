@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_1bh7b"]
 [ext_resource type="Texture2D" uid="uid://bilydodkygq8x" path="res://Textures/Wall/character-shadow.png" id="2_sbm6o"]
+[ext_resource type="Texture2D" uid="uid://bpjv2qc0i8xlp" path="res://Textures/Enemy/Happy_Onion.png" id="3_8ctgw"]
 [ext_resource type="PackedScene" uid="uid://xy3cvpwdy828" path="res://Utility/hurt_box.tscn" id="3_gamcv"]
-[ext_resource type="Texture2D" uid="uid://cx8sf00iiic3f" path="res://Textures/Enemy/onion.png" id="3_km076"]
 [ext_resource type="PackedScene" uid="uid://uhr6mtuisqm1" path="res://Utility/hit_box.tscn" id="4_vdnsx"]
 [ext_resource type="AudioStream" uid="uid://cbk4moqxwpgpk" path="res://Audio/SoundEffect/new/death-vegetable.mp3" id="5_07dv3"]
 
@@ -71,7 +71,7 @@ texture = ExtResource("2_sbm6o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.125, 0.125)
-texture = ExtResource("3_km076")
+texture = ExtResource("3_8ctgw")
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
