@@ -35,6 +35,9 @@ func _on_timer_timeout():
 						emit_signal("bossbattle", enemy_spawn)
 					else: 
 						add_child(enemy_spawn)
+						if (i.miniboss):
+							enemy_spawn.make_miniboss()
+							
 					counter += 1
 	emit_signal("changetime",time)
 

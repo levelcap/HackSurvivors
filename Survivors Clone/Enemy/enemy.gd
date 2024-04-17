@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 @export var movement_speed = 20.0
 @export var hp = 10
 @export var knockback_recovery = 3.5
@@ -8,7 +7,10 @@ extends CharacterBody2D
 @export var enemy_damage = 1
 @export var flip = true
 @export var boss = false
+@export var miniboss_texture:Resource
+
 var knockback = Vector2.ZERO
+var miniboss = false
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var loot_base = get_tree().get_first_node_in_group("loot")
@@ -19,6 +21,7 @@ var knockback = Vector2.ZERO
 
 var death_anim = preload("res://Enemy/explosion.tscn")
 var exp_gem = preload("res://Objects/experience_gem.tscn")
+var star = preload("res://Objects/star.tscn")
 var og_modulate = Color(1,1,1,1)
 
 signal remove_from_array(object)
@@ -48,12 +51,26 @@ func death():
 		emit_signal("boss_death")
 	var enemy_death = death_anim.instantiate()
 	enemy_death.global_position = global_position
-	get_parent().call_deferred("add_child",enemy_death)
-	var new_gem = exp_gem.instantiate()
-	new_gem.global_position = global_position
-	new_gem.experience = experience
-	loot_base.call_deferred("add_child",new_gem)
+	get_parent().call_deferred("add_child", enemy_death)
+	var new_loot = null
+	if miniboss:
+		new_loot = star.instantiate()
+		new_loot.experience = experience * 20
+	else:
+		new_loot = exp_gem.instantiate()
+		new_loot.experience = experience
+		
+	new_loot.global_position = global_position
+			
+	loot_base.call_deferred("add_child", new_loot)
 	queue_free()
+	
+func make_miniboss():
+	miniboss = true
+	if miniboss_texture:
+		sprite.texture = miniboss_texture
+	hp *= 5
+	enemy_damage *= 1.25
 
 func _on_hurt_box_hurt(damage, angle, knockback_amount):
 	hp -= damage

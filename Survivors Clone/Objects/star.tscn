@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dodb054s8cnqq"]
+
+[ext_resource type="Script" path="res://Objects/star.gd" id="1_clgy7"]
+[ext_resource type="Texture2D" uid="uid://bs04j7nujnre1" path="res://Textures/Items/Gems/star.png" id="2_lif6h"]
+[ext_resource type="AudioStream" uid="uid://bls7fjkkrlqnf" path="res://Audio/SoundEffect/new/collect-special.mp3" id="3_gx4xo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wytta"]
+size = Vector2(44, 48)
+
+[node name="Star" type="Area2D" groups=["loot"]]
+scale = Vector2(0.5, 0.5)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_clgy7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_lif6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wytta")
+
+[node name="snd_collected" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_gx4xo")
+
+[connection signal="finished" from="snd_collected" to="." method="_on_snd_collected_finished"]
