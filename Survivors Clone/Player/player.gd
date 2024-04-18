@@ -280,6 +280,8 @@ func play_conversation():
 	%OverlayLayer.remove_child(conversation)
 	
 func boss_death():
+	PlayerInfo.won_level("dayone")
+	PlayerInfo.add_xp(1)
 	var conversation = conversationScene.instantiate()
 	var textOne = "Whoa! A shadowy figure!"
 	var textTwo = "Have you seen anything shady? Anyone talking to anyone they shouldn’t be?"
@@ -297,7 +299,7 @@ func boss_death():
 	tween.tween_property(deathPanel,"position",Vector2(220,50),3.0).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	tween.play()
 	lblResult.text = "Who was that? Talking to who?\n\nWell... at least your survived the day"
-	sndLose.play()
+	sndVictory.play()
 
 func _on_btn_menu_click_end():
 	get_tree().paused = false

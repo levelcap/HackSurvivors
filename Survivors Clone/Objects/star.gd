@@ -17,6 +17,7 @@ func collect():
 	await star_cutscene.play_cutscene()
 	get_tree().paused = false
 	sprite.visible = false
+	PlayerInfo.add_xp(1)
 	return experience
 	
 
