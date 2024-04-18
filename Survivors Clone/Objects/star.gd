@@ -7,13 +7,18 @@ var speed = -1
 
 @onready var sprite = $Sprite2D
 @onready var collision = $CollisionShape2D
-@onready var sound = %snd_collected
+@onready var cutscene = preload("res://Objects/Cutscenes/star_cutscene.tscn")
 
 func collect():
-	sound.play()
-	collision.call_deferred("set","disabled",true)
+	var star_cutscene = cutscene.instantiate()
+	collision.call_deferred("set", "disabled" ,true)
+	add_child(star_cutscene)
+	get_tree().paused = true
+	await star_cutscene.play_cutscene()
+	get_tree().paused = false
 	sprite.visible = false
 	return experience
+	
 
 func _on_snd_collected_finished():
 	queue_free()

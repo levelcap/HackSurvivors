@@ -107,7 +107,7 @@ func _on_grab_area_area_entered(area):
 
 func _on_collect_area_area_entered(area):
 	if area.is_in_group("loot"):
-		var gem_exp = area.collect()
+		var gem_exp = await area.collect()
 		calculate_experience(gem_exp)
 
 func calculate_experience(gem_exp):

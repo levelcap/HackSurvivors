@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://38o4e65duyp7"]
+
+[ext_resource type="Shader" path="res://Objects/Cutscenes/fireworks.gdshader" id="1_xvsh3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fn5jm"]
+shader = ExtResource("1_xvsh3")
+shader_parameter/resolution = Vector2(600, 600)
+shader_parameter/firework_count = 5.0
+shader_parameter/particle_count = 25.0
+shader_parameter/size = 2.0
+shader_parameter/sharpen = 1.5
+shader_parameter/speed = 4.0
+shader_parameter/gravity = 0.9
+shader_parameter/lifetime = 7.0
+
+[node name="Fireworks" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_fn5jm")
+offset_right = 600.0
+offset_bottom = 600.0

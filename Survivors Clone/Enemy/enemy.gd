@@ -71,6 +71,7 @@ func make_miniboss():
 		sprite.texture = miniboss_texture
 	hp *= 5
 	enemy_damage *= 1.25
+	scale = scale * 2.0
 
 func _on_hurt_box_hurt(damage, angle, knockback_amount):
 	hp -= damage

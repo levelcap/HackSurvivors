@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://ba72475oi114g"]
+
+[ext_resource type="Script" path="res://Objects/Cutscenes/star_cutscene.gd" id="1_0s3gj"]
+[ext_resource type="Texture2D" uid="uid://h2e73eybkm86" path="res://Textures/Wall/ground_shadow.png" id="1_ikepx"]
+[ext_resource type="PackedScene" uid="uid://38o4e65duyp7" path="res://Objects/Cutscenes/fireworks.tscn" id="2_1pkqo"]
+[ext_resource type="Texture2D" uid="uid://bs04j7nujnre1" path="res://Textures/Items/Gems/star.png" id="3_qbv8d"]
+[ext_resource type="AudioStream" uid="uid://defpxg70fl4r" path="res://Audio/SoundEffect/new/star.mp3" id="5_bglb2"]
+
+[node name="StarCutscene" type="Node2D"]
+process_mode = 2
+z_index = 100
+position = Vector2(102, 102)
+script = ExtResource("1_0s3gj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="Node2D" type="Node2D" parent="CanvasLayer"]
+position = Vector2(312, 187)
+
+[node name="Border" type="Sprite2D" parent="CanvasLayer/Node2D"]
+modulate = Color(0.501961, 0.509804, 1, 1)
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(0.76, 0.76)
+texture = ExtResource("1_ikepx")
+
+[node name="Background" type="Sprite2D" parent="CanvasLayer/Node2D"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_ikepx")
+
+[node name="Fireworks" parent="CanvasLayer/Node2D" instance=ExtResource("2_1pkqo")]
+unique_name_in_owner = true
+position = Vector2(-150, -150)
+scale = Vector2(0.5, 0.5)
+
+[node name="Star" type="Sprite2D" parent="CanvasLayer/Node2D"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, -75)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_qbv8d")
+
+[node name="StarText" type="RichTextLabel" parent="CanvasLayer/Node2D"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+offset_left = -85.0
+offset_top = -78.0
+offset_right = 82.0
+offset_bottom = -38.0
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/italics_font_size = 10
+bbcode_enabled = true
+text = "[i]YOU FOUND A MITCHYMAN STAR![/i]"
+
+[node name="snd_play" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_bglb2")
