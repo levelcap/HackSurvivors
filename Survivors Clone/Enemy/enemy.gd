@@ -36,7 +36,7 @@ func _ready():
 func _physics_process(_delta):
 	knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
 	var direction = global_position.direction_to(player.global_position)
-	velocity = direction*movement_speed
+	velocity = direction * movement_speed
 	velocity += knockback
 	move_and_slide()
 	

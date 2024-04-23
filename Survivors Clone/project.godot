@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-UpgradeDb="*res://Utility/upgrade_db.tscn"
 PlayerInfo="*res://Utility/player_info.tscn"
+ItemDb="*res://Utility/item_db.gd"
 
 [display]
 
