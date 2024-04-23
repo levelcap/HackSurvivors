@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cik0sshmkfhsg"]
+
+[ext_resource type="Script" path="res://Player/Characters/character.gd" id="1_k2g3i"]
+[ext_resource type="Texture2D" uid="uid://bilydodkygq8x" path="res://Textures/Wall/character-shadow.png" id="2_vsbly"]
+[ext_resource type="Texture2D" uid="uid://nh0vkrj8d5o4" path="res://Textures/Enemy/shadowy.png" id="3_xg3ts"]
+
+[node name="ShadowyFigure" type="CanvasGroup"]
+script = ExtResource("1_k2g3i")
+movement_speed = 145.0
+maxhp = 200
+armor = 2
+
+[node name="CharacterShadowSprite" type="Sprite2D" parent="."]
+modulate = Color(0.156863, 0.156863, 0.156863, 0.745098)
+position = Vector2(-0.999999, 20)
+scale = Vector2(0.07875, 0.0624999)
+texture = ExtResource("2_vsbly")
+
+[node name="CharacterSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("3_xg3ts")
+flip_h = true
