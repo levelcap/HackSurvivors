@@ -6,7 +6,6 @@
 
 [node name="LineCook" type="CanvasGroup"]
 script = ExtResource("1_p5k3h")
-movement_speed = 100.0
 
 [node name="CharacterShadowSprite" type="Sprite2D" parent="."]
 modulate = Color(0.156863, 0.156863, 0.156863, 0.745098)
