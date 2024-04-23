@@ -31,25 +31,25 @@ func _ready():
 			speed = 100
 			damage = 5
 			knockback_amount = 100
-			attack_size = 1.0 * (1 + player.spell_size)
+			attack_size = 1.0 * (1 + player.character.spell_size)
 		2:
 			hp = 20
 			speed = 100
 			damage = 5
 			knockback_amount = 100
-			attack_size = 1.5 * (1 + player.spell_size)
+			attack_size = 1.5 * (1 + player.character.spell_size)
 		3:
 			hp = 30
 			speed = 100
 			damage = 10
 			knockback_amount = 100
-			attack_size = 1.0 * (1 + player.spell_size)
+			attack_size = 1.0 * (1 + player.character.spell_size)
 		4:
 			hp = 40
 			speed = 100
 			damage = 19
 			knockback_amount = 100
-			attack_size = 2.0 * (1 + player.spell_size)
+			attack_size = 2.0 * (1 + player.character.spell_size)
 		
 
 func _physics_process(delta):

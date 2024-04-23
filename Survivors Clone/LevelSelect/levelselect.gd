@@ -6,10 +6,12 @@ var menu = "res://TitleScreen/menu.tscn"
 var levels = PlayerInfo.player_info["levels"]
 
 func _on_levelone_btn_pressed():
+	PlayerInfo.current_level = "dayone"
 	PlayerInfo.played_level("dayone")
 	get_tree().change_scene_to_file(dayone)
 
 func _on_leveltwo_btn_pressed():
+	PlayerInfo.current_level = "daytwo"
 	PlayerInfo.played_level("daytwo")
 	get_tree().change_scene_to_file(daytwo)
 

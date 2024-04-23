@@ -34,25 +34,25 @@ func level_up():
 			range = 50
 			damage = 10
 			knockback_amount = 100
-			attack_size = 1.0 * (1 + player.spell_size)
+			attack_size = 1.0 * (1 + player.character.spell_size)
 		2:
 			speed = 20
 			range = 100
 			damage = 15
 			knockback_amount = 100
-			attack_size = 1.0 * (1 + player.spell_size)
+			attack_size = 1.0 * (1 + player.character.spell_size)
 		3:
 			speed = 20
 			range = 120
 			damage = 30
 			knockback_amount = 150
-			attack_size = 1.5 * (1 + player.spell_size)
+			attack_size = 1.5 * (1 + player.character.spell_size)
 		4:
 			speed = 20
 			range = 120
 			damage = 30
 			knockback_amount = 150
-			attack_size = 2.0 * (1 + player.spell_size)
+			attack_size = 2.0 * (1 + player.character.spell_size)
 
 func _physics_process(delta):
 	if active_enemy && is_instance_valid(active_enemy):

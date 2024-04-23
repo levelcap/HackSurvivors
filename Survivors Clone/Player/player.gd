@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-var movement_speed = 45.0
-var hp = 80
-var maxhp = 80
+class_name Player
+
+var character = null
 var last_movement = Vector2.UP
 var time = 0
 
@@ -13,19 +13,14 @@ var collected_experience = 0
 # UPGRADES
 var collected_upgrades = []
 var upgrade_options = []
-var armor = 0
-var speed = 0
-var spell_cooldown = .05
-var spell_size = 0
-var additional_attacks = 0
-var knockback = 0
 
 #Enemy Related
 var enemy_close = []
 
-@onready var sprite = $CharacterSprite
+@onready var sprite = null
 @onready var walkTimer = get_node("%walkTimer")
 @onready var attackManager = $AttackManager
+@onready var character_group = $CharacterGroup
 
 #GUI
 @onready var expBar = get_node("%ExperienceBar")
@@ -52,10 +47,14 @@ var enemy_close = []
 signal playerdeath
 
 func _ready():
+	var char_scene = load(str("res://Player/Characters/", PlayerInfo.current_character, ".tscn"))
+	character = char_scene.instantiate()
+	character_group.add_child(character)
+	sprite = character.sprite
 	upgrade_character("knife")
 	set_expbar(experience, calculate_experiencecap())
 	_on_hurt_box_hurt(0,0,0)
-	if not PlayerInfo.level_stats('dayone', 'won') >= 1:
+	if not PlayerInfo.level_stats(PlayerInfo.current_level, 'won') >= 1:
 		play_conversation()		
 
 func _physics_process(delta):
@@ -79,17 +78,14 @@ func movement():
 				sprite.frame += 1
 			walkTimer.start()
 	
-	velocity = mov.normalized() * movement_speed
+	velocity = mov.normalized() * character.movement_speed
 	move_and_slide()
 
-func attack():
-	pass
-	
 func _on_hurt_box_hurt(damage, _angle, _knockback):
-	hp -= clamp(damage-armor, 1.0, 999.0)
-	healthBar.max_value = maxhp
-	healthBar.value = hp
-	if hp <= 0:
+	character.hp -= clamp(damage - character.armor, 1.0, 999.0)
+	healthBar.max_value = character.maxhp
+	healthBar.value = character.hp
+	if character.hp <= 0:
 		death()
 
 func _on_enemy_detection_area_body_entered(body):
@@ -163,20 +159,20 @@ func levelup():
 func upgrade_character(upgrade):
 	match upgrade:
 		"apron":
-			armor += 1
+			character.armor += 1
 		"speed":
-			movement_speed += 20.0
+			character.movement_speed += 20.0
 		"tome":
-			spell_size += 0.10
+			character.spell_size += 0.10
 		"scroll":
-			spell_cooldown += 0.05
+			character.spell_cooldown += 0.05
 		"caution1":
-			knockback += 0.1			
+			character.knockback += 0.1			
 		"ring":
-			additional_attacks += 1
+			character.additional_attacks += 1
 		"food":
-			hp += 20
-			hp = clamp(hp,0,maxhp)
+			character.hp += 20
+			character.hp = clamp(character.hp, 0, character.maxhp)
 		_:
 			if upgrade in collected_upgrades:
 				attackManager.upgrade_weapon(upgrade)

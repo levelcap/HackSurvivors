@@ -83,11 +83,7 @@ var WEAPONS = {
 		"attack_time": .2,
 	},		
 }
-	
-func _process(delta):
-	for weapon_name in active_weapons:
-		active_weapons
-	
+
 func add_weapon(weapon_name):
 	var weapon = WEAPONS[weapon_name]
 	if weapon_name == "salt":
@@ -112,7 +108,7 @@ func add_weapon(weapon_name):
 		var timer := Timer.new()
 		var attack_timer := Timer.new()
 		
-		timer.wait_time = weapon["time"] * (1 - player.spell_cooldown)
+		timer.wait_time = weapon["time"] * (1 - player.character.spell_cooldown)
 		attack_timer.wait_time = weapon["attack_time"]
 		weapon["timer"] = timer
 		weapon["attack_timer"] = attack_timer
@@ -141,7 +137,7 @@ func upgrade_weapon(weapon_name):
 	
 func _on_timer_timeout(weapon_name):
 	var weapon = active_weapons[weapon_name]
-	weapon["ammo"] += weapon["baseammo"] + player.additional_attacks
+	weapon["ammo"] += weapon["baseammo"] + player.character.additional_attacks
 	weapon["attack_timer"].start()
 	
 func _on_attack_timer_timeout(weapon_name):

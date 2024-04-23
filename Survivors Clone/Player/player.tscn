@@ -1,8 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://dncgepmkc4jf4"]
+[gd_scene load_steps=19 format=3 uid="uid://dncgepmkc4jf4"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_37q80"]
-[ext_resource type="Texture2D" uid="uid://bilydodkygq8x" path="res://Textures/Wall/character-shadow.png" id="2_fel6v"]
-[ext_resource type="Texture2D" uid="uid://dehtsxm3k1twy" path="res://Textures/Player/player.png" id="2_tjd32"]
 [ext_resource type="PackedScene" uid="uid://xy3cvpwdy828" path="res://Utility/hurt_box.tscn" id="3_gs51i"]
 [ext_resource type="Texture2D" uid="uid://dx7xx6vfahxlq" path="res://Textures/GUI/exp_background.png" id="4_pbpj5"]
 [ext_resource type="Texture2D" uid="uid://dlx33roiu0vlj" path="res://Textures/GUI/exp_progress.png" id="5_5ive2"]
@@ -36,18 +34,7 @@ z_index = 5
 motion_mode = 1
 script = ExtResource("1_37q80")
 
-[node name="CharacterShadowSprite" type="Sprite2D" parent="."]
-modulate = Color(0.156863, 0.156863, 0.156863, 0.745098)
-position = Vector2(-0.999999, 20)
-scale = Vector2(0.07875, 0.0624999)
-texture = ExtResource("2_fel6v")
-
-[node name="CharacterSprite" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-scale = Vector2(0.03, 0.03)
-texture = ExtResource("2_tjd32")
-flip_h = true
-hframes = 4
+[node name="CharacterGroup" type="Node2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.9, 0.9)

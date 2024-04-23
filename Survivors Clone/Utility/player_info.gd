@@ -17,6 +17,9 @@ const INFO_TEMPLATE = {
 
 var player_info = {}
 
+var current_character = "line_cook"
+var current_level = "dayone"
+
 const FILE_NAME = "user://player_info.dat"
 
 func _ready():

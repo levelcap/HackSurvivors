@@ -31,16 +31,16 @@ func level_up():
 	match level:
 		1:
 			damage = 10
-			attack_size = 1.0 * (1 + player.spell_size)
+			attack_size = 1.0 * (1 + player.character.spell_size)
 		2:
 			damage = 15
-			attack_size = 2.0 * (1 + player.spell_size)
+			attack_size = 2.0 * (1 + player.character.spell_size)
 		3:
 			damage = 15
-			attack_size = 2.5 * (1 + player.spell_size)
+			attack_size = 2.5 * (1 + player.character.spell_size)
 		4:
 			damage = 20
-			attack_size = 3.0 * (1 + player.spell_size)
+			attack_size = 3.0 * (1 + player.character.spell_size)
 	
 func _on_attack_timer_timeout():
 	var puddle = PUDDLE.instantiate()
@@ -50,4 +50,4 @@ func _on_attack_timer_timeout():
 	puddle.snd_collide = snd_collide
 	snd_puddle.play()
 	%PuddlePoint.add_child(puddle)
-	attack_timer.wait_time = base_time * (1 - player.spell_cooldown)
+	attack_timer.wait_time = base_time * (1 - player.character.spell_cooldown)

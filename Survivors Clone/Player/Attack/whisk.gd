@@ -19,25 +19,25 @@ func _ready():
 			speed = 1
 			damage = 5
 			knockback_amount = 50
-			attack_size = 1.0 * (1 + player.spell_size)
+			attack_size = 1.0 * (1 + player.character.spell_size)
 		2:
 			hp = 3
 			speed = 1.5
 			damage = 5
 			knockback_amount = 50
-			attack_size = 1.0 * (1 + player.spell_size)
+			attack_size = 1.0 * (1 + player.character.spell_size)
 		3:
 			hp = 4
 			speed = 1.5
 			damage = 8
 			knockback_amount = 50
-			attack_size = 1.0 * (1 + player.spell_size)
+			attack_size = 1.0 * (1 + player.character.spell_size)
 		4:
 			hp = 5
 			speed = 2
 			damage = 8
 			knockback_amount = 50
-			attack_size = 1.0 * (1 + player.spell_size)
+			attack_size = 1.0 * (1 + player.character.spell_size)
 			
 	%WhiskAttack.hp = hp
 	%WhiskAttack.damage = damage
