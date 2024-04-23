@@ -11,15 +11,19 @@ const ITEMS = {
 		"levels": [
 			{
 				"details": "Oops, I guess I forgot to put up a “Caution, Wet Floor” Sign. Hope no one slips…",
+				"upgrade": { "damage": 0.1 }
 			},
 			{
 				"details": "The puddles just keep growing.",
+				"upgrade": { "damage": 0.1 }
 			},
 			{
 				"details": "The puddles just keep growing.",
+				"upgrade": { "damage": 0.1 }
 			},
 			{
 				"details": "The puddles just keep growing.",
+				"upgrade": { "damage": 0.1 }
 			}
 		]
 	},
@@ -49,15 +53,19 @@ const ITEMS = {
 		"levels": [
 			{
 				"details": "This is your pride and joy. It cuts and it chops, sometimes food and sometimes your own fingers.",
+				"upgrade": { "damage": 0.1 }
 			},
 			{
 				"details": "More knives!",
+				"upgrade": { "damage": 0.1 }
 			},
 			{
 				"details": "Sharper knives!",
+				"upgrade": { "damage": 0.1 }
 			},
 			{
 				"details": "Even more knives!",
+				"upgrade": { "damage": 0.1 }
 			}
 		]
 	},	
