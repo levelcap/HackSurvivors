@@ -89,6 +89,7 @@ rotation = 3.14159
 scale = Vector2(0.4, -0.4)
 texture = ExtResource("5_foa03")
 flip_h = true
+hframes = 2
 
 [node name="Versus" type="Sprite2D" parent="."]
 position = Vector2(370, -172)

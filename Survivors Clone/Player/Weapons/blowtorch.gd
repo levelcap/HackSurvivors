@@ -1,6 +1,6 @@
 extends Area2D
 
-const FLAME = preload("res://Player/Attack/torch_flame.tscn")
+const FLAME = preload("res://Player/Weapons/Attack/torch_flame.tscn")
 
 var level = 1
 var speed = 50
@@ -22,9 +22,6 @@ var enemies_in_range = []
 @onready var snd_attack = $snd_attack
 
 signal remove_from_array(object)
-
-func _ready():
-	pass
 
 func level_up():
 	level += 1

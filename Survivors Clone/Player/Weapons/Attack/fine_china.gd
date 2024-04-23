@@ -89,9 +89,8 @@ func _ready():
 		tween.tween_property(self,"angle", angle_more,2)
 	tween.play()
 
-
 func _physics_process(delta):
-	position += angle*speed*delta
+	position += angle * speed* delta
 	rotation += 0.5
 
 func enemy_hit(charge = 1):

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c282vqlm7nr8q"]
 
-[ext_resource type="Script" path="res://Player/Attack/rolling_pin.gd" id="1_mbeet"]
+[ext_resource type="Script" path="res://Player/Weapons/Attack/rolling_pin.gd" id="1_mbeet"]
 [ext_resource type="Texture2D" uid="uid://c4k122sf80vou" path="res://Textures/Items/Weapons/rolling_pin.png" id="1_o0xqy"]
 [ext_resource type="AudioStream" uid="uid://2o2pm00njc51" path="res://Audio/SoundEffect/new/weapon-rolling-pin.mp3" id="3_5xotr"]
 

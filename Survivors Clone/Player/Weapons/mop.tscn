@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://bmnffmaj1oepq"]
 
-[ext_resource type="Script" path="res://Player/Attack/mop.gd" id="1_usq22"]
-[ext_resource type="Texture2D" uid="uid://b2jb6rp4cjolx" path="res://Textures/Items/Weapons/mop_main.png" id="2_i84af"]
-[ext_resource type="AudioStream" uid="uid://da55gt3ei1p4l" path="res://Audio/SoundEffect/new/weapon-mop.mp3" id="3_ojypi"]
-[ext_resource type="AudioStream" uid="uid://bllnc630dss05" path="res://Audio/SoundEffect/new/enemy puddle.mp3" id="5_5uncu"]
+[ext_resource type="Script" path="res://Player/Weapons/mop.gd" id="1_cdm4l"]
+[ext_resource type="Texture2D" uid="uid://b2jb6rp4cjolx" path="res://Textures/Items/Weapons/mop_main.png" id="2_o6fdw"]
+[ext_resource type="AudioStream" uid="uid://da55gt3ei1p4l" path="res://Audio/SoundEffect/new/weapon-mop.mp3" id="3_e2bct"]
+[ext_resource type="AudioStream" uid="uid://bllnc630dss05" path="res://Audio/SoundEffect/new/enemy puddle.mp3" id="4_1qf8g"]
 
 [sub_resource type="Animation" id="Animation_3ybfu"]
 length = 0.001
@@ -44,13 +44,13 @@ _data = {
 }
 
 [node name="Mop" type="Node2D" groups=["attack"]]
-script = ExtResource("1_usq22")
+script = ExtResource("1_cdm4l")
 
 [node name="MopSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(26, 15)
 scale = Vector2(0.065, 0.065)
-texture = ExtResource("2_i84af")
+texture = ExtResource("2_o6fdw")
 hframes = 2
 
 [node name="PuddlePoint" type="Marker2D" parent="MopSprite"]
@@ -64,12 +64,12 @@ wait_time = 4.0
 autostart = true
 
 [node name="snd_puddle" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_ojypi")
+stream = ExtResource("3_e2bct")
 volume_db = -10.0
 pitch_scale = 5.0
 
 [node name="snd_collide" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_5uncu")
+stream = ExtResource("4_1qf8g")
 volume_db = -10.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -21,3 +21,4 @@ unique_name_in_owner = true
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("3_xg3ts")
 flip_h = true
+hframes = 2

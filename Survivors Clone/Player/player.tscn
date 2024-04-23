@@ -1,10 +1,10 @@
 [gd_scene load_steps=19 format=3 uid="uid://dncgepmkc4jf4"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_37q80"]
+[ext_resource type="PackedScene" uid="uid://d0uybt7qu3v11" path="res://Utility/inventory.tscn" id="2_va1yh"]
 [ext_resource type="PackedScene" uid="uid://xy3cvpwdy828" path="res://Utility/hurt_box.tscn" id="3_gs51i"]
 [ext_resource type="Texture2D" uid="uid://dx7xx6vfahxlq" path="res://Textures/GUI/exp_background.png" id="4_pbpj5"]
 [ext_resource type="Texture2D" uid="uid://dlx33roiu0vlj" path="res://Textures/GUI/exp_progress.png" id="5_5ive2"]
-[ext_resource type="PackedScene" uid="uid://dihcnrc6s7s5r" path="res://Utility/attack_manager.tscn" id="5_ijdha"]
 [ext_resource type="FontFile" uid="uid://cb4e8g30xxp5u" path="res://Font/tenderness.otf" id="6_okx7u"]
 [ext_resource type="FontFile" uid="uid://f502umyy2mu3" path="res://Font/BarlowCondensed-Medium.ttf" id="6_oy7lg"]
 [ext_resource type="Texture2D" uid="uid://dhdewo2g6mb1d" path="res://Textures/GUI/Progress_Bar_Dark_small.png" id="7_qhkd8"]
@@ -36,6 +36,8 @@ script = ExtResource("1_37q80")
 
 [node name="CharacterGroup" type="Node2D" parent="."]
 
+[node name="Inventory" parent="." instance=ExtResource("2_va1yh")]
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.9, 0.9)
 
@@ -57,9 +59,6 @@ position = Vector2(2, 3)
 shape = SubResource("RectangleShape2D_yfi4i")
 
 [node name="Attack" type="Node2D" parent="."]
-
-[node name="AttackManager" parent="." instance=ExtResource("5_ijdha")]
-unique_name_in_owner = true
 
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
 visible = false

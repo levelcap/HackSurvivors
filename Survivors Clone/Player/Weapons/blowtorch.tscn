@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://d276jjb6slldb"]
 
-[ext_resource type="Script" path="res://Player/Attack/blowtorch.gd" id="1_8lqeg"]
-[ext_resource type="AudioStream" uid="uid://cu54s0udoc14w" path="res://Audio/SoundEffect/new/weapon-blowtorch.mp3" id="3_lb7l1"]
-[ext_resource type="Texture2D" uid="uid://ca2tmfch2wdtk" path="res://Textures/Items/Weapons/weapon_blow_torch.png" id="3_ux71y"]
+[ext_resource type="Script" path="res://Player/Weapons/blowtorch.gd" id="1_1ro5f"]
+[ext_resource type="AudioStream" uid="uid://cu54s0udoc14w" path="res://Audio/SoundEffect/new/weapon-blowtorch.mp3" id="2_qaqg5"]
+[ext_resource type="Texture2D" uid="uid://ca2tmfch2wdtk" path="res://Textures/Items/Weapons/weapon_blow_torch.png" id="3_t8bcl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_83x0n"]
 radius = 136.894
@@ -10,7 +10,7 @@ radius = 136.894
 [node name="Blowtorch" type="Area2D" groups=["aim"]]
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("1_8lqeg")
+script = ExtResource("1_1ro5f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -0.986559
@@ -21,7 +21,7 @@ unique_name_in_owner = true
 autostart = true
 
 [node name="snd_attack" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_lb7l1")
+stream = ExtResource("2_qaqg5")
 
 [node name="TorchPivot" type="Marker2D" parent="."]
 
@@ -29,7 +29,7 @@ stream = ExtResource("3_lb7l1")
 position = Vector2(35, 0)
 rotation = 0.576678
 scale = Vector2(0.0493608, 0.0493608)
-texture = ExtResource("3_ux71y")
+texture = ExtResource("3_t8bcl")
 
 [node name="FirePoint" type="Marker2D" parent="TorchPivot/Sprite2D"]
 unique_name_in_owner = true

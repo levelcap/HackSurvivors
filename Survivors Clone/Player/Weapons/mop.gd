@@ -1,6 +1,6 @@
 extends Node2D
 
-const PUDDLE = preload("res://Player/Attack/mop_puddle.tscn")
+const PUDDLE = preload("res://Player/Weapons/Attack/mop_puddle.tscn")
 var level = 1
 var hp = 10
 var damage = 10

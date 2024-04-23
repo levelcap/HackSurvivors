@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://ci0jl8b4squ7m"]
 
-[ext_resource type="Script" path="res://Player/Attack/fine_china.gd" id="1_33d0p"]
-[ext_resource type="Texture2D" uid="uid://b6xksohckbr6l" path="res://Textures/Items/Weapons/Finechina2.png" id="2_vjfy1"]
-[ext_resource type="AudioStream" uid="uid://dm14x014gr5t0" path="res://Audio/SoundEffect/new/weapon-china.mp3" id="3_t2cqi"]
+[ext_resource type="Script" path="res://Player/Weapons/Attack/fine_china.gd" id="1_qoyw4"]
+[ext_resource type="Texture2D" uid="uid://b6xksohckbr6l" path="res://Textures/Items/Weapons/Finechina2.png" id="2_yxi6v"]
+[ext_resource type="AudioStream" uid="uid://dm14x014gr5t0" path="res://Audio/SoundEffect/new/weapon-china.mp3" id="3_bmnta"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dfset"]
 radius = 9.55249
@@ -12,11 +12,11 @@ top_level = true
 scale = Vector2(0.1, 0.1)
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("1_33d0p")
+script = ExtResource("1_qoyw4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.012, 0.012)
-texture = ExtResource("2_vjfy1")
+texture = ExtResource("2_yxi6v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 1)
@@ -27,7 +27,7 @@ wait_time = 20.0
 autostart = true
 
 [node name="snd_attack" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_t2cqi")
+stream = ExtResource("3_bmnta")
 volume_db = -8.0
 autoplay = true
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://wpliv06gy0pq"]
 
-[ext_resource type="Script" path="res://Player/Attack/knife.gd" id="1_cxwq5"]
-[ext_resource type="Texture2D" uid="uid://bp12ycom8vlrc" path="res://Textures/Items/Weapons/knife.png" id="2_ydi42"]
-[ext_resource type="AudioStream" uid="uid://bmdbmw2221k2b" path="res://Audio/SoundEffect/new/weapon-knife.mp3" id="3_6yr2a"]
+[ext_resource type="Script" path="res://Player/Weapons/Attack/knife.gd" id="1_xopwl"]
+[ext_resource type="Texture2D" uid="uid://bp12ycom8vlrc" path="res://Textures/Items/Weapons/knife.png" id="2_3erke"]
+[ext_resource type="AudioStream" uid="uid://bmdbmw2221k2b" path="res://Audio/SoundEffect/new/weapon-knife.mp3" id="3_20ewj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p4tiy"]
 size = Vector2(14.1421, 35.3553)
@@ -12,11 +12,11 @@ top_level = true
 scale = Vector2(0.1, 0.1)
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("1_cxwq5")
+script = ExtResource("1_xopwl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.06, 0.06)
-texture = ExtResource("2_ydi42")
+texture = ExtResource("2_3erke")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.5, -2.5)
@@ -29,7 +29,7 @@ one_shot = true
 autostart = true
 
 [node name="snd_play" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_6yr2a")
+stream = ExtResource("3_20ewj")
 volume_db = -10.0
 pitch_scale = 5.0
 autoplay = true

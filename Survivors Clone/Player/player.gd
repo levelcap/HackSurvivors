@@ -19,7 +19,7 @@ var enemy_close = []
 
 @onready var sprite = null
 @onready var walkTimer = get_node("%walkTimer")
-@onready var attackManager = $AttackManager
+@onready var inventory = $Inventory
 @onready var character_group = $CharacterGroup
 
 #GUI
@@ -175,9 +175,9 @@ func upgrade_character(upgrade):
 			character.hp = clamp(character.hp, 0, character.maxhp)
 		_:
 			if upgrade in collected_upgrades:
-				attackManager.upgrade_weapon(upgrade)
+				inventory.upgrade_weapon(upgrade)
 			else:
-				attackManager.add_weapon(upgrade)
+				inventory.add_weapon(upgrade)
 				
 	adjust_gui_collection(upgrade)
 	

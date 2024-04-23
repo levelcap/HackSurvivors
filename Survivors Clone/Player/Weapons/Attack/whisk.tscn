@@ -1,23 +1,23 @@
 [gd_scene load_steps=6 format=3 uid="uid://cq4iij4kehr48"]
 
-[ext_resource type="Script" path="res://Player/Attack/whisk.gd" id="1_s2del"]
-[ext_resource type="AudioStream" uid="uid://b3lfg5aquoohq" path="res://Audio/SoundEffect/new/weapon-whisk.mp3" id="2_bwp62"]
-[ext_resource type="Texture2D" uid="uid://dngdsx38wsj6o" path="res://Textures/Items/Weapons/whisk.png" id="3_4d6bu"]
-[ext_resource type="Script" path="res://Player/Attack/whisk_hit.gd" id="3_qswym"]
+[ext_resource type="Script" path="res://Player/Weapons/Attack/whisk.gd" id="1_xoxrp"]
+[ext_resource type="AudioStream" uid="uid://b3lfg5aquoohq" path="res://Audio/SoundEffect/new/weapon-whisk.mp3" id="2_amk43"]
+[ext_resource type="Script" path="res://Player/Weapons/Attack/whisk_hit.gd" id="3_hjyly"]
+[ext_resource type="Texture2D" uid="uid://dngdsx38wsj6o" path="res://Textures/Items/Weapons/whisk.png" id="4_8a8en"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_83x0n"]
 radius = 136.894
 
 [node name="Whisk" type="Node2D"]
 z_index = 10
-script = ExtResource("1_s2del")
+script = ExtResource("1_xoxrp")
 
 [node name="AttackTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 autostart = true
 
 [node name="snd_hit" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_bwp62")
+stream = ExtResource("2_amk43")
 
 [node name="WhiskPivot" type="Marker2D" parent="."]
 
@@ -25,12 +25,12 @@ stream = ExtResource("2_bwp62")
 unique_name_in_owner = true
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("3_qswym")
+script = ExtResource("3_hjyly")
 
 [node name="Sprite2D" type="Sprite2D" parent="WhiskPivot/WhiskAttack"]
 position = Vector2(51, 0)
 scale = Vector2(0.0493608, 0.0493608)
-texture = ExtResource("3_4d6bu")
+texture = ExtResource("4_8a8en")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WhiskPivot/WhiskAttack"]
 position = Vector2(54, -4)

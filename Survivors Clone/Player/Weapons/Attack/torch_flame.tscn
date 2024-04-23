@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dl14bsgf58ig3"]
 
 [ext_resource type="Texture2D" uid="uid://dm4ad8kt7nq7x" path="res://Textures/Items/Weapons/torch_flame.png" id="1_scdfs"]
-[ext_resource type="Script" path="res://Player/Attack/torch_flame.gd" id="1_y1yt4"]
+[ext_resource type="Script" path="res://Player/Weapons/Attack/torch_flame.gd" id="1_y1yt4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8o67j"]
 

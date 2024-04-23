@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk4d2qqq6wlj4"]
+
+[ext_resource type="Script" path="res://Player/Weapons/knife.gd" id="1_glcce"]
+[ext_resource type="Texture2D" uid="uid://bp12ycom8vlrc" path="res://Textures/Items/Weapons/knife.png" id="1_w340p"]
+
+[node name="Knife" type="Node2D"]
+script = ExtResource("1_glcce")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4, 9)
+rotation = 4.71239
+scale = Vector2(0.0183446, 0.0183446)
+texture = ExtResource("1_w340p")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

@@ -47,7 +47,7 @@ func _ready():
 	tween.play()
 
 func _physics_process(delta):
-	position += angle*speed*delta
+	position += angle * speed * delta
 
 func enemy_hit(charge = 1):
 	hp -= charge
