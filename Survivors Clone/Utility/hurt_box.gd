@@ -28,7 +28,7 @@ func _on_area_entered(area):
 			if not area.get("knockback_amount") == null:
 				knockback = area.knockback_amount
 			var aura_timer := Timer.new()
-			aura_timer.wait_time = area.get("speed")
+			aura_timer.wait_time = area.get("time")
 			add_child(aura_timer)
 			aura_timer.start()
 			aura_timer.timeout.connect(_on_aura_timer_timeout.bind(aura_timer, area, damage, angle, knockback))

@@ -4,6 +4,29 @@ const ACCESSORY_PATH = "res://Textures/Items/Upgrades/"
 const WEAPON_PATH = "res://Textures/Items/Weapons/"
 
 const ITEMS = {
+	"knife": {
+		"icon": WEAPON_PATH + "knife_icon.png",
+		"displayname": "Stabitha Christie",
+		"type": "weapon",
+		"levels": [
+			{
+				"details": "This is your pride and joy. It cuts and it chops, sometimes food and sometimes your own fingers.",
+				"init": { "damage": 5, "baseammo": 1 }
+			},
+			{
+				"details": "More knives!",
+				"upgrade": { "baseammo": 1 }
+			},
+			{
+				"details": "Sharper knives!",
+				"upgrade": { "damage": 0.2, "hp": 1 }
+			},
+			{
+				"details": "Even more sharper knives!",
+				"upgrade": { "damage": 0.1, "baseammo": 1, "hp": 1 }
+			}
+		]
+	},		
 	"mop": {
 		"icon": WEAPON_PATH + "mop_icon.png",
 		"displayname": "Slip ‘n Slide",
@@ -11,19 +34,19 @@ const ITEMS = {
 		"levels": [
 			{
 				"details": "Oops, I guess I forgot to put up a “Caution, Wet Floor” Sign. Hope no one slips…",
-				"upgrade": { "damage": 0.1 }
+				"init": { "damage": 10, "time": 2.0 }
 			},
 			{
 				"details": "The puddles just keep growing.",
-				"upgrade": { "damage": 0.1 }
+				"upgrade": { "damage": 0.5, "attack_size": 0.5 }
 			},
 			{
 				"details": "The puddles just keep growing.",
-				"upgrade": { "damage": 0.1 }
+				"upgrade": { "damage": 0.5, "attack_size": 0.5 }
 			},
 			{
 				"details": "The puddles just keep growing.",
-				"upgrade": { "damage": 0.1 }
+				"upgrade": { "damage": 0.5, "attack_size": 0.5 }
 			}
 		]
 	},
@@ -46,29 +69,6 @@ const ITEMS = {
 			}
 		]
 	},
-	"knife": {
-		"icon": WEAPON_PATH + "knife_icon.png",
-		"displayname": "Stabitha Christie",
-		"type": "weapon",
-		"levels": [
-			{
-				"details": "This is your pride and joy. It cuts and it chops, sometimes food and sometimes your own fingers.",
-				"upgrade": { "damage": 0.1 }
-			},
-			{
-				"details": "More knives!",
-				"upgrade": { "damage": 0.1 }
-			},
-			{
-				"details": "Sharper knives!",
-				"upgrade": { "damage": 0.1 }
-			},
-			{
-				"details": "Even more knives!",
-				"upgrade": { "damage": 0.1 }
-			}
-		]
-	},	
 	"china": {
 		"icon": WEAPON_PATH + "Finechina2_icon.png",
 		"displayname": "Grandma’s Finest",
@@ -95,15 +95,19 @@ const ITEMS = {
 		"levels": [
 			{
 				"details": "Summon a salt and pepper cloud and welcome enemies to Flavortown",
+				"init": { "damage": 1, "knockback_amount": 35, "time": 0.5 }
 			},
 			{
 				"details": "Your flavor cloud grows stronger",
+				"upgrade": { "damage": 1.0 }
 			},
 			{
-				"details": "Wait 0.5 seconds less before throwing again",
+				"details": "Your flavor cloud grows stronger",
+				"upgrade": { "damage": 1.0 }
 			},
 			{
-				"details": "Wait 0.5 seconds less before throwing again",
+				"details": "Your flavor cloud grows stronger",
+				"upgrade": { "damage": 1.0 }
 			}
 		]
 	},		

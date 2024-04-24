@@ -58,7 +58,7 @@ unique_name_in_owner = true
 position = Vector2(-8, 213.6)
 scale = Vector2(4, 4)
 
-[node name="AttackTimer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 4.0
 autostart = true
@@ -77,4 +77,4 @@ libraries = {
 "": SubResource("AnimationLibrary_2pfbr")
 }
 
-[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

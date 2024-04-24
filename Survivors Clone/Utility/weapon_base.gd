@@ -33,17 +33,32 @@ func _process(_delta):
 		
 func level_up():
 	stats["level"] += 1
-	stats["baseammo"] += 1
 	var level_idx = stats["level"] - 1 
-	if (ItemDb.ITEMS[NAME]["levels"][level_idx].has("upgrade")):
-		for upgrade_key in ItemDb.ITEMS[NAME]["levels"][level_idx]["upgrade"].keys():
-			var stat_multiplier = 1 + ItemDb.ITEMS[NAME]["levels"][level_idx]["upgrade"][upgrade_key]
-			stats[upgrade_key] *= stat_multiplier
-			
+	var new_level = ItemDb.ITEMS[NAME]["levels"][level_idx]
+	
+	if (new_level.has("init")):
+		var init_info = new_level["init"]
+		for init_key in init_info.keys():
+			var amount = init_info[init_key]
+			stats[init_key] = amount
+	elif (new_level.has("upgrade")):
+		var upgrade_info = new_level["upgrade"]
+		for upgrade_key in upgrade_info.keys():
+			var upgrade_amount = upgrade_info[upgrade_key]
+			match upgrade_key:
+				"baseammo", "hp":
+					stats[upgrade_key] += upgrade_amount
+				_:
+					var stat_multiplier = 1 + upgrade_amount
+					stats[upgrade_key] *= stat_multiplier
 	update_weapon()
 	
 func update_weapon():
-	timer.wait_time = stats["time"] * (1 - player.character.spell_cooldown)
-	attack_timer.wait_time = stats["attack_time"]
-		
-	timer.start()
+	if timer:
+		timer.wait_time = stats["time"] * (1 - player.character.spell_cooldown)
+		timer.start()
+	if attack_timer:
+		attack_timer.wait_time = stats["attack_time"]
+
+func modified_attack_size():
+	return stats["attack_size"] * (1 + player.character.spell_size)
