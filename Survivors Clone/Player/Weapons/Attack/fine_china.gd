@@ -1,11 +1,10 @@
 extends Area2D
 
-var level = 1
-var hp = 9999
-var speed = 100.0
-var damage = 5
+var stats = {}
+var knockback_amount = 1
+var damage = 1
 var attack_size = 1.0
-var knockback_amount = 100
+var speed = 1.0
 
 var last_movement = Vector2.ZERO
 var angle = Vector2.ZERO
@@ -18,33 +17,9 @@ signal remove_from_array(object)
 @onready var collisionSound = $snd_collide
 
 func _ready():
-	match level:
-		1:
-			hp = 9999
-			speed = 100.0
-			damage = 5
-			knockback_amount = 100
-			attack_size = 1.0 * (1 + player.character.spell_size)
-		2:
-			hp = 9999
-			speed = 100.0
-			damage = 5
-			knockback_amount = 100
-			attack_size = 1.0 * (1 + player.character.spell_size)
-		3:
-			hp = 9999
-			speed = 100.0
-			damage = 5
-			knockback_amount = 100
-			attack_size = 1.0 * (1 + player.character.spell_size)
-		4:
-			hp = 9999
-			speed = 100.0
-			damage = 5
-			knockback_amount = 125
-			attack_size = 1.0 * (1 + player.character.spell_size)
-
-			
+	damage = stats["damage"]
+	knockback_amount = stats["knockback_amount"]
+	speed = stats["speed"]
 	var move_to_less = Vector2.ZERO
 	var move_to_more = Vector2.ZERO
 	
@@ -63,10 +38,10 @@ func _ready():
 	angle_more = global_position.direction_to(move_to_more)
 	
 	var initital_tween = create_tween().set_parallel(true)
-	initital_tween.tween_property(self,"scale",Vector2(1,1)*attack_size,3).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	initital_tween.tween_property(self, "scale", Vector2(1,1) * attack_size, 3).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	var final_speed = speed
-	speed = speed/5.0
-	initital_tween.tween_property(self,"speed",final_speed,6).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	speed = speed / 5.0
+	initital_tween.tween_property(self, "speed", final_speed, 6).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	initital_tween.play()
 	
 	var tween = create_tween()
@@ -90,7 +65,7 @@ func _ready():
 	tween.play()
 
 func _physics_process(delta):
-	position += angle * speed* delta
+	position += angle * speed * delta
 	rotation += 0.5
 
 func enemy_hit(charge = 1):

@@ -16,7 +16,7 @@ script = ExtResource("1_1ro5f")
 rotation = -0.986559
 shape = SubResource("CircleShape2D_83x0n")
 
-[node name="AttackTimer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
 autostart = true
 
@@ -36,4 +36,4 @@ unique_name_in_owner = true
 position = Vector2(65.0521, -156.125)
 rotation = 1.70647
 
-[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

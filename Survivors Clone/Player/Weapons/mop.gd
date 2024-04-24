@@ -9,14 +9,6 @@ func _ready():
 	ATTACK = preload("res://Player/Weapons/Attack/mop_puddle.tscn")
 	NAME = "mop"
 	
-func _process(delta):
-	if player.sprite.flip_h:
-		global_position = player.global_position + Vector2(-55, 0)
-		$MopSprite.flip_h = true
-	else:
-		global_position = player.global_position + Vector2(0, 0)
-		$MopSprite.flip_h = false
-
 func _on_timer_timeout():
 	var puddle = ATTACK.instantiate()
 	puddle.global_position = %PuddlePoint.global_position

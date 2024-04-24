@@ -11,7 +11,7 @@ func _on_timer_timeout():
 func _on_attack_timer_timeout():
 	if stats["ammo"] > 0:
 		var knife_attack = ATTACK.instantiate()
-		knife_attack.stats = stats
+		knife_attack.stats = stats.duplicate()
 		knife_attack.position = player.position
 		knife_attack.target = get_random_target()
 		add_child(knife_attack)

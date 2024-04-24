@@ -48,8 +48,8 @@ script = ExtResource("1_cdm4l")
 
 [node name="MopSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(26, 15)
-scale = Vector2(0.065, 0.065)
+position = Vector2(-28, 15)
+scale = Vector2(-0.065, 0.065)
 texture = ExtResource("2_o6fdw")
 hframes = 2
 

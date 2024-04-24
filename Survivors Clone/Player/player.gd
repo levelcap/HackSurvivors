@@ -51,7 +51,7 @@ func _ready():
 	character = char_scene.instantiate()
 	character_group.add_child(character)
 	sprite = character.sprite
-	upgrade_character("salt")
+	upgrade_character("knife")
 	set_expbar(experience, calculate_experiencecap())
 	_on_hurt_box_hurt(0,0,0)
 	if not PlayerInfo.level_stats(PlayerInfo.current_level, 'won') >= 1:

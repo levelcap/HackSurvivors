@@ -14,7 +14,6 @@ func _ready():
 	anim.play("shake")
 	
 func update_weapon():
-	print("Updating here")
 	damage = stats["damage"]
 	knockback_amount = stats["knockback_amount"]
 	time = stats['time']

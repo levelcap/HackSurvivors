@@ -1,10 +1,8 @@
 extends Area2D
 
-var level = 1
-var hp = 1
-var speed = 100
-var damage = 5
-var knockback_amount = 100
+var stats = {}
+var knockback_amount = 1
+var damage = 1
 var attack_size = 1.0
 var angle = Vector2.RIGHT
 
@@ -15,50 +13,26 @@ var angle = Vector2.RIGHT
 signal remove_from_array(object)
 
 func _ready():
-	var vpr = get_viewport_rect().size * randf_range(1.0, 1.1)
+	damage = stats["damage"]
+	knockback_amount = stats["knockback_amount"]
+	scale = Vector2(1.0, 1.0) * attack_size
+	
+	var vpr = get_viewport_rect().size * randf_range(1.1, 1.2)
 	angle = [Vector2.RIGHT, Vector2.LEFT].pick_random()
 	var x_spawn = player.global_position.x + vpr.x/2
 	if angle == Vector2.RIGHT:
 		x_spawn = player.global_position.x - vpr.x/2
-		
-	var y_spawn = player.global_position.y + randf_range(-100.0, 100.0)
+	var y_spawn = player.global_position.y + randf_range(-200.0, 200.0)
 	position = Vector2(x_spawn,y_spawn) 
 	anim.play("rolling")
-	
-	match level:
-		1:
-			hp = 10
-			speed = 100
-			damage = 5
-			knockback_amount = 100
-			attack_size = 1.0 * (1 + player.character.spell_size)
-		2:
-			hp = 20
-			speed = 100
-			damage = 5
-			knockback_amount = 100
-			attack_size = 1.5 * (1 + player.character.spell_size)
-		3:
-			hp = 30
-			speed = 100
-			damage = 10
-			knockback_amount = 100
-			attack_size = 1.0 * (1 + player.character.spell_size)
-		4:
-			hp = 40
-			speed = 100
-			damage = 19
-			knockback_amount = 100
-			attack_size = 2.0 * (1 + player.character.spell_size)
-		
 
 func _physics_process(delta):
-	position += angle * speed *delta
+	position += angle * stats["speed"] * delta
 
 func enemy_hit(charge = 1):
 	snd_hit.play()
-	hp -= charge
-	if hp <= 0:
+	stats["hp"] -= charge
+	if stats["hp"] <= 0:
 		emit_signal("remove_from_array",self)
 		queue_free()
 		

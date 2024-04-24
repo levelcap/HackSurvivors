@@ -11,19 +11,19 @@ const ITEMS = {
 		"levels": [
 			{
 				"details": "This is your pride and joy. It cuts and it chops, sometimes food and sometimes your own fingers.",
-				"init": { "damage": 5, "baseammo": 1 }
+				"upgrade": { "hp": 1, "speed": 100, "damage": 5, "knockback_amount": 100, "baseammo": 1, "time": 1.5, "attack_time": .075 }
 			},
 			{
 				"details": "More knives!",
-				"upgrade": { "baseammo": 1 }
+				"upgrade": { "baseammo": 2 }
 			},
 			{
 				"details": "Sharper knives!",
-				"upgrade": { "damage": 0.2, "hp": 1 }
+				"upgrade": { "damage": 8, "hp": 2 }
 			},
 			{
 				"details": "Even more sharper knives!",
-				"upgrade": { "damage": 0.1, "baseammo": 1, "hp": 1 }
+				"upgrade": { "damage": 10, "baseammo": 3, "hp": 4 }
 			}
 		]
 	},		
@@ -34,19 +34,19 @@ const ITEMS = {
 		"levels": [
 			{
 				"details": "Oops, I guess I forgot to put up a “Caution, Wet Floor” Sign. Hope no one slips…",
-				"init": { "damage": 10, "time": 2.0 }
+				"upgrade": { "hp": 1, "speed": 100, "damage": 5, "knockback_amount": 100, "baseammo": 1, "time": 2.0, "attack_time": .075 }
 			},
 			{
 				"details": "The puddles just keep growing.",
-				"upgrade": { "damage": 0.5, "attack_size": 0.5 }
+				"upgrade": { "damage": 7, "attack_size": 1.5 }
 			},
 			{
 				"details": "The puddles just keep growing.",
-				"upgrade": { "damage": 0.5, "attack_size": 0.5 }
+				"upgrade": { "damage": 10, "attack_size": 2.0 }
 			},
 			{
 				"details": "The puddles just keep growing.",
-				"upgrade": { "damage": 0.5, "attack_size": 0.5 }
+				"upgrade": { "damage": 12, "attack_size": 2.5 }
 			}
 		]
 	},
@@ -57,15 +57,19 @@ const ITEMS = {
 		"levels": [
 			{
 				"details": "She makes a mean creme brulee, but you shouldn’t get too close.",
+				"upgrade": { "hp": 1, "speed": 50, "damage": 10, "knockback_amount": 100, "baseammo": 1, "time": 1.0, "range": 50 }
 			},
 			{
 				"details": "She makes a mean creme brulee, but you shouldn’t get too close.",
+				"upgrade": { "speed": 20, "damage": 15, "range": 50 }
 			},
 			{
 				"details": "She makes a mean creme brulee, but you shouldn’t get too close.",
+				"upgrade": { "damage": 30, "range": 120, "knockback_amount": 150, "attack_size": 1.5 }
 			},
 			{
 				"details": "She makes a mean creme brulee, but you shouldn’t get too close.",
+				"upgrade": { "attack_size": 2.0 }
 			}
 		]
 	},
@@ -76,6 +80,7 @@ const ITEMS = {
 		"levels": [
 			{
 				"details": "The will didn't say NOT to break them, right?",
+				"upgrade": { "hp": 1, "speed": 100, "damage": 5, "knockback_amount": 100, "baseammo": 1, "time": 2.0, "attack_time": .075 }
 			},
 			{
 				"details": "Throw two plates at once",
@@ -95,19 +100,19 @@ const ITEMS = {
 		"levels": [
 			{
 				"details": "Summon a salt and pepper cloud and welcome enemies to Flavortown",
-				"init": { "damage": 1, "knockback_amount": 35, "time": 0.5 }
+				"upgrade": { "hp": 1, "speed": 100, "damage": 1, "knockback_amount": 35, "baseammo": 1, "time": 0.5, "attack_time": .075 }
 			},
 			{
 				"details": "Your flavor cloud grows stronger",
-				"upgrade": { "damage": 1.0 }
+				"upgrade": { "damage": 2 }
 			},
 			{
 				"details": "Your flavor cloud grows stronger",
-				"upgrade": { "damage": 1.0 }
+				"upgrade": { "damage": 3 }
 			},
 			{
 				"details": "Your flavor cloud grows stronger",
-				"upgrade": { "damage": 1.0 }
+				"upgrade": { "damage": 5 }
 			}
 		]
 	},		
@@ -118,15 +123,19 @@ const ITEMS = {
 		"levels": [
 			{
 				"details": "Your trusty whisk spins around you",
+				"upgrade": { "hp": 2, "speed": 1, "damage": 5, "knockback_amount": 50, "baseammo": 1, "time": 1.5, "attack_time": 0.75 }
 			},
 			{
 				"details": "Your flavor cloud grows stronger",
+				"upgrade": { "hp": 3, "speed": 1.5 }
 			},
 			{
 				"details": "Wait 0.5 seconds less before throwing again",
+				"upgrade": { "hp": 4, "damage": 8 }
 			},
 			{
 				"details": "Wait 0.5 seconds less before throwing again",
+				"upgrade": { "hp": 5, "speed": 2 }
 			}
 		]
 	},		
@@ -137,15 +146,19 @@ const ITEMS = {
 		"levels": [
 			{
 				"details": "Rollin rollin rollin",
+				"upgrade": { "hp": 10, "speed": 100, "damage": 5, "knockback_amount": 35, "baseammo": 1, "time": 0.5, "attack_time": .075 }
 			},
 			{
 				"details": "Rollin rollin rollin",
+				"upgrade": { "damage": 6, "baseammo": 2, "hp": 15, "speed": 200 }
 			},
 			{
 				"details": "Rollin rollin rollin",
+				"upgrade": { "damage": 7, "baseammo": 3, "hp": 20 }
 			},
 			{
 				"details": "Rollin rollin rollin",
+				"upgrade": { "damage": 9, "baseammo": 4, "hp": 25 }
 			}
 		]
 	},		

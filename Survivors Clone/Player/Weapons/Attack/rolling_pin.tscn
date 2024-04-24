@@ -48,21 +48,20 @@ _data = {
 
 [node name="RollingPin" type="Area2D" groups=["attack"]]
 top_level = true
-scale = Vector2(0.1, 0.1)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_mbeet")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1.90735e-06, 0)
-scale = Vector2(0.722515, 0.722515)
+scale = Vector2(0.0620989, 0.0620989)
 texture = ExtResource("1_o0xqy")
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-10, 0)
+position = Vector2(-1, 8.35141e-11)
 rotation = -0.00307971
-scale = Vector2(0.999999, 0.999999)
+scale = Vector2(0.0882554, 0.0882554)
 shape = SubResource("RectangleShape2D_p4tiy")
 
 [node name="Timer" type="Timer" parent="."]

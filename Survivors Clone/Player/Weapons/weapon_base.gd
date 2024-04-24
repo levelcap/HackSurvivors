@@ -19,6 +19,7 @@ var stats = {
 	"damage": 5,
 	"knockback_amount": 100,
 	"attack_size": 1.0,
+	"range": 100,
 	"ammo": 0,
 	"baseammo": 0,
 	"time": 1.5,
@@ -36,21 +37,11 @@ func level_up():
 	var level_idx = stats["level"] - 1 
 	var new_level = ItemDb.ITEMS[NAME]["levels"][level_idx]
 	
-	if (new_level.has("init")):
-		var init_info = new_level["init"]
-		for init_key in init_info.keys():
-			var amount = init_info[init_key]
-			stats[init_key] = amount
-	elif (new_level.has("upgrade")):
+	if (new_level.has("upgrade")):
 		var upgrade_info = new_level["upgrade"]
 		for upgrade_key in upgrade_info.keys():
-			var upgrade_amount = upgrade_info[upgrade_key]
-			match upgrade_key:
-				"baseammo", "hp":
-					stats[upgrade_key] += upgrade_amount
-				_:
-					var stat_multiplier = 1 + upgrade_amount
-					stats[upgrade_key] *= stat_multiplier
+			var amount = upgrade_info[upgrade_key]
+			stats[upgrade_key] = amount
 	update_weapon()
 	
 func update_weapon():
@@ -58,6 +49,7 @@ func update_weapon():
 		timer.wait_time = stats["time"] * (1 - player.character.spell_cooldown)
 		timer.start()
 	if attack_timer:
+		print("Here")
 		attack_timer.wait_time = stats["attack_time"]
 
 func modified_attack_size():
