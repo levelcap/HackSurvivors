@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://doxvkwq5mblvi"]
+
+[ext_resource type="Script" path="res://Player/Weapons/Attack/blender.gd" id="1_nwo1l"]
+[ext_resource type="AudioStream" uid="uid://b3lfg5aquoohq" path="res://Audio/SoundEffect/new/weapon-whisk.mp3" id="2_76ox3"]
+[ext_resource type="Script" path="res://Player/Weapons/Attack/whisk_hit.gd" id="3_qp33m"]
+[ext_resource type="Texture2D" uid="uid://dngdsx38wsj6o" path="res://Textures/Items/Weapons/whisk.png" id="4_d7trx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_83x0n"]
+radius = 136.894
+
+[node name="Blender" type="Node2D"]
+z_index = 10
+script = ExtResource("1_nwo1l")
+
+[node name="AttackTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+autostart = true
+
+[node name="snd_hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_76ox3")
+
+[node name="BlenderPivot" type="Marker2D" parent="."]
+
+[node name="BlenderAttack" type="Area2D" parent="BlenderPivot" groups=["attack"]]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_qp33m")
+
+[node name="Sprite2D" type="Sprite2D" parent="BlenderPivot/BlenderAttack"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(74, 0)
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("4_d7trx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlenderPivot/BlenderAttack"]
+position = Vector2(77, -4)
+rotation = -0.986559
+scale = Vector2(0.137154, 0.137154)
+shape = SubResource("CircleShape2D_83x0n")

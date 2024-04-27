@@ -1,8 +1,8 @@
 extends WeaponBase
 
 func _ready():
-	ATTACK = preload("res://Player/Weapons/Attack/whisk.tscn")
-	NAME = "whisk"
+	ATTACK = preload("res://Player/Weapons/Attack/blender.tscn")
+	NAME = "blender"
 
 func _on_timer_timeout():
 	stats["ammo"] += stats["baseammo"] + player.character.additional_attacks

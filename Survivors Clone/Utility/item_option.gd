@@ -13,7 +13,7 @@ var level_idx = null
 signal selected_upgrade(upgrade)
 
 func _ready():
-	connect("selected_upgrade",Callable(player,"upgrade_character"))
+	connect("selected_upgrade", Callable(player, "upgrade_character"))
 	if item_name == null:
 		item_name = "food"
 	lblName.text = ItemDb.ITEMS[item_name]["displayname"]

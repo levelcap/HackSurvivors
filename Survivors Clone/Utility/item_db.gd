@@ -280,4 +280,16 @@ const ITEMS = {
 			}
 		]
 	},	
+	"blender": {
+		"icon": WEAPON_PATH + "blender_icon.png",
+		"displayname": "Blend-her?!",
+		"type": "super",
+		"requirements": ["whisk", "scroll"],
+		"levels": [
+			{
+				"details": "Caffeine and a whisk is a hell of a combo, look at this thing go!",
+				"upgrade": { "hp": 20, "speed": 5, "damage": 15, "knockback_amount": 150, "baseammo": 1, "time": 1, "attack_time": 0.25 }
+			}
+		]
+	},	
 }

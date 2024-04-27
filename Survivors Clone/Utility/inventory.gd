@@ -9,7 +9,8 @@ const WEAPON_SCENES = {
 	"torch": preload("res://Player/Weapons/blowtorch.tscn"),
 	"china": preload("res://Player/Weapons/fine_china.tscn"),
 	"whisk": preload("res://Player/Weapons/whisk.tscn"),
-	"rolling_pin": preload("res://Player/Weapons/rolling_pin.tscn")
+	"rolling_pin": preload("res://Player/Weapons/rolling_pin.tscn"),
+	"blender": preload("res://Player/Weapons/blender.tscn"),
 }
 
 var active_weapons = {}
@@ -24,4 +25,10 @@ func add_weapon(weapon_name):
 func upgrade_weapon(weapon_name):
 	var weapon = active_weapons[weapon_name]
 	weapon.level_up()
+	
+func remove_weapon(weapon_name):
+	var weapon = active_weapons[weapon_name]
+	weapon.queue_free()
+	active_weapons.erase(weapon_name)
+	
 

@@ -36,7 +36,6 @@ func load():
 		player_info = JSON.parse_string(file.get_as_text())
 		file.close()
 		if not player_info.get("levels"):
-			print("Resetting")
 			self.reset()
 	else:
 		self.reset()

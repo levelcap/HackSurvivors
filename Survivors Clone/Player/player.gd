@@ -51,7 +51,14 @@ func _ready():
 	character = char_scene.instantiate()
 	character_group.add_child(character)
 	sprite = character.sprite
-	upgrade_character("knife")
+	upgrade_character("whisk")
+	upgrade_character("whisk")
+	upgrade_character("whisk")
+	upgrade_character("whisk")
+	upgrade_character("scroll")
+	upgrade_character("scroll")
+	upgrade_character("scroll")
+	upgrade_character("scroll")
 	set_expbar(experience, calculate_experiencecap())
 	_on_hurt_box_hurt(0,0,0)
 	if not PlayerInfo.level_stats(PlayerInfo.current_level, 'won') >= 1:
@@ -95,7 +102,6 @@ func _on_enemy_detection_area_body_entered(body):
 func _on_enemy_detection_area_body_exited(body):
 	if enemy_close.has(body):
 		enemy_close.erase(body)
-
 
 func _on_grab_area_area_entered(area):
 	if area.is_in_group("loot"):
@@ -157,6 +163,15 @@ func levelup():
 	get_tree().paused = true
 
 func upgrade_character(upgrade):
+	var db_item = ItemDb.ITEMS[upgrade]
+	var remove_weapons = []
+	
+	# We replace og weapon with super weapons
+	if db_item["type"] == "super":
+		for req in db_item["requirements"]:
+			if ItemDb.ITEMS[upgrade]["type"] == "weapon":
+				remove_weapons.append(req)
+				
 	match upgrade:
 		"apron":
 			character.armor += 1
@@ -166,7 +181,7 @@ func upgrade_character(upgrade):
 			character.spell_size += 0.10
 		"scroll":
 			character.spell_cooldown += 0.05
-		"caution1":
+		"caution":
 			character.knockback += 0.1			
 		"ring":
 			character.additional_attacks += 1
@@ -174,6 +189,9 @@ func upgrade_character(upgrade):
 			character.hp += 20
 			character.hp = clamp(character.hp, 0, character.maxhp)
 		_:
+			for remove in remove_weapons:
+				inventory.remove_weapon(remove)
+					
 			if upgrade in collected_upgrades:
 				inventory.upgrade_weapon(upgrade)
 			else:
@@ -194,11 +212,20 @@ func upgrade_character(upgrade):
 func get_random_item():
 	var eligibleList = []
 	for item_name in ItemDb.ITEMS:
-		if collected_upgrades.count(item_name) >= ItemDb.ITEMS[item_name]["levels"].size(): #Pass on max level items
+		var db_item = ItemDb.ITEMS[item_name]
+		var meets_reqs = true
+		if db_item["type"] == "super": # Check reqs for super weapons
+			for req in db_item["requirements"]:
+				if not (collected_upgrades.count(req) >= ItemDb.ITEMS[req]["levels"].size()):
+					meets_reqs = false
+				
+		if collected_upgrades.count(item_name) >= db_item["levels"].size(): #Pass on max level items
 			pass
 		elif item_name in upgrade_options: #If the upgrade is already an option
 			pass
-		elif ItemDb.ITEMS[item_name]["type"] == "item": #Don't pick food
+		elif db_item["type"] == "item": #Don't pick food
+			pass
+		elif not meets_reqs:
 			pass
 		else:
 			eligibleList.append(item_name)

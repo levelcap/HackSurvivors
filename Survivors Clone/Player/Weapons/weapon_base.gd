@@ -49,7 +49,6 @@ func update_weapon():
 		timer.wait_time = stats["time"] * (1 - player.character.spell_cooldown)
 		timer.start()
 	if attack_timer:
-		print("Here")
 		attack_timer.wait_time = stats["attack_time"]
 
 func modified_attack_size():
