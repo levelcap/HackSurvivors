@@ -169,7 +169,7 @@ func upgrade_character(upgrade):
 	# We replace og weapon with super weapons
 	if db_item["type"] == "super":
 		for req in db_item["requirements"]:
-			if ItemDb.ITEMS[upgrade]["type"] == "weapon":
+			if ItemDb.ITEMS[req]["type"] == "weapon":
 				remove_weapons.append(req)
 				
 	match upgrade:
@@ -230,7 +230,7 @@ func get_random_item():
 		else:
 			eligibleList.append(item_name)
 	if eligibleList.size() > 0:
-		var random_item = eligibleList.pick_random()
+		var random_item = "blender"
 		upgrade_options.append(random_item)
 		var item_info = { "item_name": random_item, "level_idx": collected_upgrades.count(random_item) }
 		return item_info
@@ -248,8 +248,9 @@ func change_time(argtime = 0):
 	lblTimer.text = str(get_m,":",get_s)
 
 func adjust_gui_collection(upgrade):
-	var get_upgraded_displayname = ItemDb.ITEMS[upgrade]["displayname"]
-	var get_type = ItemDb.ITEMS[upgrade]["type"]
+	var db_item = ItemDb.ITEMS[upgrade]
+	var get_upgraded_displayname = db_item["displayname"]
+	var get_type = db_item["type"]
 	if get_type != "item":
 		var get_collected_displaynames = []
 		for i in collected_upgrades:
@@ -258,7 +259,7 @@ func adjust_gui_collection(upgrade):
 			var new_item = itemContainer.instantiate()
 			new_item.item_name = upgrade
 			match get_type:
-				"weapon":
+				"weapon", "super":
 					collectedWeapons.add_child(new_item)
 				"upgrade":
 					collectedUpgrades.add_child(new_item)

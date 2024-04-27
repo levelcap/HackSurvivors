@@ -12,7 +12,7 @@ func _on_attack_timer_timeout():
 	if stats["ammo"] > 0:
 		var attack = ATTACK.instantiate()
 		attack.stats = stats.duplicate()
-		add_child(attack)
+		self.add_child(attack)
 		stats["ammo"] -= 1
 		if stats["ammo"] > 0:
 			attack_timer.start()
