@@ -10,10 +10,6 @@ var experience = 0
 var experience_level = 1
 var collected_experience = 0
 
-# UPGRADES
-var collected_upgrades = []
-var upgrade_options = []
-
 #Enemy Related
 var enemy_close = []
 
@@ -26,14 +22,11 @@ var enemy_close = []
 @onready var expBar = get_node("%ExperienceBar")
 @onready var lblLevel = get_node("%lbl_level")
 @onready var levelPanel = get_node("%LevelUp")
-@onready var upgradeOptions = get_node("%UpgradeOptions")
-@onready var itemOptions = preload("res://Utility/item_option.tscn")
+@onready var upgrade_options = get_node("%UpgradeOptions")
+@onready var item_options = preload("res://Utility/item_option.tscn")
 @onready var sndLevelUp = get_node("%snd_levelup")
 @onready var healthBar = get_node("%HealthBar")
 @onready var lblTimer = get_node("%lblTimer")
-@onready var collectedWeapons = get_node("%CollectedWeapons")
-@onready var collectedUpgrades = get_node("%CollectedUpgrades")
-@onready var itemContainer = preload("res://Player/GUI/item_container.tscn")
 
 @onready var conversationScene = preload("res://Utility/conversation.tscn")
 
@@ -51,14 +44,14 @@ func _ready():
 	character = char_scene.instantiate()
 	character_group.add_child(character)
 	sprite = character.sprite
-	upgrade_character("whisk")
-	upgrade_character("whisk")
-	upgrade_character("whisk")
-	upgrade_character("whisk")
-	upgrade_character("scroll")
-	upgrade_character("scroll")
-	upgrade_character("scroll")
-	upgrade_character("scroll")
+	inventory.upgrade_character("whisk")
+	inventory.upgrade_character("whisk")
+	inventory.upgrade_character("whisk")
+	inventory.upgrade_character("whisk")
+	inventory.upgrade_character("scroll")
+	inventory.upgrade_character("scroll")
+	inventory.upgrade_character("scroll")
+	inventory.upgrade_character("scroll")
 	set_expbar(experience, calculate_experiencecap())
 	_on_hurt_box_hurt(0,0,0)
 	if not PlayerInfo.level_stats(PlayerInfo.current_level, 'won') >= 1:
@@ -148,94 +141,29 @@ func levelup():
 	sndLevelUp.play()
 	lblLevel.text = str("Level: ",experience_level)
 	var tween = levelPanel.create_tween()
-	tween.tween_property(levelPanel,"position",Vector2(220,50),0.2).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
+	tween.tween_property(levelPanel, "position", Vector2(220,50), 0.2).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
 	tween.play()
 	levelPanel.visible = true
 	var options = 0
 	var optionsmax = 3
 	while options < optionsmax:
-		var option_choice = itemOptions.instantiate()
-		var item_info = get_random_item()
+		var option_choice = item_options.instantiate()
+		var item_info = inventory.get_random_item()
 		option_choice.item_name = item_info["item_name"]
 		option_choice.level_idx = item_info["level_idx"]
-		upgradeOptions.add_child(option_choice)
+		upgrade_options.add_child(option_choice)
 		options += 1
 	get_tree().paused = true
-
-func upgrade_character(upgrade):
-	var db_item = ItemDb.ITEMS[upgrade]
-	var remove_weapons = []
 	
-	# We replace og weapon with super weapons
-	if db_item["type"] == "super":
-		for req in db_item["requirements"]:
-			if ItemDb.ITEMS[req]["type"] == "weapon":
-				remove_weapons.append(req)
-				
-	match upgrade:
-		"apron":
-			character.armor += 1
-		"speed":
-			character.movement_speed += 20.0
-		"tome":
-			character.spell_size += 0.10
-		"scroll":
-			character.spell_cooldown += 0.05
-		"caution":
-			character.knockback += 0.1			
-		"ring":
-			character.additional_attacks += 1
-		"food":
-			character.hp += 20
-			character.hp = clamp(character.hp, 0, character.maxhp)
-		_:
-			for remove in remove_weapons:
-				inventory.remove_weapon(remove)
-					
-			if upgrade in collected_upgrades:
-				inventory.upgrade_weapon(upgrade)
-			else:
-				inventory.add_weapon(upgrade)
-				
-	adjust_gui_collection(upgrade)
-	
-	var option_children = upgradeOptions.get_children()
+func upgrade_selected(upgrade):
+	inventory.upgrade_character(upgrade)
+	var option_children = upgrade_options.get_children()
 	for i in option_children:
 		i.queue_free()
-	upgrade_options.clear()
-	collected_upgrades.append(upgrade)
 	levelPanel.visible = false
 	levelPanel.position = Vector2(800,50)
 	get_tree().paused = false
 	calculate_experience(0)
-	
-func get_random_item():
-	var eligibleList = []
-	for item_name in ItemDb.ITEMS:
-		var db_item = ItemDb.ITEMS[item_name]
-		var meets_reqs = true
-		if db_item["type"] == "super": # Check reqs for super weapons
-			for req in db_item["requirements"]:
-				if not (collected_upgrades.count(req) >= ItemDb.ITEMS[req]["levels"].size()):
-					meets_reqs = false
-				
-		if collected_upgrades.count(item_name) >= db_item["levels"].size(): #Pass on max level items
-			pass
-		elif item_name in upgrade_options: #If the upgrade is already an option
-			pass
-		elif db_item["type"] == "item": #Don't pick food
-			pass
-		elif not meets_reqs:
-			pass
-		else:
-			eligibleList.append(item_name)
-	if eligibleList.size() > 0:
-		var random_item = "blender"
-		upgrade_options.append(random_item)
-		var item_info = { "item_name": random_item, "level_idx": collected_upgrades.count(random_item) }
-		return item_info
-	else:
-		return  { "item_name": null, "level_idx": null }
 
 func change_time(argtime = 0):
 	time = argtime
@@ -246,23 +174,6 @@ func change_time(argtime = 0):
 	if get_s < 10:
 		get_s = str(0,get_s)
 	lblTimer.text = str(get_m,":",get_s)
-
-func adjust_gui_collection(upgrade):
-	var db_item = ItemDb.ITEMS[upgrade]
-	var get_upgraded_displayname = db_item["displayname"]
-	var get_type = db_item["type"]
-	if get_type != "item":
-		var get_collected_displaynames = []
-		for i in collected_upgrades:
-			get_collected_displaynames.append(ItemDb.ITEMS[i]["displayname"])
-		if not get_upgraded_displayname in get_collected_displaynames:
-			var new_item = itemContainer.instantiate()
-			new_item.item_name = upgrade
-			match get_type:
-				"weapon", "super":
-					collectedWeapons.add_child(new_item)
-				"upgrade":
-					collectedUpgrades.add_child(new_item)
 
 func death():
 	deathPanel.visible = true

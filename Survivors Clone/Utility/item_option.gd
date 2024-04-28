@@ -9,11 +9,12 @@ var mouse_over = false
 var item_name = null
 var level_idx = null
 @onready var player = get_tree().get_first_node_in_group("player")
+@onready var inventory = player.inventory
 
 signal selected_upgrade(upgrade)
 
 func _ready():
-	connect("selected_upgrade", Callable(player, "upgrade_character"))
+	connect("selected_upgrade", Callable(player, "upgrade_selected"))
 	if item_name == null:
 		item_name = "food"
 	lblName.text = ItemDb.ITEMS[item_name]["displayname"]
