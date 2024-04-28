@@ -14,27 +14,26 @@ var collected_experience = 0
 var enemy_close = []
 
 @onready var sprite = null
-@onready var walkTimer = get_node("%walkTimer")
+@onready var walk_timer = get_node("%walkTimer")
 @onready var inventory = $Inventory
 @onready var character_group = $CharacterGroup
 
 #GUI
-@onready var expBar = get_node("%ExperienceBar")
-@onready var lblLevel = get_node("%lbl_level")
-@onready var levelPanel = get_node("%LevelUp")
+@onready var exp_bar = get_node("%ExperienceBar")
+@onready var lbl_level = get_node("%lbl_level")
+@onready var level_panel = get_node("%LevelUp")
 @onready var upgrade_options = get_node("%UpgradeOptions")
 @onready var item_options = preload("res://Utility/item_option.tscn")
-@onready var sndLevelUp = get_node("%snd_levelup")
-@onready var healthBar = get_node("%HealthBar")
-@onready var lblTimer = get_node("%lblTimer")
+@onready var snd_level_up = get_node("%snd_levelup")
+@onready var health_bar = get_node("%HealthBar")
+@onready var lbl_timer = get_node("%lblTimer")
 
-@onready var conversationScene = preload("res://Utility/conversation.tscn")
+@onready var conversation_scene = preload("res://Utility/conversation.tscn")
 
-@onready var deathPanel = get_node("%DeathPanel")
-@onready var lblResult = get_node("%lbl_Result")
-@onready var sndVictory = get_node("%snd_victory")
-@onready var sndLose = get_node("%snd_lose")
-@onready var bossPanel = get_node("%BossPanel")
+@onready var death_panel = get_node("%DeathPanel")
+@onready var lbl_result = get_node("%lbl_Result")
+@onready var snd_victory = get_node("%snd_victory")
+@onready var snd_lose = get_node("%snd_lose")
 
 #Signal
 signal playerdeath
@@ -71,20 +70,20 @@ func movement():
 
 	if mov != Vector2.ZERO:
 		last_movement = mov
-		if walkTimer.is_stopped():
+		if walk_timer.is_stopped():
 			if sprite.frame >= sprite.hframes - 1:
 				sprite.frame = 0
 			else:
 				sprite.frame += 1
-			walkTimer.start()
+			walk_timer.start()
 	
 	velocity = mov.normalized() * character.movement_speed
 	move_and_slide()
 
 func _on_hurt_box_hurt(damage, _angle, _knockback):
 	character.hp -= clamp(damage - character.armor, 1.0, 999.0)
-	healthBar.max_value = character.maxhp
-	healthBar.value = character.hp
+	health_bar.max_value = character.maxhp
+	health_bar.value = character.hp
 	if character.hp <= 0:
 		death()
 
@@ -134,16 +133,16 @@ func calculate_experiencecap():
 	return exp_cap
 		
 func set_expbar(set_value = 1, set_max_value = 100):
-	expBar.value = set_value
-	expBar.max_value = set_max_value
+	exp_bar.value = set_value
+	exp_bar.max_value = set_max_value
 
 func levelup():
-	sndLevelUp.play()
-	lblLevel.text = str("Level: ",experience_level)
-	var tween = levelPanel.create_tween()
-	tween.tween_property(levelPanel, "position", Vector2(220,50), 0.2).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
+	snd_level_up.play()
+	lbl_level.text = str("Level: ",experience_level)
+	var tween = level_panel.create_tween()
+	tween.tween_property(level_panel, "position", Vector2(220,50), 0.2).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
 	tween.play()
-	levelPanel.visible = true
+	level_panel.visible = true
 	var options = 0
 	var optionsmax = 3
 	while options < optionsmax:
@@ -160,8 +159,8 @@ func upgrade_selected(upgrade):
 	var option_children = upgrade_options.get_children()
 	for i in option_children:
 		i.queue_free()
-	levelPanel.visible = false
-	levelPanel.position = Vector2(800,50)
+	level_panel.visible = false
+	level_panel.position = Vector2(800,50)
 	get_tree().paused = false
 	calculate_experience(0)
 
@@ -173,22 +172,22 @@ func change_time(argtime = 0):
 		get_m = str(0,get_m)
 	if get_s < 10:
 		get_s = str(0,get_s)
-	lblTimer.text = str(get_m,":",get_s)
+	lbl_timer.text = str(get_m,":",get_s)
 
 func death():
-	deathPanel.visible = true
+	death_panel.visible = true
 	emit_signal("playerdeath")
 	get_tree().paused = true
-	var tween = deathPanel.create_tween()
-	tween.tween_property(deathPanel,"position",Vector2(220,50),3.0).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	var tween = death_panel.create_tween()
+	tween.tween_property(death_panel,"position",Vector2(220,50),3.0).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	tween.play()
-	lblResult.text = """It happens! 
+	lbl_result.text = """It happens! 
 	Nerves get to everyone. 
 	Keep trying!"""
-	sndLose.play()
+	snd_lose.play()
 		
 func bossFight(enemy_spawn):
-	var conversation = conversationScene.instantiate()
+	var conversation = conversation_scene.instantiate()
 	%OverlayLayer.add_child(conversation)
 	get_tree().paused = true
 	await conversation.bossFight()
@@ -197,7 +196,7 @@ func bossFight(enemy_spawn):
 	add_child(enemy_spawn)
 	
 func play_conversation():
-	var conversation = conversationScene.instantiate()
+	var conversation = conversation_scene.instantiate()
 	var textOne = """My first day! I'm pretty nervous... but what could go wrong?"""
 	var textTwo = """WHO ARE YOU TALKING TO??\n\nGET TO F****NG WORK!!!"""
 	%OverlayLayer.add_child(conversation)
@@ -210,7 +209,7 @@ func play_conversation():
 func boss_death():
 	PlayerInfo.won_level("dayone")
 	PlayerInfo.add_xp(1)
-	var conversation = conversationScene.instantiate()
+	var conversation = conversation_scene.instantiate()
 	var textOne = "Whoa! A shadowy figure!"
 	var textTwo = "Have you seen anything shady? Anyone talking to anyone they shouldn’t be?"
 	%OverlayLayer.add_child(conversation)
@@ -220,14 +219,14 @@ func boss_death():
 	
 	get_tree().paused = false
 	%OverlayLayer.remove_child(conversation)
-	deathPanel.visible = true
+	death_panel.visible = true
 	emit_signal("playerdeath")
 	get_tree().paused = true
-	var tween = deathPanel.create_tween()
-	tween.tween_property(deathPanel,"position",Vector2(220,50),3.0).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	var tween = death_panel.create_tween()
+	tween.tween_property(death_panel,"position",Vector2(220,50),3.0).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	tween.play()
-	lblResult.text = "Who was that? Talking to who?\n\nWell... at least your survived the day"
-	sndVictory.play()
+	lbl_result.text = "Who was that? Talking to who?\n\nWell... at least your survived the day"
+	snd_victory.play()
 
 func _on_btn_menu_click_end():
 	get_tree().paused = false
